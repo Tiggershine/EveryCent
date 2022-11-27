@@ -1,0 +1,68 @@
+import { Product } from "./product";
+
+export const PRODUCTS: Product[] = [
+  {
+    productId!: 1,
+    customerId!: 'jin',
+    productTitle!: 'reiskocher',
+    productPrice!: 80,
+    productImage!: '../assets/image/cuchen.jpeg',
+    postDate!: '24.10.22',
+  },
+  {
+    productId!: 2,
+    customerId!: 'hyun',
+    productTitle!: 'bicycle',
+    productPrice!: 120,
+    productImage!: '../assets/image/bicycle.jpeg',
+    postDate!: '13.10.22',
+  },
+  {
+    productId!: 3,
+    customerId!: 'min',
+    productTitle!: 'jacket',
+    productPrice!: 40,
+    productImage!: '../assets/image/jacket.jpeg',
+    postDate!: '8.10.22',
+  },
+  {
+    productId!: 4,
+    customerId!: 'hyun',
+    productTitle!: 'shelf',
+    productPrice!: 33,
+    productImage!: '../assets/image/shelf.jpeg',
+    postDate!: '15.11.22',
+  },
+  {
+    productId!: 5,
+    customerId!: 'hyun',
+    productTitle!: 'shelf',
+    productPrice!: 33,
+    productImage!: '../assets/image/shelf.jpeg',
+    postDate!: '19.10.22',
+  },
+  {
+    productId!: 6,
+    customerId!: 'hyun',
+    productTitle!: '냉장고',
+    productPrice!: 120,
+    productImage!: '../assets/image/refrigerator.jpeg',
+    postDate!: '19.10.22',
+  },
+  {
+    productId!: 7,
+    customerId!: 'min',
+    productTitle!: '전자레인지',
+    productPrice!: 25,
+    productImage!: '../assets/image/microwave.jpeg',
+    postDate!: '15.11.22',
+  },
+  {
+    productId!: 8,
+    customerId!: 'hyun',
+    productTitle!: 'bicycle',
+    productPrice!: 120,
+    productImage!: '../assets/image/bicycle.jpeg',
+    postDate!: '30.10.22',
+  },
+]
