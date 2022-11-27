@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="row header-container">
+    <div class="col header-left-icon">
+      <a [routerLink]="leftIconLink">
+        <img [src]="leftIcon" alt="header-left-icon">
+      </a>
+    </div>
+    <div class="col-8 header-text">
+      {{ text }}
+    </div>
+    <div class="col header-right-icon">
+      <a [routerLink]="rightIconLink">
+        <img [src]="rightIcon" alt="header-right-icon">
+      </a>
+    </div>
+  </div>
+</div>
