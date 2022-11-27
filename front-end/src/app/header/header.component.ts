@@ -5,17 +5,22 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  @Input('leftIcon') leftIcon: string | undefined;
-  @Input('rightIcon') rightIcon: string | undefined;
-  @Input('headerText') headerText: string | undefined;
-  @Input('leftIconLink') leftIconLink: string | undefined;
-  @Input('rightIconLink') rightIconLink: string | undefined;
+  /**
+   *  [ Properties for header-DOM ]
+   *  - leftIcon: directory source for left icon on header
+   *  - righttIcon: directory source for right icon on header
+   *  - leftIconLink: loaded Component, wenn click on leftIcon
+   *  - rightIconLink: loaded Component, wenn click on rightIcon
+   *  - text: text showed on center header
+   */
+  @Input() leftIcon: string;
+  @Input() rightIcon: string;
+  @Input() text: string;
+  @Input() leftIconLink: string;
+  @Input() rightIconLink: string;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  
 }
