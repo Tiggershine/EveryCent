@@ -3,14 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductCardListComponent } from './product-card-list/product-card-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    routingComponents
+    ProductCardListComponent
   ],
   imports: [
     BrowserModule,
