@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit{
   @Input() rightIconMobileLink?: string;
   @Input() rightBtn1Show?: boolean;
   @Input() rightBtn2Show?: boolean;
+  @Input() rightBtnMobileShow?: boolean;
 
 
   screenMode: string;

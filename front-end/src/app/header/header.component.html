@@ -15,19 +15,17 @@
     <div class="col-3 right-icon-container">
       <!-- Web-mode -->
       <div *ngIf="screenMode=='web' && rightBtn1Show" class="right-icon1-web">
-        <!-- <button type="submit" [routerLink]="rightIconWeb1Link">Log In</button> -->
         <a [routerLink]="rightIconWeb1Link">
           <img [src]="rightIconWeb1" alt="header-right-icon1">
         </a>
       </div>
       <div *ngIf="screenMode=='web' && rightBtn2Show" class="right-icon2-web">
-        <!-- <button type="submit" [routerLink]="rightIconWeb2Link">Sign Up</button> -->
         <a [routerLink]="rightIconWeb2Link">
           <img [src]="rightIconWeb2" alt="header-right-icon2">
         </a>
       </div>
       <!-- Mobile-mode -->
-      <div *ngIf="screenMode=='mobile'" class="right-icon-mobile">
+      <div *ngIf="screenMode=='mobile' && rightBtnMobileShow" class="right-icon-mobile">
         <a [routerLink]="rightIconMobileLink">
           <img [src]="rightIconMobile" alt="header-right-icon1">
         </a>

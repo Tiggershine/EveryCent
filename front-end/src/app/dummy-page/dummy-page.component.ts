@@ -18,6 +18,7 @@ export class DummyPageComponent implements OnInit {
   rightIconMobileLink: string;
   rightBtn1Show: boolean;
   rightBtn2Show: boolean;
+  rightBtnMobileShow: boolean;
 
   constructor(
     private route: ActivatedRoute
@@ -34,6 +35,7 @@ export class DummyPageComponent implements OnInit {
     this.rightIconMobileLink = this.route.snapshot.data['rightIconMobileLink'];
     this.rightBtn1Show = this.route.snapshot.data['rightBtn1Show'];
     this.rightBtn2Show = this.route.snapshot.data['rightBtn2Show'];
+    this.rightBtnMobileShow = this.route.snapshot.data['rightBtnMobileShow'];
   }
 
 }

@@ -15,7 +15,8 @@ const routes: Routes = [
       rightIconWeb2Link: 'SignupPageComponent',
       rightIconMobileLink: 'LoginPageComponent',
       rightBtn1Show: true,
-      rightBtn2Show: true
+      rightBtn2Show: true,
+      rightBtnMobileShow: true
 
     }
   },
@@ -30,7 +31,8 @@ const routes: Routes = [
       rightIconWeb2Link: 'SignupPageComponent',
       rightIconMobileLink: 'LoginPageComponent',
       rightBtn1Show: false,
-      rightBtn2Show: true
+      rightBtn2Show: true,
+      rightBtnMobileShow: true
     }
   }
 ];
