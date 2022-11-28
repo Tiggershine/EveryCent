@@ -1,9 +1,12 @@
+::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 3px !important;}
+
+
+
+
 
 $radius_r: 40px;
 $radius_s: 20px;
 $radius_m: 5px;
-
-
 $primary-color: #004643;
 $secondary-color: #F9BC60;
 $tertiary-color: #E16162;
@@ -11,35 +14,35 @@ $background-color: #FEF6ED;
 $white: #FFFFFF;
 $text-width: 70px;
 $field-width1: 242px;
-$field-width2: 100%;
+$field-width2: 312px;
 $font-text: 1rem;
 
 .background{
   background-color: $background-color;
   width: 100%;
-  height: 100%;
-  position: relative;
+  height: 200%;
 }
 
 .layout0{
-  background-color: $background-color;
   position:relative;
   margin: auto;
   margin-left: 10%;
-  width: 80%;
-  height: 100%;
+  width: 312px;
+  height: 719px;
   padding: 0;
 }
 
 mat-form-field {
   position: relative;
   width: $field-width1;
-  height: 7px;
-  border-radius: 20px;
+}
+
+textarea {
+  height: 85px;
 }
 
 .mat-field{
-  width: $field-width2; height:107px;
+  width: $field-width2;
 }
 
 mat-label{
@@ -61,8 +64,8 @@ mat-radio-button{
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid 1px rgb(168, 168, 168);
-  border-radius: var(--border-radius_field_m);
+  border: solid 1px #000;
+  border-radius: $radius_m;
   background-color: $white;
 }
 
@@ -86,7 +89,7 @@ mat-radio-button{
 .text-iwant{
   display: inline-block;
   position: relative;
-  margin-top: 130px;
+  margin-top: 36px;
   width: $text-width;
   height: 30px;
   font-size: $font-text;
@@ -114,6 +117,7 @@ mat-radio-button{
   font-size: $font-text;
   width: $text-width;
   height: 20px;
+  margin-bottom: 2px;
 }
 
 .text-title{
@@ -126,18 +130,14 @@ mat-radio-button{
 
   .layout0{
     position:relative;
-    margin: auto;
     width: 602px;
-    height: 100%;
+    height: 200%;
     padding: 0;
-  }
-  .text-iwant{
-    margin-top: 50px;
   }
 
   .text-title{
     width: 100%;
-    height: 80px;
+    height: 70px;
     margin-inline: auto;
     display: flex;
     align-items: flex-end;
@@ -148,8 +148,8 @@ mat-radio-button{
   }
 
   .mat-field{
-    width: 602px;
-    height: 100px; 
+    position: relative;
+    width: 100%;
   }
 
   .box-image{

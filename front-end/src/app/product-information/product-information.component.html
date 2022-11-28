@@ -16,17 +16,9 @@
         <div class="text-field">Title</div>
         <mat-form-field appearance="outline">
           <input formControlName="title" matInput placeholder="">
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
       </div>
-    
-      <div>
-        <div class="text-field">Price</div>
-        <mat-form-field appearance="outline">
-          <input formControlName="price" matInput type="number" placeholder="">
-        </mat-form-field>
-      </div>
-    
+
       <div>
         <div class="text-field">Category</div>
         <mat-form-field appearance="outline">
@@ -41,9 +33,17 @@
         </mat-form-field>
       </div>
     
+      <div>
+        <div class="text-field">Price</div>
+        <mat-form-field appearance="outline">
+          <input formControlName="price" matInput type="number" placeholder="">
+          <mat-icon matSuffix>euro_symbol</mat-icon>
+        </mat-form-field>
+      </div>
+    
       <div class="text-field2">Description</div>
-      <mat-form-field class="mat-field" appearance="fill">
-        <textarea formControlName="comment" matInput class="description"> </textarea>
+      <mat-form-field class="mat-field" appearance="outline">
+        <textarea formControlName="comment" matInput class="description"></textarea>
       </mat-form-field>
     </form>     
     
@@ -53,7 +53,7 @@
     </div>
     
     <div mat-dialog-actions class="button-row" [align]="'end'">
-      <button mat-flat-button color="primary" class="button-register" (click)="addProduct()" >REGISTER</button>
+      <button mat-flat-button class="button-register" (click)="addProduct()" >REGISTER</button>
       <button mat-flat-button mat-dialog-close class="button-cancel">CANCEL</button>
     </div> 
     
