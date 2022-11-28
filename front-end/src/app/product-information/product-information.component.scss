@@ -1,0 +1,200 @@
+
+$radius_r: 40px;
+$radius_s: 20px;
+$radius_m: 5px;
+
+
+$primary-color: #004643;
+$secondary-color: #F9BC60;
+$tertiary-color: #E16162;
+$background-color: #FEF6ED;
+$white: #FFFFFF;
+$text-width: 70px;
+$field-width1: 242px;
+$field-width2: 100%;
+$font-text: 1rem;
+
+.background{
+  background-color: $background-color;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.layout0{
+  background-color: $background-color;
+  position:relative;
+  margin: auto;
+  margin-left: 10%;
+  width: 80%;
+  height: 100%;
+  padding: 0;
+}
+
+mat-form-field {
+  position: relative;
+  width: $field-width1;
+  height: 7px;
+  border-radius: 20px;
+}
+
+.mat-field{
+  width: $field-width2; height:107px;
+}
+
+mat-label{
+  font-style: normal;
+  font-weight: 500;
+}
+
+mat-radio-button{
+  font-style: normal;
+  font-weight: 500;
+}
+
+.box-image{
+  position: relative;
+  margin: auto;
+  margin-left: 0;
+  width: 312px;
+  height: 107px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px rgb(168, 168, 168);
+  border-radius: var(--border-radius_field_m);
+  background-color: $white;
+}
+
+.button-cancel{
+  display: none;
+}
+
+.button-image{
+  font-size: $font-text;
+}
+
+.button-radio {
+  font-size: $font-text;
+  margin-right: 10px;
+}
+
+.button-register{
+  display: none;
+}
+
+.text-iwant{
+  display: inline-block;
+  position: relative;
+  margin-top: 130px;
+  width: $text-width;
+  height: 30px;
+  font-size: $font-text;
+}
+
+.text-field{
+  display: inline-block;
+  position: relative;
+  margin-top: 20px;
+  font-size: $font-text;
+  width: $text-width;
+  height: 30px;
+}
+
+.text-field2{
+  position: relative;
+  margin-top: 20px;
+  font-size: $font-text;
+  width: $text-width;
+  height: 20px;
+}
+
+.text-image{
+  position: relative;
+  font-size: $font-text;
+  width: $text-width;
+  height: 20px;
+}
+
+.text-title{
+  display: none;
+}
+
+@media (min-width: 768px) {
+  $text-width-desktop: 70px;
+  $margin-right-desktop: 20%;
+
+  .layout0{
+    position:relative;
+    margin: auto;
+    width: 602px;
+    height: 100%;
+    padding: 0;
+  }
+  .text-iwant{
+    margin-top: 50px;
+  }
+
+  .text-title{
+    width: 100%;
+    height: 80px;
+    margin-inline: auto;
+    display: flex;
+    align-items: flex-end;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 3rem;
+  }
+
+  .mat-field{
+    width: 602px;
+    height: 100px; 
+  }
+
+  .box-image{
+    height: 312px;
+  }
+
+  .text-image{
+    margin-top: 7px;
+  }
+
+  .button-register{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 10px;
+    width: 280px;
+    height: 50px;
+    text-align: center;
+    background: $primary-color;
+    border-radius: $radius_r;
+    font-style: normal;
+    font-weight: 600;
+    color: #FEF6ED;
+  }
+
+  .button-cancel{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    width: 280px;
+    height: 50px;
+    text-align: center;
+    background: $background-color;
+    border-radius: $radius_r;
+    font-style: normal;
+    font-weight: 600;
+    color: #004643;
+    border: 1px solid #004643;
+  }
+
+  .button-row{
+    display: flex;
+    justify-content: space-between;
+  }
+}

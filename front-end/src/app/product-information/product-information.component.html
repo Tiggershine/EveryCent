@@ -1,0 +1,65 @@
+<div class="background">
+  <div class="layout0" mat-dialog-content>
+    <div class="text-title">Upload New Item</div>
+    <form [formGroup]="productForm">
+      
+      <div>
+        <div class="text-iwant">I want</div>
+        <mat-radio-group formControlName="tradeOption">
+          <mat-radio-button color="primary" class="button-radio" *ngFor="let trade of tradeOptionRadioButton" [value]="trade">
+            {{trade}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+    
+      <div>
+        <div class="text-field">Title</div>
+        <mat-form-field appearance="outline">
+          <input formControlName="title" matInput placeholder="">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </div>
+    
+      <div>
+        <div class="text-field">Price</div>
+        <mat-form-field appearance="outline">
+          <input formControlName="price" matInput type="number" placeholder="">
+        </mat-form-field>
+      </div>
+    
+      <div>
+        <div class="text-field">Category</div>
+        <mat-form-field appearance="outline">
+          <mat-select formControlName="category" placeholder="">
+            <mat-option value="1">1</mat-option>
+            <mat-option value="2">2</mat-option>
+            <mat-option value="3">3</mat-option>
+            <mat-option value="4">4</mat-option>
+            <mat-option value="5">5</mat-option>
+            <mat-option value="6">6</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    
+      <div class="text-field2">Description</div>
+      <mat-form-field class="mat-field" appearance="fill">
+        <textarea formControlName="comment" matInput class="description"> </textarea>
+      </mat-form-field>
+    </form>     
+    
+    <div class="text-image">Image</div>
+    <div class="box-image">
+      <button class="button-image">Choose File</button>
+    </div>
+    
+    <div mat-dialog-actions class="button-row" [align]="'end'">
+      <button mat-flat-button color="primary" class="button-register" (click)="addProduct()" >REGISTER</button>
+      <button mat-flat-button mat-dialog-close class="button-cancel">CANCEL</button>
+    </div> 
+    
+    </div>
+</div>
+
+
+
+
