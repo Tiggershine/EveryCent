@@ -40,7 +40,6 @@ export class HeaderComponent implements OnInit {
     onResize(event: any) {
       let screenWidth = window.innerWidth;
       (screenWidth > 767) ? this.screenMode = "web" : this.screenMode = "mobile"
-      console.log(this.screenMode);
     }
   @HostListener('window:scroll', ['$event']) onscroll() {
     if(window.scrollY > 200) {
