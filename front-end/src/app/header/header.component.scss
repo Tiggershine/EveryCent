@@ -7,7 +7,7 @@ $background-color: #FEF6ED;
   background-color: $primary-color;
 }
 .header-container {
-  max-width: 1280px;
+  max-width: 1180px;
   margin: 0 auto;
   height: 55px;
   background-color: $primary-color;
@@ -29,7 +29,7 @@ $background-color: #FEF6ED;
 .left-icon-container {
   display: flex;
   justify-content: left;
-  padding-left: 30px;
+  padding: 0;
 }
 .left-icon-container img {
   height: 38px;
@@ -37,7 +37,7 @@ $background-color: #FEF6ED;
 .right-icon-container {
   display: flex;
   justify-content: right;
-  padding-right: 30px;
+  padding: 0;
 }
 .right-icon-mobile img {
   height: 25px;
@@ -53,14 +53,8 @@ $background-color: #FEF6ED;
   .header-container {
     height: 80px;
   }
-  .left-icon-container {
-    padding-left: 80px;
-  }
   .left-icon-container img {
     width: 110px;
-  }
-  .right-icon-container {
-    padding-right: 80px;
   }
   .right-icon1-web {
     margin-right: 10px;
@@ -72,7 +66,7 @@ $background-color: #FEF6ED;
     opacity: 0.7;
   }
   .header-search-bar {
-    padding-right: 100px;
+    padding: 0 50px;
   }
   .search-bar {
     height: 45px;

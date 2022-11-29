@@ -28,13 +28,7 @@ export class HeaderComponent implements OnInit {
  
   screenMode: string;
   headerfixed: boolean = false;
-  @HostListener('window:scroll', ['$event']) onscroll() {
-    if(window.scrollY > 200) {
-      this.headerfixed = true;
-    } else {
-      this.headerfixed = false;
-    }
-  }
+
   constructor() { }
   
   ngOnInit(): void {
@@ -48,4 +42,11 @@ export class HeaderComponent implements OnInit {
       (screenWidth > 767) ? this.screenMode = "web" : this.screenMode = "mobile"
       console.log(this.screenMode);
     }
+  @HostListener('window:scroll', ['$event']) onscroll() {
+    if(window.scrollY > 200) {
+      this.headerfixed = true;
+    } else {
+      this.headerfixed = false;
+    }
+  }
 }
