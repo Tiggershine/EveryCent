@@ -1,4 +1,3 @@
-import { DOCUMENT } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
@@ -8,16 +7,18 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class MainPageNavComponent implements OnInit {
   
-  navhidden: boolean = true;
-  @HostListener('window:scroll', ['$event']) onscroll() {
-    if(window.scrollY > 50) { // 650으로 바까라
-      this.navhidden = false;
-    } else {
-      this.navhidden = true;
-    }
-  }
+  screenMode: string;
+
   constructor() {}
 
   ngOnInit(): void {
+    let screenWidth = window.innerWidth;
+    (screenWidth > 767) ? this.screenMode = "web" : this.screenMode = "mobile"
+  }
+  @HostListener ('window:resize', ['$event'])
+  onResize(event: any) {
+    let screenWidth = window.innerWidth;
+    (screenWidth > 767) ? this.screenMode = "web" : this.screenMode = "mobile"
+    console.log(this.screenMode);
   }
 }
