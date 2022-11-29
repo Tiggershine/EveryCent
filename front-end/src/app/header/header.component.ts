@@ -27,15 +27,14 @@ export class HeaderComponent implements OnInit {
    @Input() rightBtnMobileShow?: boolean;
  
   screenMode: string;
-  headerfixed: boolean = false;
-  static offsetTop: any;
+  headerfixed: boolean = false;  
 
   constructor() { }
-  
+
   ngOnInit(): void {
-    let screenWidth = window.innerWidth;
-    (screenWidth > 767) ? this.screenMode = "web" : this.screenMode = "mobile"
-}
+      let screenWidth = window.innerWidth;
+      (screenWidth > 767) ? this.screenMode = "web" : this.screenMode = "mobile"
+  }
 
   @HostListener ('window:resize', ['$event'])
     onResize(event: any) {
