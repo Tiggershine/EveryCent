@@ -8,6 +8,15 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ProductInformationComponent implements OnInit {
   tradeOptionRadioButton = ['sell', 'buy'];
+  informationType = [
+    {
+      title: 'Title',
+      category: 'Category',
+      price: 'Price',
+      description: 'Description',
+      image: 'Image',
+    },
+  ];
   productForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {}

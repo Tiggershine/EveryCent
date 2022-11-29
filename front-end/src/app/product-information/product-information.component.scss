@@ -1,40 +1,54 @@
-::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 3px !important;}
-
-
-
-
-
-$radius_r: 40px;
-$radius_s: 20px;
-$radius_m: 5px;
 $primary-color: #004643;
 $secondary-color: #F9BC60;
 $tertiary-color: #E16162;
 $background-color: #FEF6ED;
 $white: #FFFFFF;
-$text-width: 70px;
-$field-width1: 242px;
-$field-width2: 312px;
-$font-text: 1rem;
+$black: #000000;
 
-.background{
-  background-color: $background-color;
-  width: 100%;
-  height: 200%;
+::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 10px 0px}
+::ng-deep {
+  .mat-form-field-infix {
+      border: 0px;
+  }
+  .mat-form-field-appearance-outline .mat-select-arrow-wrapper {
+      transform: none !important;
+  }
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  border-radius: 5px;
+  background-color: $white;
+  color: $black !important;
 }
 
-.layout0{
+::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+	opacity: 0 !important;     /*click effect color change*/
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+	background-color: $black !important;   /*inner circle color change*/
+}
+
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+	border-color:$black !important; /*outer ring color change*/
+}
+
+.container{
+  background-color: $background-color;
+  height: 100%;
+  padding: 0;
+}
+
+.layout{
   position:relative;
   margin: auto;
-  margin-left: 10%;
-  width: 312px;
-  height: 719px;
+  width: 290px;
+  height: 619px;
   padding: 0;
 }
 
 mat-form-field {
   position: relative;
-  width: $field-width1;
+  width: 215px;
 }
 
 textarea {
@@ -42,30 +56,20 @@ textarea {
 }
 
 .mat-field{
-  width: $field-width2;
-}
-
-mat-label{
-  font-style: normal;
-  font-weight: 500;
-}
-
-mat-radio-button{
-  font-style: normal;
-  font-weight: 500;
+  width: 290px;
 }
 
 .box-image{
   position: relative;
   margin: auto;
   margin-left: 0;
-  width: 312px;
+  width: 290px;
   height: 107px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid 1px #000;
-  border-radius: $radius_m;
+  border: solid 1px $black;
+  border-radius: 5px;
   background-color: $white;
 }
 
@@ -74,12 +78,12 @@ mat-radio-button{
 }
 
 .button-image{
-  font-size: $font-text;
+  font-size: 1rem;
 }
 
 .button-radio {
-  font-size: $font-text;
-  margin-right: 10px;
+  font-size: 1rem;
+  margin-right: 50px;
 }
 
 .button-register{
@@ -90,32 +94,30 @@ mat-radio-button{
   display: inline-block;
   position: relative;
   margin-top: 36px;
-  width: $text-width;
+  width: 75px;
   height: 30px;
-  font-size: $font-text;
+  font-size: 1rem;
 }
 
 .text-field{
   display: inline-block;
   position: relative;
-  margin-top: 20px;
-  font-size: $font-text;
-  width: $text-width;
+  font-size: 1rem;
+  width: 75px;
   height: 30px;
 }
 
 .text-field2{
   position: relative;
-  margin-top: 20px;
-  font-size: $font-text;
-  width: $text-width;
+  font-size: 1rem;
+  width: 70px;
   height: 20px;
 }
 
 .text-image{
   position: relative;
-  font-size: $font-text;
-  width: $text-width;
+  font-size: 1rem;
+  width: 70px;
   height: 20px;
   margin-bottom: 2px;
 }
@@ -125,12 +127,14 @@ mat-radio-button{
 }
 
 @media (min-width: 768px) {
-  $text-width-desktop: 70px;
-  $margin-right-desktop: 20%;
+  .container{
+    width: 100%;
+    height: 100%;
+  }
 
-  .layout0{
+  .layout{
     position:relative;
-    width: 602px;
+    width: 80%;
     height: 200%;
     padding: 0;
   }
@@ -147,7 +151,7 @@ mat-radio-button{
     font-size: 3rem;
   }
 
-  .mat-field{
+  .mat-field{  border-radius: 20px;
     position: relative;
     width: 100%;
   }
@@ -170,10 +174,10 @@ mat-radio-button{
     height: 50px;
     text-align: center;
     background: $primary-color;
-    border-radius: $radius_r;
+    border-radius: 40px;
     font-style: normal;
     font-weight: 600;
-    color: #FEF6ED;
+    color: $background-color;
   }
 
   .button-cancel{
@@ -186,11 +190,11 @@ mat-radio-button{
     height: 50px;
     text-align: center;
     background: $background-color;
-    border-radius: $radius_r;
+    border-radius: 40px;
     font-style: normal;
     font-weight: 600;
-    color: #004643;
-    border: 1px solid #004643;
+    color: $primary-color;
+    border: 1px solid $primary-color;
   }
 
   .button-row{
