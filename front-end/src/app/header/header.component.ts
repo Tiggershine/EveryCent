@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit {
  
   screenMode: string;
   headerfixed: boolean = false;
+  static offsetTop: any;
 
   constructor() { }
   

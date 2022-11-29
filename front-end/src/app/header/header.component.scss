@@ -7,8 +7,7 @@ $background-color: #FEF6ED;
   background-color: $primary-color;
 }
 .header-container {
-  max-width: 1180px;
-  margin: 0 auto;
+  margin: 0 20px;
   height: 55px;
   background-color: $primary-color;
   display: flex;
@@ -51,6 +50,8 @@ $background-color: #FEF6ED;
 // Web-mode 
 @media (min-width: 768px){
   .header-container {
+    max-width: 1180px;
+    margin: 0 auto;  
     height: 80px;
   }
   .left-icon-container img {
