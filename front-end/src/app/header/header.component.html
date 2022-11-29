@@ -1,17 +1,36 @@
-<div class="container-fluid">
+<div class="container-fluid" (scroll)="onscroll()" [ngClass]="headerfixed?'fixed':'nofixed'">
   <div class="row header-container">
-    <div class="col header-left-icon">
+    <!-- Left-icon -->
+    <div class="col-3 left-icon-container">
       <a [routerLink]="leftIconLink">
         <img [src]="leftIcon" alt="header-left-icon">
       </a>
     </div>
-    <div class="col-8 header-text">
-      {{ text }}
+    <!-- search bar -->
+    <div class="col-6 header-search-bar">
+      <div *ngIf="screenMode=='web'">
+        <input class="search-bar" type="text" placeholder="🔍 Search...">
+      </div>
     </div>
-    <div class="col header-right-icon">
-      <a [routerLink]="rightIconLink">
-        <img [src]="rightIcon" alt="header-right-icon">
-      </a>
+    <!-- Right-icon -->
+    <div class="col-3 right-icon-container">
+      <!-- Web-mode -->
+      <div *ngIf="screenMode=='web' && rightBtn1Show" class="right-icon1-web">
+        <a [routerLink]="rightIconWeb1Link">
+          <img [src]="rightIconWeb1" alt="header-right-icon1">
+        </a>
+      </div>
+      <div *ngIf="screenMode=='web' && rightBtn2Show" class="right-icon2-web">
+        <a [routerLink]="rightIconWeb2Link">
+          <img [src]="rightIconWeb2" alt="header-right-icon2">
+        </a>
+      </div>
+      <!-- Mobile-mode -->
+      <div *ngIf="screenMode=='mobile' && rightBtnMobileShow" class="right-icon-mobile">
+        <a [routerLink]="rightIconMobileLink">
+          <img [src]="rightIconMobile" alt="header-right-icon1">
+        </a>
+      </div>
     </div>
   </div>
 </div>
