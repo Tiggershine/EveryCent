@@ -19,13 +19,14 @@ $background-color: #FEF6ED;
 .container {
   width: 400px;
   padding: 0;
+  padding-top: 16px;
 };
 
 .product-description-image {
   display: block;
-  padding-top: 16px;
   width: 100%;
   height: auto;
+  border-radius: 8px;
 }
 
 .product-description-content {
@@ -77,14 +78,14 @@ $background-color: #FEF6ED;
   fill: white;
   position: absolute;
   top: 50%;
-	left: 5%;
+	left: 3%;
   height: 2rem;
 }
 
 .rightArrow{
   position: absolute;
   top: 50%;
-	right: 5%;
+	right: 3%;
   height: 2rem;
 }
 
@@ -93,17 +94,18 @@ span {
   height: 100%;
 }
 
+
 @media (max-width: 768px) {
-  .background{
-    background-color: $background-color;
+
+  .product-description-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
   }
 
   .container{
-    width: 100%
-  }
-
-  .contianer product-description-image {
     width: 100%;
-    height: auto;
+    padding-top: 0;
   }
 }
