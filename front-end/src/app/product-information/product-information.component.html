@@ -1,24 +1,22 @@
 <div class="container">
   <div *ngFor="let x of informationType" class="layout" mat-dialog-content>
-      <p class="text-title">Upload New Item</p>
-      <form [formGroup]="productForm">
-        <div>
-          <div class="text-iwant">I want</div>
-          <mat-radio-group formControlName="tradeOption">
-            <mat-radio-button class="button-radio" *ngFor="let trade of tradeOptionRadioButton" [value]="trade">
-              {{trade}}
-            </mat-radio-button>
-          </mat-radio-group>
-        </div>
-      
+    <p class="text-title">Upload New Item</p>
+    <form [formGroup]="productForm">
+
+      <div class="text-iwant">I want</div>
+      <mat-radio-group formControlName="tradeOption">
+        <mat-radio-button class="button-radio" *ngFor="let trade of tradeOptionRadioButton" [value]="trade">
+          {{trade}}
+        </mat-radio-button>
+      </mat-radio-group>
+
+      <div class="row">
         <div>
           <div class="text-field">{{x.title}}</div>
           <mat-form-field appearance="outline">
             <input formControlName="title" matInput placeholder="">
           </mat-form-field>
-        </div>
-  
-        <div>
+
           <div class="text-field">{{x.category}}</div>
           <mat-form-field appearance="outline">
             <mat-select formControlName="category" placeholder="">
@@ -27,36 +25,42 @@
               <mat-option value="etc">Etc.</mat-option>
             </mat-select>
           </mat-form-field>
-        </div>
-      
-        <div>
+
           <div class="text-field">{{x.price}}</div>
           <mat-form-field appearance="outline">
             <input formControlName="price" matInput type="number" placeholder="">
             <mat-icon matSuffix>euro_symbol</mat-icon>
           </mat-form-field>
         </div>
-      
-        <div class="text-field2">{{x.description}}</div>
-        <mat-form-field class="mat-field" appearance="outline">
-          <textarea formControlName="comment" matInput class="description"></textarea>
-        </mat-form-field>
-      </form>     
-      
-      <div class="text-image">{{x.image}}</div>
+
+        <div>
+          <div *ngIf="screenMode == 'web'">
+            <div class="text-image">
+              {{x.image}}</div>
+            <div class="box-image">
+              <button class="button-image">Choose File</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-field2">{{x.description}}</div>
+      <mat-form-field class="mat-field" appearance="outline">
+        <textarea formControlName="comment" matInput class="description"></textarea>
+      </mat-form-field>
+    </form>
+    <div *ngIf="screenMode == 'mobile'">
+      <div class="text-image">
+        {{x.image}}</div>
       <div class="box-image">
         <button class="button-image">Choose File</button>
       </div>
-      
-      <div mat-dialog-actions class="button-row" [align]="'end'">
-        <button mat-flat-button class="button-register" (click)="addProduct()" >REGISTER</button>
-        <button mat-flat-button mat-dialog-close class="button-cancel">CANCEL</button>
-      </div> 
-      
     </div>
 
+
+    <div mat-dialog-actions class="row-button" [align]="'end'">
+      <button mat-flat-button class="button-register" (click)="addProduct()">REGISTER</button>
+      <button mat-flat-button mat-dialog-close class="button-cancel">CANCEL</button>
+    </div>
+  </div>
 </div>
-
-
-
-

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -18,6 +18,7 @@ export class ProductInformationComponent implements OnInit {
     },
   ];
   productForm!: FormGroup;
+  screenMode: string;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -30,7 +31,20 @@ export class ProductInformationComponent implements OnInit {
       price: ['', Validators.required],
       comment: ['', Validators.required],
     });
+
+    let screenWidth = window.innerWidth;
+    screenWidth > 767
+      ? (this.screenMode = 'web')
+      : (this.screenMode = 'mobile');
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    let screenWidth = window.innerWidth;
+    screenWidth > 767
+      ? (this.screenMode = 'web')
+      : (this.screenMode = 'mobile');
+    console.log(this.screenMode);
+  }
   addProduct() {}
 }

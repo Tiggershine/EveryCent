@@ -126,17 +126,46 @@ textarea {
   display: none;
 }
 
+
+
 @media (min-width: 768px) {
+
+  ::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 24px 0px}
   .container{
     width: 100%;
     height: 100%;
   }
 
+  mat-form-field {
+    display: table;
+    position: relative;
+    margin-bottom: 16px;
+    width: 90%;
+    height: 80px;
+  }
+
   .layout{
-    position:relative;
     width: 80%;
-    height: 200%;
-    padding: 0;
+    height: 100%;
+  }
+
+  .row >*{
+    position: relative;
+    width:50%;
+    display: inline-block;
+  }
+
+  .row-button{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .text-image{
+    display: none;
+  }
+
+  .text-iwant{
+    font-size: 1.5rem;
   }
 
   .text-title{
@@ -151,33 +180,23 @@ textarea {
     font-size: 3rem;
   }
 
+  textarea{
+    height: 220px;
+  }
+
   .mat-field{  border-radius: 20px;
     position: relative;
     width: 100%;
   }
 
   .box-image{
-    height: 312px;
+    width: 100%;
+    height: 340px;
+    margin-top: 34px;
   }
 
   .text-image{
     margin-top: 7px;
-  }
-
-  .button-register{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin-top: 10px;
-    width: 280px;
-    height: 50px;
-    text-align: center;
-    background: $primary-color;
-    border-radius: 40px;
-    font-style: normal;
-    font-weight: 600;
-    color: $background-color;
   }
 
   .button-cancel{
@@ -186,7 +205,7 @@ textarea {
     justify-content: center;
     align-items: center;
     margin-top: 10px;
-    width: 280px;
+    width: 45%;
     height: 50px;
     text-align: center;
     background: $background-color;
@@ -197,8 +216,19 @@ textarea {
     border: 1px solid $primary-color;
   }
 
-  .button-row{
+  .button-register{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 10px;
+    width: 45%;
+    height: 50px;
+    text-align: center;
+    background: $primary-color;
+    border-radius: 40px;
+    font-style: normal;
+    font-weight: 600;
+    color: $background-color;
   }
 }
