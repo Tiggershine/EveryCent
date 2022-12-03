@@ -1,0 +1,113 @@
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+$primary-color: #004643;
+$secondary-color: #F9BC60;
+$tertiary-color: #E16162;
+$background-color: #FEF6ED;
+
+.background{
+  background-color: $background-color;
+}
+
+.container {
+  width: 400px;
+  padding: 0;
+};
+
+.product-description-image {
+  display: block;
+  padding-top: 16px;
+  width: 100%;
+  height: auto;
+}
+
+.product-description-content {
+  padding: 16px;
+}
+
+.product-description-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.product-description-category {
+  font-size: 1rem;
+  color: gray;
+  margin-bottom: 8px;
+}
+
+.product-description-price{
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.product-description-date{
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.product-description-desc{
+  font-size: 1rem;
+}
+
+.product-description-descTitle{
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.product-description-line{
+  color: #004643;
+}
+
+.slider{
+  position: relative;
+}
+
+.leftArrow{
+  fill: white;
+  position: absolute;
+  top: 50%;
+	left: 5%;
+  height: 2rem;
+}
+
+.rightArrow{
+  position: absolute;
+  top: 50%;
+	right: 5%;
+  height: 2rem;
+}
+
+span {
+  display: block;
+  height: 100%;
+}
+
+body {
+  background-color: $background-color;
+}
+
+@media (max-width: 768px) {
+  .background{
+    background-color: $background-color;
+  }
+
+  .container{
+    width: 100%
+  }
+
+  .contianer product-description-image {
+    width: 100%;
+    height: auto;
+  }
+}
