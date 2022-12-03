@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DummyPageComponent } from './dummy-page.component';
+import { MainPageNavComponent } from './main-page-nav.component';
 
-describe('DummyPageComponent', () => {
-  let component: DummyPageComponent;
-  let fixture: ComponentFixture<DummyPageComponent>;
+describe('MainPageNavComponent', () => {
+  let component: MainPageNavComponent;
+  let fixture: ComponentFixture<MainPageNavComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DummyPageComponent ]
+      declarations: [ MainPageNavComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DummyPageComponent);
+    fixture = TestBed.createComponent(MainPageNavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

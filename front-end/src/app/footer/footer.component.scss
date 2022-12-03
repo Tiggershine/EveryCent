@@ -1,10 +1,16 @@
-.container-fluid{
-  position: absolute;
+.container{
+  position: static;
   bottom: 0;
+  left: 0;
+  max-width: 1024px;
   height: 70px;
+  margin: 28px auto;
   display: flex;
   align-items: center;
   border-top: double #e4d1d3;
-  padding-left: 1rem;
-  font-size: 0.7rem;
+  font-size: 1rem;
+}
+.footer-container {
+  width: 100%;
+  text-align: center;
 }
