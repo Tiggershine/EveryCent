@@ -1,4 +1,3 @@
-export class Slide {
+export interface Slide {
   url: string;
-  title: string;
 }

@@ -8,6 +8,9 @@ import { HeaderComponent } from './header/header.component';
 import { MainPageNavComponent } from './main-page-nav/main-page-nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { FloatBtnComponent } from 'src/app/float-btn/float-btn.component';
+import { ProductDetailPageComponent } from './pages/product-detail-page/product-detail-page.component';
+import { ProductDescriptionComponent } from './product-description/product-description.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,6 +19,8 @@ import { FloatBtnComponent } from 'src/app/float-btn/float-btn.component';
     MainPageNavComponent,
     FooterComponent,
     FloatBtnComponent,
+    ProductDetailPageComponent,
+    ProductDescriptionComponent,
     routingComponents
   ],
   imports: [
