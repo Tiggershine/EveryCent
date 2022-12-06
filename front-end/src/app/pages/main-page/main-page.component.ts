@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-dummy-page',
-  templateUrl: './dummy-page.component.html',
-  styleUrls: ['./dummy-page.component.scss']
+  selector: 'app-main-page',
+  templateUrl: './main-page.component.html',
+  styleUrls: ['./main-page.component.scss']
 })
-export class DummyPageComponent implements OnInit {
+export class MainPageComponent implements OnInit {
 
   leftIcon: string;
   rightIconWeb1: string;
@@ -21,8 +21,7 @@ export class DummyPageComponent implements OnInit {
   rightBtnMobileShow: boolean;
 
   constructor(
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.leftIcon = this.route.snapshot.data['leftIcon'];
@@ -37,5 +36,5 @@ export class DummyPageComponent implements OnInit {
     this.rightBtn2Show = this.route.snapshot.data['rightBtn2Show'];
     this.rightBtnMobileShow = this.route.snapshot.data['rightBtnMobileShow'];
   }
-
+  
 }

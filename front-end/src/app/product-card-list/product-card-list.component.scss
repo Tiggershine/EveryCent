@@ -1,12 +1,3 @@
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  xxl: 1400px
-);
-
 $primary-color: #004643;
 $secondary-color: #F9BC60;
 $tertiary-color: #E16162;
@@ -15,10 +6,34 @@ $background-color: #FEF6ED;
 .container {
   background-color: $background-color;
   max-width: 1024px;
+  margin: 30px auto;
 }
-
+.hidden {
+  visibility: hidden;
+}
+.nohidden {
+  transition: 0.3s;
+  padding: 16px 0;
+  float: right;
+  margin: 12px;
+}
+.search-bar {
+  align-self: flex-end;
+}
+input {
+  height: 56px;
+  width: 100%;
+  padding-left: 16px;
+  padding-top: 5px;
+  border-radius: 30px;
+  border: 0.5px solid $primary-color
+}
+input::placeholder {
+  font-size: 1.3rem;
+  opacity: .5;
+}
 .product-item {
-  padding: 0;
+  padding: 0px;
   border-radius: 10px;
 }
 .product-image {
