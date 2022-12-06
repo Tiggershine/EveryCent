@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { PRODUCTS } from '../models/mock-product';
 
 
@@ -10,6 +10,15 @@ import { PRODUCTS } from '../models/mock-product';
 export class ProductCardListComponent implements OnInit {
 
   products = PRODUCTS;
+  searchhidden: boolean = true;
+  @HostListener('window:scroll', ['$event']) onscroll() {
+    if(window.scrollY > 250) { // 650으로 바까라
+      this.searchhidden = false;
+    } else {
+      this.searchhidden = true;
+    }
+  }
+
 
   constructor() { }
 
