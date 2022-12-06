@@ -1,7 +1,4 @@
-$primary-color: #004643;
-$secondary-color: #F9BC60;
-$tertiary-color: #E16162;
-$background-color: #FEF6ED;
+@import '../../../styles.scss';
 
 .search-container {
   margin: 16px;
@@ -18,8 +15,6 @@ $background-color: #FEF6ED;
   margin: 5px;
 }
 .mobile-main-image {
-  display: flex;
-  justify-content: right;
   overflow: hidden;
 }
 input {
