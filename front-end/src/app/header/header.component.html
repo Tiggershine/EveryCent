@@ -1,5 +1,4 @@
-
-<div class="container-fluid">
+<div class="container-fluid" (scroll)="onscroll()" [ngClass]="headerfixed?'fixed':'nofixed'">
   <div class="row header-container">
     <!-- Left-icon -->
     <div class="col-3 left-icon-container">
@@ -7,9 +6,11 @@
         <img [src]="leftIcon" alt="header-left-icon">
       </a>
     </div>
-    <!-- Placeholder -->
-    <div class="col-6 header-text">
-      <div *ngIf="screenMode=='web'" class="search-bar"></div>
+    <!-- search bar -->
+    <div class="col-6 header-search-bar">
+      <div *ngIf="screenMode=='web'">
+        <input class="search-bar" type="text" placeholder="🔍 Search...">
+      </div>
     </div>
     <!-- Right-icon -->
     <div class="col-3 right-icon-container">
