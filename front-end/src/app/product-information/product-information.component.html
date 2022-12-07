@@ -1,5 +1,6 @@
 <div class="container">
-  <div *ngFor="let x of informationType" class="layout" mat-dialog-content>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <div *ngFor="let x of informationType" class="layout">
     <p class="text-title">Upload New Item</p>
     <form [formGroup]="productForm">
 
@@ -12,51 +13,65 @@
 
       <div class="row">
         <div>
-          <div class="text-field">{{x.title}}</div>
-          <mat-form-field appearance="outline">
-            <input formControlName="title" matInput placeholder="">
-          </mat-form-field>
+          <div class="text-type">{{x.title}}</div>
+          <input class="form-field" formControlName="title" type="text">
 
-          <div class="text-field">{{x.category}}</div>
-          <mat-form-field appearance="outline">
-            <mat-select formControlName="category" placeholder="">
-              <mat-option value="shoes">Shoes</mat-option>
-              <mat-option value="electronics">Electronics</mat-option>
-              <mat-option value="etc">Etc.</mat-option>
-            </mat-select>
-          </mat-form-field>
+          <div class="text-type">{{x.category}}</div>
+          <div class="inputWithIconTwo">
+            <select class="form-field" formControlName="category" placeholder="">
+              <option hidden></option>
+              <option *ngFor="let y of categoryType" value="" h>{{y.category}}</option>
+            </select>
+            <i>
+              <img src="https://img.icons8.com/android/24/null/sort-down.png" />
+            </i>
+          </div>
 
-          <div class="text-field">{{x.price}}</div>
-          <mat-form-field appearance="outline">
-            <input formControlName="price" matInput type="number" placeholder="">
-            <mat-icon matSuffix>euro_symbol</mat-icon>
-          </mat-form-field>
+          <div class="text-type">{{x.price}}</div>
+          <div class="inputWithIcon">
+            <input class="form-field" formControlName="price" type="number">
+            <i>
+              <img src="https://img.icons8.com/metro/26/null/euro-pound-exchange.png" />
+            </i>
+          </div>
+
+          <div class="text-type">{{x.district}}</div>
+          <div class="inputWithIconTwo">
+            <select class="form-field" formControlName="district">
+              <option hidden></option>
+              <option *ngFor="let z of districtType" value="">{{z.place}}</option>
+            </select>
+            <i>
+              <img src="https://img.icons8.com/android/24/null/sort-down.png" />
+            </i>
+          </div>
         </div>
 
         <div>
           <div *ngIf="screenMode == 'web'">
-            <div class="text-image">
-              {{x.image}}</div>
+            <div class="text-image">{{x.image}}</div>
             <div class="box-image">
-              <button class="button-image">Choose File</button>
+              <label class="button-image" for="image">Choose File</label>
+              <input class="file-image" id="image" (change)="onFileSelect($event)" type="file" />
+            </div>
+            <div *ngIf="imageData">
+              <img [src]="imageData" [alt]="productForm.value.name" />
             </div>
           </div>
         </div>
       </div>
 
-      <div class="text-field2">{{x.description}}</div>
-      <mat-form-field class="mat-field" appearance="outline">
-        <textarea formControlName="comment" matInput class="description"></textarea>
-      </mat-form-field>
+      <div class="text-typeSecond">{{x.description}}</div>
+      <textarea class="form-fieldSecond" formControlName="comment"></textarea>
+
     </form>
     <div *ngIf="screenMode == 'mobile'">
-      <div class="text-image">
-        {{x.image}}</div>
+      <div class="text-image">{{x.image}}</div>
       <div class="box-image">
-        <button class="button-image">Choose File</button>
+        <label class="button-image" for="image">Choose File</label>
+        <input class="file-image" id="image" (change)="onFileSelect($event)" type="file" />
       </div>
     </div>
-
 
     <div mat-dialog-actions class="row-button" [align]="'end'">
       <button mat-flat-button class="button-register" (click)="addProduct()">REGISTER</button>

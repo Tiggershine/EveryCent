@@ -5,21 +5,6 @@ $background-color: #FEF6ED;
 $white: #FFFFFF;
 $black: #000000;
 
-::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 10px 0px}
-::ng-deep {
-  .mat-form-field-infix {
-      border: 0px;
-  }
-  .mat-form-field-appearance-outline .mat-select-arrow-wrapper {
-      transform: none !important;
-  }
-}
-::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-  border-radius: 5px;
-  background-color: $white;
-  color: $black !important;
-}
-
 ::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
 	opacity: 0 !important;     /*click effect color change*/
 }
@@ -31,6 +16,12 @@ $black: #000000;
 ::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
 	border-color:$black !important; /*outer ring color change*/
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+/* Firefox */
+input[type=number] { -moz-appearance: textfield; }
 
 .container{
   background-color: $background-color;
@@ -44,19 +35,6 @@ $black: #000000;
   width: 290px;
   height: 619px;
   padding: 0;
-}
-
-mat-form-field {
-  position: relative;
-  width: 215px;
-}
-
-textarea {
-  height: 85px;
-}
-
-.mat-field{
-  width: 290px;
 }
 
 .box-image{
@@ -73,11 +51,14 @@ textarea {
   background-color: $white;
 }
 
-.button-cancel{
-  display: none;
-}
-
 .button-image{
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 196px;
+  height: 34px;
   font-size: 1rem;
 }
 
@@ -86,8 +67,70 @@ textarea {
   margin-right: 50px;
 }
 
+.button-cancel{
+  display: none;
+}
+
 .button-register{
   display: none;
+}
+
+.inputWithIcon input[type=text]{
+  padding-left:40px;
+}
+
+.inputWithIcon {
+  display: inline-block;
+  position: relative;
+}
+
+.inputWithIcon i{
+  position: absolute;
+  right:3px;
+  top:0px;
+  padding:5px 0px;
+  filter: invert(50%);
+}
+
+.inputWithIconTwo input[type=text]{
+  padding-left:40px;
+
+}
+
+.inputWithIconTwo {
+  display: inline-block;
+  position: relative;
+
+}
+
+.inputWithIconTwo i{
+  position: absolute;
+  right:3px;
+  top:0px;
+  padding:5px 0px;
+
+}
+
+.file-image{
+  display: none;
+}
+
+.form-field{
+  width: 215px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: $white;
+  border: 1px solid $black;
+  -moz-appearance:none; /* Firefox */
+  -webkit-appearance:none; /* Safari and Chrome */
+  appearance:none;
+}
+
+.form-fieldSecond{
+  width: 290px;
+  height: 107px;
+  border-radius: 5px;
+  border: 1px solid $black;
 }
 
 .text-iwant{
@@ -95,53 +138,44 @@ textarea {
   position: relative;
   margin-top: 36px;
   width: 75px;
-  height: 30px;
+  height: 35px;
   font-size: 1rem;
 }
 
-.text-field{
+.text-type{
   display: inline-block;
+  margin-top: 20px;
   position: relative;
   font-size: 1rem;
   width: 75px;
-  height: 30px;
+  height: 35px;
 }
 
-.text-field2{
+.text-typeSecond{
   position: relative;
+  margin-top: 20px;
   font-size: 1rem;
-  width: 70px;
-  height: 20px;
+  width: 75px;
+  height: 25px;
 }
 
 .text-image{
-  position: relative;
-  font-size: 1rem;
-  width: 70px;
-  height: 20px;
-  margin-bottom: 2px;
+    position: relative;
+    margin-top: 20px;
+    font-size: 1rem;
+    width: 75px;
+    height: 25px;
 }
 
 .text-title{
   display: none;
 }
 
-
-
 @media (min-width: 768px) {
 
-  ::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 24px 0px}
   .container{
     width: 100%;
-    height: 100%;
-  }
-
-  mat-form-field {
-    display: table;
-    position: relative;
-    margin-bottom: 16px;
-    width: 90%;
-    height: 80px;
+    height: 120%;
   }
 
   .layout{
@@ -165,7 +199,8 @@ textarea {
   }
 
   .text-iwant{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    height: 20px;
   }
 
   .text-title{
@@ -177,26 +212,80 @@ textarea {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
-    font-size: 3rem;
+    font-size: 3.4rem;
   }
 
-  textarea{
-    height: 220px;
-  }
-
-  .mat-field{  border-radius: 20px;
-    position: relative;
+  .text-type{
+    font-size: 1.2rem;
     width: 100%;
+    height: 30px;
+  }
+
+  .text-typeSecond{
+    font-size: 1.2rem;
+    height: 30px;
+  }
+
+  .inputWithIcon i {
+    display: none;
+  }
+
+  .inputWithIcon {
+    width: 100%;
+  }
+
+  .inputWithIconTwo i {
+    display: none;
+  }
+
+  .inputWithIconTwo {
+    width: 100%;
+  }
+
+  .form-field{
+    width: 90%;
+    height: 60px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    border: 1px solid $primary-color;
+    background-color: $background-color;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+  }
+  
+  .form-fieldSecond{
+    width: 100%;
+    height: 240px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    border: 1px solid $primary-color;
+    background-color: $background-color;
   }
 
   .box-image{
     width: 100%;
     height: 340px;
     margin-top: 34px;
+    background-color: #E7E7E7;
   }
 
-  .text-image{
-    margin-top: 7px;
+  .button-radio {
+    font-size: 1.2rem;
+  }
+
+  .button-image{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 196px;
+    height: 34px;
+    font-size: 1.2rem;
+    background-color: #D9D9D9;
+    border-radius: 10px;
+    font-weight: 500;
   }
 
   .button-cancel{
@@ -204,14 +293,14 @@ textarea {
     position: relative;
     justify-content: center;
     align-items: center;
+    text-align: center;
     margin-top: 10px;
     width: 45%;
     height: 50px;
-    text-align: center;
     background: $background-color;
     border-radius: 40px;
+    font-size: 1.5rem;
     font-style: normal;
-    font-weight: 600;
     color: $primary-color;
     border: 1px solid $primary-color;
   }
@@ -228,7 +317,7 @@ textarea {
     background: $primary-color;
     border-radius: 40px;
     font-style: normal;
-    font-weight: 600;
+    font-size: 1.5rem;
     color: $background-color;
   }
 }

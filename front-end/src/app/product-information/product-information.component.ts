@@ -13,12 +13,31 @@ export class ProductInformationComponent implements OnInit {
       title: 'Title',
       category: 'Category',
       price: 'Price',
+      district: 'District',
       description: 'Description',
       image: 'Image',
     },
   ];
+
+  categoryType = [
+    { category: 'Shoes' },
+    { category: 'Electronics' },
+    { category: 'Etc.' },
+  ];
+
+  districtType = [
+    { place: 'Aachen Mitte' },
+    { place: 'Brand' },
+    { place: 'Eilendorf' },
+    { place: 'Haarem' },
+    { place: 'Kornelimünster Walheim' },
+    { place: 'Laurensberg' },
+    { place: 'Richterich' },
+  ];
+
   productForm!: FormGroup;
   screenMode: string;
+  imageData!: string;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -30,6 +49,7 @@ export class ProductInformationComponent implements OnInit {
       tradeOption: ['', Validators.required],
       price: ['', Validators.required],
       comment: ['', Validators.required],
+      district: ['', Validators.required],
     });
 
     let screenWidth = window.innerWidth;
@@ -47,4 +67,17 @@ export class ProductInformationComponent implements OnInit {
     console.log(this.screenMode);
   }
   addProduct() {}
+
+  onFileSelect(event: Event) {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    this.productForm.patchValue({ image: file });
+    const allowedMimeTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+    if (file && allowedMimeTypes.includes(file.type)) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imageData = reader.result as string;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
 }
