@@ -47,10 +47,25 @@ $background-color: #FEF6ED;
   margin-bottom: 8px;
 }
 
+.price-location-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .product-description-price{
   font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 8px;
+}
+
+.product-description-location{
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.location-item{
+  padding: 4px;
 }
 
 .product-description-date{
