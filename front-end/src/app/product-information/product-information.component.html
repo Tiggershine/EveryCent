@@ -5,11 +5,11 @@
     <form [formGroup]="productForm">
 
       <div class="text-iwant">I want</div>
-      <mat-radio-group formControlName="tradeOption">
-        <mat-radio-button class="button-radio" *ngFor="let trade of tradeOptionRadioButton" [value]="trade">
-          {{trade}}
-        </mat-radio-button>
-      </mat-radio-group>
+      <label class="text-button-radio" *ngFor="let trade of tradeOptionRadioButton" for="myRadioId">
+        <input type="radio" id="myRadioId" name="sellbuy">
+        {{trade}}
+      </label>
+
 
       <div class="row">
         <div>
@@ -17,34 +17,19 @@
           <input class="form-field" formControlName="title" type="text">
 
           <div class="text-type">{{x.category}}</div>
-          <div class="inputWithIconTwo">
-            <select class="form-field" formControlName="category" placeholder="">
-              <option hidden></option>
-              <option *ngFor="let y of categoryType" value="" h>{{y.category}}</option>
-            </select>
-            <i>
-              <img src="https://img.icons8.com/android/24/null/sort-down.png" />
-            </i>
-          </div>
+          <select class="form-fieldThird" formControlName="category" placeholder="">
+            <option hidden></option>
+            <option *ngFor="let y of categoryType" value="" h>{{y.category}}</option>
+          </select>
 
           <div class="text-type">{{x.price}}</div>
-          <div class="inputWithIcon">
-            <input class="form-field" formControlName="price" type="number">
-            <i>
-              <img src="https://img.icons8.com/metro/26/null/euro-pound-exchange.png" />
-            </i>
-          </div>
+          <input class="form-fieldEuro" formControlName="price" type="number">
 
           <div class="text-type">{{x.district}}</div>
-          <div class="inputWithIconTwo">
-            <select class="form-field" formControlName="district">
-              <option hidden></option>
-              <option *ngFor="let z of districtType" value="">{{z.place}}</option>
-            </select>
-            <i>
-              <img src="https://img.icons8.com/android/24/null/sort-down.png" />
-            </i>
-          </div>
+          <select class="form-fieldThird" formControlName="district">
+            <option hidden></option>
+            <option *ngFor="let z of districtType" value="">{{z.place}}</option>
+          </select>
         </div>
 
         <div>
@@ -73,9 +58,9 @@
       </div>
     </div>
 
-    <div mat-dialog-actions class="row-button" [align]="'end'">
-      <button mat-flat-button class="button-register" (click)="addProduct()">REGISTER</button>
-      <button mat-flat-button mat-dialog-close class="button-cancel">CANCEL</button>
+    <div class="row-button" [align]="'end'">
+      <button class="button-register" (click)="addProduct()">REGISTER</button>
+      <button mat-dialog-close class="button-cancel">CANCEL</button>
     </div>
   </div>
 </div>
