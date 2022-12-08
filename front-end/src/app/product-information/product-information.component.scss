@@ -5,18 +5,6 @@ $background-color: #FEF6ED;
 $white: #FFFFFF;
 $black: #000000;
 
-::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
-	opacity: 0 !important;     /*click effect color change*/
-}
-
-::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
-	background-color: $black !important;   /*inner circle color change*/
-}
-
-::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
-	border-color:$black !important; /*outer ring color change*/
-}
-
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
@@ -58,7 +46,59 @@ input[type=number] { -moz-appearance: textfield; }
 }
 
 input[name="sellbuy"]{
+  margin-top: 10px;
   accent-color: $black;
+}
+
+title, .button-cancel, .button-register, .file-image {
+  display: none;
+}
+
+.form-field{
+  width: 215px;
+  height: 35px;
+  padding-left: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background-color: $white;
+  border: 1px solid $black;
+  -moz-appearance:none; /* Firefox */
+  -webkit-appearance:none; /* Safari and Chrome */
+  appearance:none;
+}
+
+.form-field-two{
+  width: 290px;
+  height: 107px; 
+}
+
+.form-field-arrow{
+  background: url(https://img.icons8.com/android/24/null/sort-down.png) no-repeat scroll 185px 4px;
+  background-color: $white;
+}
+
+.form-field-euro{
+  background: url(https://img.icons8.com/metro/26/null/euro-pound-exchange.png) no-repeat scroll 185px 4px;
+  background-color: $white;
+}
+
+.text{
+  display: inline-block;
+  margin-top: 36px;
+  margin-bottom: 0px;
+  width: 75px;
+  height: 35px;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.text-type{
+  margin-top: 10px;
+}
+
+.text-type-two, .text-image{
+  margin-top: 0px;
+  height: 20px;
 }
 
 .text-button-radio {
@@ -66,107 +106,10 @@ input[name="sellbuy"]{
   margin-right: 50px;
 }
 
-.button-cancel{
-  display: none;
-}
-
-.button-register{
-  display: none;
-}
-
-.file-image{
-  display: none;
-}
-
-.form-field{
-  width: 215px;
-  height: 35px;
-  padding-left: 2px;
-  border-radius: 5px;
-  background-color: $white;
-  border: 1px solid $black;
-  -moz-appearance:none; /* Firefox */
-  -webkit-appearance:none; /* Safari and Chrome */
-  appearance:none;
-}
-
-.form-fieldSecond{
-  width: 290px;
-  height: 107px;
-  padding-left: 2px;
-  border-radius: 5px;
-  border: 1px solid $black;
-}
-
-.form-fieldThird{
-  width: 215px;
-  height: 35px;
-  padding-left: 2px;
-  border-radius: 5px;
-  background: url(https://img.icons8.com/android/24/null/sort-down.png) no-repeat scroll 185px 4px;
-  background-color: $white;
-  border: 1px solid $black;
-  padding-left: 5px;
-  -moz-appearance:none; /* Firefox */
-  -webkit-appearance:none; /* Safari and Chrome */
-  appearance:none;
-}
-
-.form-fieldEuro{
-  width: 215px;
-  height: 35px;
-  border-radius: 5px;
-  padding-left: 2px;
-  background: url(https://img.icons8.com/metro/26/null/euro-pound-exchange.png) no-repeat scroll 185px 4px;
-  background-color: $white;
-  border: 1px solid $black;
-  -moz-appearance:none; /* Firefox */
-  -webkit-appearance:none; /* Safari and Chrome */
-  appearance:none;
-}
-
-.text-iwant{
-  display: inline-block;
-  margin-top: 36px;
-  width: 75px;
-  height: 35px;
-  font-size: 1rem;
-}
-
-.text-type{
-  display: inline-block;
-  margin-top: 20px;
-  font-size: 1rem;
-  width: 75px;
-  height: 35px;
-}
-
-.text-typeSecond{
-  margin-top: 20px;
-  font-size: 1rem;
-  width: 75px;
-  height: 25px;
-}
-
-.text-image{
-    margin-top: 20px;
-    font-size: 1rem;
-    width: 75px;
-    height: 25px;
-}
-
-.text-title{
-  display: none;
-}
-
 @media (min-width: 768px) {
 
-  .container{
-    width: 100%;
-  }
-
   .layout{
-    width: 80%;
+    width: 100%;
   }
 
   .row >*{
@@ -179,19 +122,7 @@ input[name="sellbuy"]{
     justify-content: space-around;
   }
 
-  .text-image{
-    display: none;
-  }
-
-  .text-iwant{
-    font-size: 1.2rem;
-  }
-
-  .text-button-radio {
-    font-size: 1.2rem;
-  }
-
-  .text-title{
+  title{
     width: 100%;
     height: 70px;
     margin-inline: auto;
@@ -203,87 +134,59 @@ input[name="sellbuy"]{
     font-size: 3.4rem;
   }
 
-  .text-type{
+  .text, .text-button-radio{
     font-size: 1.2rem;
-    width: 100%;
-    height: 30px;
   }
 
-  .text-typeSecond{
+  .text-type, .text-type-two{
     font-size: 1.2rem;
     height: 30px;
   }
 
-  .inputWithIcon i {
+  .text-image{
     display: none;
-  }
-
-  .inputWithIcon {
-    width: 100%;
-  }
-
-  .inputWithIconTwo i {
-    display: none;
-  }
-
-  .inputWithIconTwo {
-    width: 100%;
   }
 
   .form-field{
     width: 90%;
     height: 60px;
-    border-radius: 5px;
     font-size: 1.2rem;
+    padding-left: 20px;
     border: 1px solid $primary-color;
+    background: $background-color;
     background-color: $background-color;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
   }
   
-  .form-fieldSecond{
+  .form-field-two{
     width: 100%;
     height: 240px;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    border: 1px solid $primary-color;
-    background-color: $background-color;
-  }
-
-  .form-fieldThird{
-    width: 90%;
-    height: 60px;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    border: 1px solid $primary-color;
-    background: $background-color;
-    -moz-appearance:none; /* Firefox */
-    -webkit-appearance:none; /* Safari and Chrome */
-    appearance:none;
-  }
-
-  .form-fieldEuro{
-    width: 90%;
-    height: 60px;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    border: 1px solid $primary-color;
-    background: $background-color;
-    -moz-appearance:none; /* Firefox */
-    -webkit-appearance:none; /* Safari and Chrome */
-    appearance:none;
   }
 
   .box-image{
     width: 100%;
-    height: 340px;
-    margin-top: 34px;
+    height: 420px;
+    margin-top: 40px;
     background-color: #E7E7E7;
   }
 
-  .button-image{
+  .button{
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin-top: 10px;
+    width: 45%;
+    height: 50px;
+    border-radius: 40px;
+    font-size: 1.5rem;
+    font-style: normal;
+    border: none;
+  }
+
+  .button-image{
     width: 196px;
     height: 34px;
     font-size: 1.2rem;
@@ -293,33 +196,13 @@ input[name="sellbuy"]{
   }
 
   .button-cancel{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-top: 10px;
-    width: 45%;
-    height: 50px;
     background: $background-color;
-    border-radius: 40px;
-    font-size: 1.5rem;
-    font-style: normal;
     color: $primary-color;
     border: 1px solid $primary-color;
   }
 
   .button-register{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    width: 45%;
-    height: 50px;
-    text-align: center;
     background: $primary-color;
-    border-radius: 40px;
-    font-style: normal;
-    font-size: 1.5rem;
     color: $background-color;
   }
 }

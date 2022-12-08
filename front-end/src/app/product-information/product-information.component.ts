@@ -10,6 +10,7 @@ export class ProductInformationComponent implements OnInit {
   tradeOptionRadioButton = ['sell', 'buy'];
   informationType = [
     {
+      sellOption: 'I want',
       title: 'Title',
       category: 'Category',
       price: 'Price',
