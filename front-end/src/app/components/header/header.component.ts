@@ -1,51 +1,63 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HeaderServiceService } from 'src/app/services/header-service.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-  /**
-   *  [ Properties for header-DOM ]
-   *  - leftIcon: directory source for left icon on header
-   *  - righttIcon: directory source for right icon on header
-   *  - leftIconLink: loaded Component, wenn click on leftIcon
-   *  - rightIconLink: loaded Component, wenn click on rightIcon
-   *  - text: text showed on center header
-   */
-   @Input() leftIcon?: string;
-   @Input() rightIconWeb1?: string;
-   @Input() rightIconWeb2?: string;
-   @Input() rightIconMobile?: string;
-   @Input() leftIconLink?: string;
-   @Input() rightIconWeb1Link?: string;
-   @Input() rightIconWeb2Link?: string;
-   @Input() rightIconMobileLink?: string;
-   @Input() rightBtn1Show?: boolean;
-   @Input() rightBtn2Show?: boolean;
-   @Input() rightBtnMobileShow?: boolean;
- 
-  screenMode: string;
-  headerfixed: boolean = false;  
 
-  constructor() { }
+
+export class HeaderComponent implements OnInit {
+  @Input() iconLWLink?: string;
+  @Input() iconR1WLink?: string;
+  @Input() iconR2WLink?: string;
+  @Input() iconLMLink?: string;
+  @Input() iconR1MLink?: string;
+  @Input() iconR2MLink?: string;
+
+  routePath: string;  // route path
+  screenMode: string;
+  headerC: any;
+  headerFixed: boolean = false;  
+
+  // iLW: boolean;
+
+  constructor(private route: ActivatedRoute ,private headerService: HeaderServiceService) { 
+  }
 
   ngOnInit(): void {
-      let screenWidth = window.innerWidth;
-      (screenWidth > 767) ? this.screenMode = "web" : this.screenMode = "mobile"
+    // get data from routing.module.ts
+    this.routePath = this.route.snapshot.data['path'];
+    
+    // screenMode depends on user screen size 
+    let screenWidth = window.innerWidth;
+    (screenWidth > 767) ? this.screenMode = "W" : this.screenMode = "M";
+    
+    this.headerC = this.headerService.getHeaderContentList().find((arr) => arr.id === this.routePath);
+
+    
+    console.log(this.screenMode);
+    console.log(this.headerC['iconLWSource']);
+
+   
   }
 
+
   @HostListener ('window:resize', ['$event'])
-    onResize(event: any) {
-      let screenWidth = window.innerWidth;
-      (screenWidth > 767) ? this.screenMode = "web" : this.screenMode = "mobile"
-    }
+  // On every resizing get the screen size data continuously
+  onResize(event: any) {
+    let screenWidth = window.innerWidth;
+    (screenWidth > 767) ? this.screenMode = "W" : this.screenMode = "M";
+  }
+
   @HostListener('window:scroll', ['$event']) onscroll() {
     if(window.scrollY > 200) {
-      this.headerfixed = true;
+      this.headerFixed = true;
     } else {
-      this.headerfixed = false;
+      this.headerFixed = false;
     }
   }
+
 }

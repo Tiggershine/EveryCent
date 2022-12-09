@@ -1,18 +1,16 @@
-$primary-color: #004643;
-$secondary-color: #F9BC60;
-$tertiary-color: #E16162;
-$background-color: #FEF6ED;
+@import '../../../styles.scss'; 
 
 .container-fluid {
   background-color: $primary-color;
 }
 .header-container {
   margin: 0 20px;
-  height: 55px;
+  height: 70px;
   background-color: $primary-color;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 .fixed {
   position: fixed;
@@ -28,10 +26,10 @@ $background-color: #FEF6ED;
 .left-icon-container {
   display: flex;
   justify-content: left;
-  padding: 0;
+  padding: 0px;
 }
 .left-icon-container img {
-  height: 38px;
+  height: 25px;
 }
 .right-icon-container {
   display: flex;
@@ -40,10 +38,16 @@ $background-color: #FEF6ED;
 }
 .right-icon-mobile img {
   height: 25px;
-  width: 25px;
 }
 .left-icon-container img:hover, .right-icon-mobile img:hover {
   opacity: 0.7;
+}
+.center-text {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: $secondary-color;
 }
 
 
@@ -55,7 +59,7 @@ $background-color: #FEF6ED;
     height: 80px;
   }
   .left-icon-container img {
-    width: 110px;
+    height: 40px;
   }
   .right-icon1-web {
     margin-right: 10px;
