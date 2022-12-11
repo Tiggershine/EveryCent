@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { MainPageNavComponent } from './components/main-page-nav/main-page-nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FloatBtnComponent } from 'src/app/components/float-btn/float-btn.component';
+import { HeaderServiceService } from './services/header-service.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,13 +17,14 @@ import { FloatBtnComponent } from 'src/app/components/float-btn/float-btn.compon
     MainPageNavComponent,
     FooterComponent,
     FloatBtnComponent,
-    routingComponents
+    routingComponents,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [HeaderServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
