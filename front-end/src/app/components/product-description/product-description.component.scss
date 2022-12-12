@@ -1,16 +1,4 @@
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  xxl: 1400px
-);
-
-$primary-color: #004643;
-$secondary-color: #F9BC60;
-$tertiary-color: #E16162;
-$background-color: #FEF6ED;
+@import '../../../styles.scss';
 
 .background{
   background-color: $background-color;
