@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user.model');
 const mongoose = require('mongoose');
-const db = "mongodb+srv://tigger:pwtigger@tigger.sz3nznq.mongodb.net/?retryWrites=true&w=majority";
+require('dotenv').config();
+const { MONGODB_URI } = process.env;
 
-mongoose.connect(db, err => {
+
+mongoose.connect(MONGODB_URI, err => {
   if (err) {
     console.error('Error!' + err);
   } else {
