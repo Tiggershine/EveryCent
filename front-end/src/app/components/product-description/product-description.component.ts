@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PRODUCTS } from '../models/mock-product';
-import { Slide } from "../models/slideInterface";
-import { Slides } from '../models/slideData';
+import { PRODUCTS } from '../../models/mock-product';
+import { Slide } from "../../models/slideInterface";
+import { Slides } from '../../models/slideData';
 
 @Component({
   selector: 'app-product-description',

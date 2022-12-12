@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { PRODUCTS } from '../models/mock-product';
+import { PRODUCTS } from '../../models/mock-product';
 
 
 @Component({
