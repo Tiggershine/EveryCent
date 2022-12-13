@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { ProductDetailPageComponent } from './pages/product-detail-page/product-detail-page.component';
 
 const routes: Routes = [
   { path: "", component: MainPageComponent, 
@@ -23,12 +24,11 @@ const routes: Routes = [
     path: "post"
     }
   },
-  { path: "product", component: MainPageComponent, 
+  { path: "product", component: ProductDetailPageComponent, 
     data: {
     path: "product"
     }
   },
-  
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

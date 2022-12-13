@@ -1,8 +1,9 @@
-export class Product {
+export class Product{
   productId!: string;
   userId?: string;
   productTitle!: string;
   productPrice!: number;
+  district?: string;
   productCategory?: string;
   productDescription?: string;
   productImage!: string[];
