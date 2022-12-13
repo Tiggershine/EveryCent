@@ -1,5 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
+import { FileHandle } from '../models/file-handle.model';
+import { Product } from '../models/product';
 
 @Component({
   selector: 'app-product-information',
@@ -14,7 +17,7 @@ export class ProductInformationComponent implements OnInit {
       title: 'Title',
       category: 'Category',
       price: 'Price',
-      district: 'District',
+      location: 'Location',
       description: 'Description',
       image: 'Image',
     },
@@ -26,7 +29,7 @@ export class ProductInformationComponent implements OnInit {
     { category: 'Etc.' },
   ];
 
-  districtType = [
+  locationType = [
     { place: 'Aachen Mitte' },
     { place: 'Brand' },
     { place: 'Eilendorf' },
@@ -40,7 +43,17 @@ export class ProductInformationComponent implements OnInit {
   screenMode: string;
   imageData!: string;
 
-  constructor(private formBuilder: FormBuilder) {}
+  product: Product = {
+    productImage: [],
+    productTitle: '',
+    productPrice: 0,
+    postDate: '',
+  };
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
@@ -67,18 +80,45 @@ export class ProductInformationComponent implements OnInit {
       : (this.screenMode = 'mobile');
     console.log(this.screenMode);
   }
-  addProduct() {}
 
-  onFileSelect(event: Event) {
-    const file = (event.target as HTMLInputElement).files?.[0];
-    this.productForm.patchValue({ image: file });
-    const allowedMimeTypes = ['image/png', 'image/jpeg', 'image/jpg'];
-    if (file && allowedMimeTypes.includes(file.type)) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.imageData = reader.result as string;
+  addProduct() {
+    alert('The product has been added');
+  }
+
+  onFileSelected(event: Event) {
+    if (event.target as HTMLInputElement) {
+      const file = (event.target as HTMLInputElement).files?.[0];
+
+      const fileHandle: FileHandle = {
+        file: file,
+        url: this.sanitizer.bypassSecurityTrustUrl(
+          window.URL.createObjectURL(file)
+        ),
       };
-      reader.readAsDataURL(file);
+
+      this.product.productImage.push(fileHandle);
     }
+  }
+
+  prepareFormData(product: Product): FormData {
+    const formData = new FormData();
+    formData.append(
+      'product',
+      new Blob([JSON.stringify(product)], { type: 'application/json' })
+    );
+
+    for (var i = 0; i < product.productImage.length; i++) {
+      formData.append(
+        'imageFile',
+        product.productImage[i].file,
+        product.productImage[i].file.name
+      );
+    }
+
+    return formData;
+  }
+
+  removeImage(i: number) {
+    this.product.productImage.splice(i, 1);
   }
 }
