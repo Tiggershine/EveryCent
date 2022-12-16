@@ -89,7 +89,7 @@ export class HeaderServiceService {
         iconR2MSource: ''
       },
       {
-        id: 'product',
+        id: 'products/:productId',
         iconLW: true,
         iconCW: true,
         iconR1W: true,

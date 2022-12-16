@@ -6,5 +6,13 @@
   [iconR1MLink]=""
   [iconR2MLink]=""
 ></app-header>
-<app-product-description></app-product-description>
+<app-product-description *ngIf="product" 
+  [productTitle]="product.productTitle"
+  [productCategory]="product.productCategory"
+  [productPrice]="product.productPrice"
+  [district]="product.district"
+  [postDate]="product.postDate"
+  [productDescription]="product.productDescription"
+  [contact]="product.contact"
+  ></app-product-description>
 <app-footer></app-footer>

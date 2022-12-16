@@ -1,7 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { PRODUCTS } from '../../models/mock-product';
 
-
 @Component({
   selector: 'app-product-card-list',
   templateUrl: './product-card-list.component.html',
@@ -18,9 +17,6 @@ export class ProductCardListComponent implements OnInit {
       this.searchhidden = true;
     }
   }
-
-
-  constructor() { }
 
   ngOnInit(): void {
   }

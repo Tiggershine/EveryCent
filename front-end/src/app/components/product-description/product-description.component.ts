@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { PRODUCTS } from '../../models/mock-product';
+import { Component, Input, OnInit } from '@angular/core';
 import { Slide } from "../../models/slideInterface";
 import { Slides } from '../../models/slideData';
 
@@ -10,8 +9,15 @@ import { Slides } from '../../models/slideData';
 })
 export class ProductDescriptionComponent implements OnInit {
 
+  @Input('productTitle') productTitle: string;
+  @Input('productCategory') productCategory: string;
+  @Input('productPrice') productPrice: number;
+  @Input('district') district: string;
+  @Input('postDate') postDate: string;
+  @Input('productDescription') productDescription: string;
+  @Input('contact') contact: string;
+  
   slides: Slide[] = Slides;
-  product = PRODUCTS[0];
   currentIndex: number = 0;
 
   getCurrentSlideUrl(): string{
