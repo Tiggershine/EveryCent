@@ -14,13 +14,12 @@ export class ProductDescriptionComponent implements OnInit {
   @Input('productPrice') productPrice: number;
   @Input('district') district: string;
   @Input('postDate') postDate: string;
+  @Input('productImage') productImage: string[];
   @Input('productDescription') productDescription: string;
   @Input('contact') contact: string;
 
-  id: number;
   slides: string[]; 
   currentIndex: number = 0;
-
 
   getCurrentSlideUrl(): string{
     return this.slides[this.currentIndex];
@@ -43,8 +42,7 @@ export class ProductDescriptionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.id = +this.productId;
-    this.slides = PRODUCTS[this.id-1].productImage;
+    this.slides = this.productImage;
   }
 
 }

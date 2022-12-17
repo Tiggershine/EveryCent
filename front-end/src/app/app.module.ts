@@ -11,6 +11,8 @@ import { FloatBtnComponent } from 'src/app/components/float-btn/float-btn.compon
 import { HeaderServiceService } from './services/header-service.service';
 import { ProductDescriptionComponent } from './components/product-description/product-description.component';
 import { ProductDetailPageComponent } from './pages/product-detail-page/product-detail-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { ProductDetailPageComponent } from './pages/product-detail-page/product-
     routingComponents,
     ProductDescriptionComponent,
     ProductDetailPageComponent,
+    LoginPageComponent,
+    SignupPageComponent
   ],
   imports: [
     BrowserModule,
