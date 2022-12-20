@@ -2,15 +2,17 @@
   <div class="login-greeting">Welcome Back!</div>
   <div class="form-group">
     <label>ID</label>
-    <input type="text" class="id-input">
+    <input [(ngModel)]="loginUserData['email']" type="text" class="id-input">
     <label>PASSWORD</label>
-    <input type="text" class="pw-input">
+    <input [(ngModel)]="loginUserData['password']" type="password" class="pw-input">
   </div>
-  <div class="login-error-text">
-    Please enter the correct ID or Password.
-  </div>
+  <span class="error-container">
+    <div *ngIf="isDataInvalid" class="login-error-text">
+      Please enter the correct ID or Password.
+    </div>
+  </span>
   <div class="btn-container">
-    <button class="login-btn">LOG IN</button>
+    <button class="login-btn" (click)="loginUser()">LOG IN</button>
     <div class="signup-btn-container">
       <div class="signup-text">Don't you have an account?</div>
       <button class="signup-btn">SIGN UP</button>
