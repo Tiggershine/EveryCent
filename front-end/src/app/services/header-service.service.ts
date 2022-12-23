@@ -1,17 +1,14 @@
 import { Injectable } from '@angular/core';
 import { MainPageComponent } from '../pages/main-page/main-page.component';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class HeaderServiceService {
- 
   constructor() {}
 
-  getHeaderContentList(){
-    return  [
+  getHeaderContentList() {
+    return [
       {
         id: 'main',
         iconLW: true,
@@ -29,7 +26,7 @@ export class HeaderServiceService {
         iconLMSource: '../../assets/icons/everycent.svg',
         iconCMSource: '',
         iconR1MSource: '',
-        iconR2MSource: '../../assets/icons/loginIcon.svg'
+        iconR2MSource: '../../assets/icons/loginIcon.svg',
       },
       {
         id: 'login',
@@ -48,7 +45,7 @@ export class HeaderServiceService {
         iconLMSource: '../../assets/icons/backIcon.svg',
         iconCMSource: 'LOG IN',
         iconR1MSource: '',
-        iconR2MSource: ''
+        iconR2MSource: '',
       },
       {
         id: 'signup',
@@ -67,7 +64,7 @@ export class HeaderServiceService {
         iconLMSource: '../../assets/icons/backIcon.svg',
         iconCMSource: 'SIGN UP',
         iconR1MSource: '',
-        iconR2MSource: ''
+        iconR2MSource: '',
       },
       {
         id: 'post',
@@ -86,7 +83,7 @@ export class HeaderServiceService {
         iconLMSource: '../../assets/icons/backIcon.svg',
         iconCMSource: 'POST',
         iconR1MSource: '',
-        iconR2MSource: ''
+        iconR2MSource: '',
       },
       {
         id: 'product',
@@ -106,6 +103,25 @@ export class HeaderServiceService {
         iconCMSource: '',
         iconR1MSource: '',
         iconR2MSource: '',
+      },
+      {
+        id: 'register',
+        iconLW: true,
+        iconCW: true,
+        iconR1W: true,
+        iconR2W: true,
+        iconLWSource: '../../assets/icons/everycent.svg',
+        iconCWSource: '',
+        iconR1WSource: '../../assets/icons/member.svg',
+        iconR2WSource: false,
+        iconLM: true,
+        iconCM: false,
+        iconR1M: false,
+        iconR2M: false,
+        iconLMSource: '../../assets/icons/backIcon.svg',
+        iconCMSource: '',
+        iconR1MSource: '',
+        iconR2MSource: '../../assets/icons/loginBtn.svg',
       },
     ];
   }
