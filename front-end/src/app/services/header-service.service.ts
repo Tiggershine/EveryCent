@@ -115,13 +115,13 @@ export class HeaderServiceService {
         iconR1WSource: '../../assets/icons/member.svg',
         iconR2WSource: false,
         iconLM: true,
-        iconCM: false,
+        iconCM: true,
         iconR1M: false,
         iconR2M: false,
         iconLMSource: '../../assets/icons/backIcon.svg',
-        iconCMSource: '',
+        iconCMSource: 'POST',
         iconR1MSource: '',
-        iconR2MSource: '../../assets/icons/loginBtn.svg',
+        iconR2MSource: '../../assets/icons/saveBtn.svg',
       },
     ];
   }
