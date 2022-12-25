@@ -11,7 +11,6 @@ import { FloatBtnComponent } from 'src/app/components/float-btn/float-btn.compon
 import { HeaderServiceService } from './services/header-service.service';
 import { ProductDescriptionComponent } from './components/product-description/product-description.component';
 import { ProductDetailPageComponent } from './pages/product-detail-page/product-detail-page.component';
-
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';

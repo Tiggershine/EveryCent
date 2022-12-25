@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { ProductDetailPageComponent } from './pages/product-detail-page/product-detail-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component'; 
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { ProductInformationComponent } from './product-information/product-information.component';
 
@@ -30,7 +30,7 @@ const routes: Routes = [
   },
   { path: "products/:productId", component: ProductDetailPageComponent, 
     data: {
-    path: "products"
+    path: "products/:productId"
     }
   },
 ];
