@@ -102,10 +102,10 @@ app.post('/login', (req, res) => {
 
 
 // Get all cards
-app.get('/cards', (req, res) => {
-  const productCards = productCardRepository.getAll();
+app.get('/cards', async (req, res) => {
+  const productCards = await productCardRepository.getAll();
   if (productCards) {
-    res.status.json(productCards);
+    res.status(200).json(productCards);
   } else {
     res.status(400).json({message: 'product-cards are not found'});
   }
@@ -115,9 +115,9 @@ app.get('/cards', (req, res) => {
 app.put('/card/:id', async (req, res) => {
   const { title, description, imageUrl, user, district, dealType, contact } = req.body;
   const id = req.params.id;
-  const prodcutCard = await productCardRepository.getProductCard(id);
-  if (!prodcutCard) {
-    res.status.json({ message: `can not find product-card with ${id}`});
+  const productCard = await productCardRepository.getProductCard(id);
+  if (!productCard) {
+    res.status(404).json({ message: `can not find product-card with ${id}`});
   }
   const updated = await productCardRepository.updateCard(id, title, description, imageUrl, user, district, dealType, contact);
   res.status(200).json(updated);
