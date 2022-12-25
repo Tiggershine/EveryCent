@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Slide } from "../../models/slideInterface";
 import { Slides } from '../../models/slideData';
+import { PRODUCTS } from 'src/app/models/mock-product';
 
 @Component({
   selector: 'app-product-description',
@@ -18,6 +19,7 @@ export class ProductDescriptionComponent implements OnInit {
   @Input('contact') contact: string;
   
   slides: Slide[] = Slides;
+  product = PRODUCTS[0];
   currentIndex: number = 0;
 
   getCurrentSlideUrl(): string{
