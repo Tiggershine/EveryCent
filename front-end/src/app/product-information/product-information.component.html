@@ -12,16 +12,13 @@
         <div>
           <h1 class="text text-type">{{x.title}}</h1>
           <input class="form-field" formControlName="title" type="text">
-
           <h1 class="text text-type">{{x.category}}</h1>
           <select class="form-field form-field-arrow" formControlName="category">
             <option hidden></option>
             <option *ngFor="let y of categoryType" value="">{{y.category}}</option>
           </select>
-
           <h1 class="text text-type">{{x.price}}</h1>
           <input class="form-field form-field-euro" formControlName="price" type="number">
-
           <h1 class="text text-type">{{x.district}}</h1>
           <select class="form-field form-field-arrow" formControlName="district">
             <option hidden></option>
