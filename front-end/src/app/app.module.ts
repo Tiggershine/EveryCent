@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductCardListComponent } from './components/product-card-list/product-card-list.component';
@@ -13,7 +13,6 @@ import { ProductDescriptionComponent } from './components/product-description/pr
 import { ProductDetailPageComponent } from './pages/product-detail-page/product-detail-page.component';
 
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
-import { FormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
@@ -37,7 +36,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [HeaderServiceService, AuthService],
   bootstrap: [AppComponent]

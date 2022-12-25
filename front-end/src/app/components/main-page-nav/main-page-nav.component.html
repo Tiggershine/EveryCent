@@ -8,7 +8,7 @@
     <div class="avatar-wrapper">
       <img class="avatar-image" src="../assets/images/Avatar_seller.png" alt="Seller Avatar">
       <span class="avatar-text">You want to sell?<br/>Start with every cent!</span>
-      <button class="avatar-btn avatar-sell-btn" type="button">Sell now</button>
+      <button class="avatar-btn avatar-sell-btn" type="button" [routerLink]="['/post']">Sell now</button>
     </div>
   </div>
   <div *ngIf="screenMode=='mobile'" class="search-container">

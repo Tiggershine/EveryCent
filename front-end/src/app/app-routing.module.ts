@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-// import { ProductDescriptionComponent } from './components/product-description/product-description.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { ProductDetailPageComponent } from './pages/product-detail-page/product-detail-page.component';
+import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import { ProductInformationComponent } from './product-information/product-information.component';
 
 const routes: Routes = [
   { path: "", component: MainPageComponent, 
@@ -10,17 +12,18 @@ const routes: Routes = [
       path: "main"
     }
   },
-  { path: "login", component: MainPageComponent, 
+  { path: "login", component: LoginPageComponent, 
     data: {
     path: "login"
     }
   },
-  { path: "signup", component: MainPageComponent, 
+  { path: "signup", component: SignupPageComponent, 
     data: {
     path: "signup"
     }
   },
-  { path: "post", component: MainPageComponent, 
+  // todo: change Component to PageComponent
+  { path: "post", component: ProductInformationComponent, 
     data: {
     path: "post"
     }
