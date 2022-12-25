@@ -6,24 +6,24 @@
       <img src="../../assets/icons/arrow-right-circle.svg" class="rightArrow" (click)="goToNext()" />
     </div>
       <div class="product-description-content">
-        <span class="product-description-title">{{ productTitle }}</span>
-        <span class="product-description-category">{{ productCategory }}</span>
+        <span class="product-description-title">{{ product.productTitle }}</span>
+        <span class="product-description-category">{{ product.productCategory }}</span>
         <div class="price-location-wrapper">
-          <div class="product-description-price">{{ productPrice }} €</div>
+          <div class="product-description-price">{{ product.productPrice }} €</div>
           <div class="product-description-location">
             <img class="location-item" src="../../assets/icons/geo.svg"/>
-            {{ district }}
+            {{ product.district }}
           </div>
         </div>
         <hr class="product-description-line"/>
-        <span class="product-description-date">{{ postDate }}</span>
+        <span class="product-description-date">{{ product.postDate }}</span>
         <span class="product-description-desc">
           <span class="product-description-descTitle">
             [Description]
           </span>
-            {{ productDescription }}
+            {{ product.productDescription }}
         </span>
-        <span class="product-description-contact">{{ contact }}</span>
+        <span class="product-description-contact">{{ product.contact }}</span>
       </div>
   </div>
 </div>

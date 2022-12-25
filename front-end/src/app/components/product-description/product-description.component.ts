@@ -17,7 +17,8 @@ export class ProductDescriptionComponent implements OnInit {
   @Input('productImage') productImage: string[];
   @Input('productDescription') productDescription: string;
   @Input('contact') contact: string;
-
+  
+  product = PRODUCTS[0];
   slides: string[]; 
   currentIndex: number = 0;
 

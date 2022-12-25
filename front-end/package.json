@@ -1,10 +1,11 @@
 {
   "name": "front-end",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "dev": "nodemon src/app/api/server.js",
+    "dev": "nodemon server/server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -26,7 +27,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "helmet": "^6.0.1",
-    "mongoose": "^6.7.5",
+    "mongoose": "^6.8.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20",
     "rxjs": "~7.5.0",

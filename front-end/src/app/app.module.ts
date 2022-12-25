@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductCardListComponent } from './components/product-card-list/product-card-list.component';
@@ -11,8 +11,11 @@ import { FloatBtnComponent } from 'src/app/components/float-btn/float-btn.compon
 import { HeaderServiceService } from './services/header-service.service';
 import { ProductDescriptionComponent } from './components/product-description/product-description.component';
 import { ProductDetailPageComponent } from './pages/product-detail-page/product-detail-page.component';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import { AuthService } from './services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { ProductInformationComponent } from './product-information/product-information.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +28,19 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
     routingComponents,
     ProductDescriptionComponent,
     ProductDetailPageComponent,
+    HeaderComponent,
+    SignupPageComponent,
     LoginPageComponent,
-    SignupPageComponent
+    ProductInformationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [HeaderServiceService],
+  providers: [HeaderServiceService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../services/auth.service'
 
 @Component({
   selector: 'app-login-page',
@@ -7,15 +7,30 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
-  leftIcon: string;
-  leftIconLink: string;
-
-  constructor(private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-    this.leftIcon = this.route.snapshot.data['leftIcon'];
-    this.leftIconLink = this.route.snapshot.data['leftIconLink'];
+  loginUserData = {
+    "email": "",
+    "password": ""
   }
+
+  isDataInvalid: boolean = false;
+
+  constructor(private _auth: AuthService) { }
+
+  ngOnInit(): void {}
+
+  loginUser() {
+    this._auth.loginUser(this.loginUserData.email, this.loginUserData.password).subscribe((data) => {
+      if(data.validUser === false) {
+        this.isDataInvalid = true;
+        console.log(`isDataInvalid: ${this.isDataInvalid}`);
+      } else {
+        console.log(`isDataInvalid: ${this.isDataInvalid}`);
+        return data;
+      }
+    });
+  }
+
+  
 
   
 
