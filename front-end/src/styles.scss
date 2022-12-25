@@ -23,6 +23,9 @@ body::-webkit-scrollbar{
   height: 0;
   background: transparent;  /* Optional: just make scrollbar invisible */
 }
+.container {
+  padding: 0;
+}
 ul, ol {
   list-style: none;
 }

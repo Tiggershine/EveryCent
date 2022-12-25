@@ -12,6 +12,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FloatBtnComponent } from 'src/app/components/float-btn/float-btn.component';
 import { ProductDescriptionComponent } from './components/product-description/product-description.component';
 import { ProductDetailPageComponent } from './pages/product-detail-page/product-detail-page.component';
+import { MypageComponent } from './components/mypage/mypage.component';
 
 import { HeaderServiceService } from './services/header-service.service';
 
@@ -26,6 +27,7 @@ import { HeaderServiceService } from './services/header-service.service';
     routingComponents,
     ProductDescriptionComponent,
     ProductDetailPageComponent,
+    MypageComponent,
   ],
   imports: [
     BrowserModule,
