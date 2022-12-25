@@ -1,12 +1,15 @@
-@import '../../../styles.scss';
+$primary-color: #004643;
+$secondary-color: #F9BC60;
+$tertiary-color: #E16162;
+$background-color: #FEF6ED;
 
-.container {
+.mypage-container {
   background-color: $background-color;
   max-width: 1024px;
-  margin: 30px auto;;
+  margin: 30px auto;
+  padding: 0;
 }
 .product-item {
-  padding: 0px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -91,5 +94,4 @@ span {
     margin-top: 4px;
   }
 }
-
 

@@ -11,10 +11,12 @@ export class ProductCardListComponent implements OnInit {
 
   products = PRODUCTS;
   searchhidden: boolean = true;
+  isMypost: boolean= true;
   public audits: any[]= [];
   public totalCount=0;
   public pageIndex: number=0;
   public pageSize: number=10;
+  
   
   @ViewChild('uiElement', { static: false }) public uiElement: ElementRef;
   
