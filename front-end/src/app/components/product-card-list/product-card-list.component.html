@@ -2,7 +2,7 @@
   <div class="product-list row g-3">
     <div class="product-card col-md-3 col-6" *ngFor="let product of products">
       <div class="product-item">
-        <a [href]="product.productId">
+        <a [routerLink]="['/products', product.productId]">
           <img class="product-image" [src]="product.productImage[0]" [alt]="product.productTitle"/>
           <div class="product-content">
             <span class="product-title">{{ product.productTitle }}</span>
