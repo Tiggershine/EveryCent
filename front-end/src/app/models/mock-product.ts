@@ -12,6 +12,7 @@ export const PRODUCTS: Product[] = [
     imageUrl: ['../assets/images/cuchen.jpeg','../assets/images/jacket.jpeg','../assets/images/bicycle.jpeg'],
     contact: 'anonym@rwth-aachen.de',
     dealType: 'sell',
+    createdAt: '12.12.22'
   },
   {
     _id: '2',
@@ -24,6 +25,7 @@ export const PRODUCTS: Product[] = [
     imageUrl: ['../assets/images/cuchen.jpeg','../assets/images/jacket.jpeg','../assets/images/bicycle.jpeg'],
     contact: 'anonym@rwth-aachen.de',
     dealType: 'sell',
+    createdAt: '12.12.22'
   },
   {
     _id: '3',
@@ -36,6 +38,7 @@ export const PRODUCTS: Product[] = [
     imageUrl: ['../assets/images/cuchen.jpeg','../assets/images/jacket.jpeg','../assets/images/bicycle.jpeg'],
     contact: 'anonym@rwth-aachen.de',
     dealType: 'sell',
+    createdAt: '12.12.22'
   },
   {
     _id: '4',
@@ -48,5 +51,6 @@ export const PRODUCTS: Product[] = [
     imageUrl: ['../assets/images/cuchen.jpeg','../assets/images/jacket.jpeg','../assets/images/bicycle.jpeg'],
     contact: 'anonym@rwth-aachen.de',
     dealType: 'sell',
+    createdAt: '12.12.22'
   }
 ]

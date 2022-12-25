@@ -7,14 +7,14 @@
   [iconR2MLink]="'/login'"
 ></app-header>
 <app-product-description *ngIf="product" 
-  [productId]="product.productId"
-  [productTitle]="product.productTitle"
-  [productCategory]="product.productCategory"
-  [productPrice]="product.productPrice"
+  [productId]="product._id"
+  [productTitle]="product.title"
+  [productCategory]="product.category"
+  [productPrice]="product.price"
   [district]="product.district"
-  [postDate]="product.postDate"
-  [productImage]="product.productImage"
-  [productDescription]="product.productDescription"
+  [createdAt]="product.createdAt"
+  [productImage]="product.imageUrl"
+  [productDescription]="product.description"
   [contact]="product.contact"
   ></app-product-description>
 <app-footer></app-footer>

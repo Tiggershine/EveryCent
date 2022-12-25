@@ -7,9 +7,9 @@ export class Product{
   category: string;
   description: string;
   imageUrl: string[];
-  user: user["userId"];
+  user: user["username"];
   district: string;
   dealType: string;
   contact: string;
-  createdAt?: Date;
+  createdAt: string;
 }
