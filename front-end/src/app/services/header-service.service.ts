@@ -45,7 +45,7 @@ export class HeaderServiceService {
         iconCM: true,
         iconR1M: false,
         iconR2M: false,
-        iconLMSource: '../../assets/icons/backIcon.svg',
+        iconLMSource: '../../assets/icons/everycent.svg',
         iconCMSource: 'LOG IN',
         iconR1MSource: '',
         iconR2MSource: ''
@@ -64,7 +64,7 @@ export class HeaderServiceService {
         iconCM: true,
         iconR1M: false,
         iconR2M: false,
-        iconLMSource: '../../assets/icons/backIcon.svg',
+        iconLMSource: '../../assets/icons/everycent.svg',
         iconCMSource: 'SIGN UP',
         iconR1MSource: '',
         iconR2MSource: ''
@@ -83,7 +83,7 @@ export class HeaderServiceService {
         iconCM: true,
         iconR1M: false,
         iconR2M: true,
-        iconLMSource: '../../assets/icons/backIcon.svg',
+        iconLMSource: '../../assets/icons/everycent.svg',
         iconCMSource: 'POST',
         iconR1MSource: '',
         iconR2MSource: ''
@@ -102,7 +102,7 @@ export class HeaderServiceService {
         iconCM: false,
         iconR1M: false,
         iconR2M: false,
-        iconLMSource: '../../assets/icons/backIcon.svg',
+        iconLMSource: '../../assets/icons/everycent.svg',
         iconCMSource: '',
         iconR1MSource: '',
         iconR2MSource: '',
