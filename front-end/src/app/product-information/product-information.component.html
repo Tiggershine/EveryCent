@@ -3,14 +3,11 @@
   <div *ngFor="let x of informationType" class="layout">
     <title>Upload New Item</title>
     <form [formGroup]="productForm">
-
       <h1 class="text">{{x.sellOption}}</h1>
       <label class="text-button-radio" *ngFor="let trade of tradeOptionRadioButton" for="myRadioId">
         <input type="radio" id="myRadioId" name="sellbuy">
         {{trade}}
       </label>
-
-
       <div class="row">
         <div>
           <h1 class="text text-type">{{x.title}}</h1>
@@ -31,7 +28,6 @@
             <option *ngFor="let z of districtType" value="">{{z.place}}</option>
           </select>
         </div>
-
         <div>
           <div *ngIf="screenMode == 'web'">
             <h1 class="text text-image">{{x.image}}</h1>
@@ -45,10 +41,8 @@
           </div>
         </div>
       </div>
-
       <h1 class="text text-type-two">{{x.description}}</h1>
       <textarea class="form-field form-field-two" formControlName="comment"></textarea>
-
     </form>
     <div *ngIf="screenMode == 'mobile'">
       <h1 class="text text-image">{{x.image}}</h1>
@@ -57,7 +51,6 @@
         <input class="file-image" id="image" (change)="onFileSelect($event)" type="file" />
       </div>
     </div>
-
     <div class="row-button" [align]="'end'">
       <button class="button button-register" (click)="addProduct()">REGISTER</button>
       <button mat-dialog-close class="button button-cancel">CANCEL</button>
