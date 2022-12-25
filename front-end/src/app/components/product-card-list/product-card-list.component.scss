@@ -1,60 +1,35 @@
-$primary-color: #004643;
-$secondary-color: #F9BC60;
-$tertiary-color: #E16162;
-$background-color: #FEF6ED;
+@import '../../../styles.scss';
 
-.cardlist-container {
+.container {
   background-color: $background-color;
   max-width: 1024px;
-  margin: 30px auto;
-}
-.hidden {
-  visibility: hidden;
-}
-.nohidden {
-  transition: 0.3s;
-  padding: 16px 0;
-  float: right;
-  margin: 12px;
-}
-.search-bar {
-  align-self: flex-end;
-}
-input {
-  height: 56px;
-  width: 100%;
-  padding-left: 16px;
-  padding-top: 5px;
-  border-radius: 30px;
-  border: 0.5px solid $primary-color
-}
-input::placeholder {
-  font-size: 1.3rem;
-  opacity: .5;
+  margin: 30px auto;;
 }
 .product-item {
   padding: 0px;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
 }
 .product-image {
   width: 100%;
   border-radius: 10px;
 }
+.product-content {
+  padding: 4px;
+}
 span {
   display: block;
   height: 100%;
 }
-.product-content {
-  padding: 4px;
-}
-.product-title {
+#product-title {
   font-size: 1.2rem !important;
 }
-.product-price {
+#product-price {
   font-size: 1.2rem !important;
   font-weight: 800 !important;
 }
-.register-date {
+#register-date {
   text-align: right !important;
   font-size: 0.75rem !important;
 }
@@ -64,6 +39,49 @@ span {
     background-color: white;
     padding: 10px 10px 0 10px;
     border-radius: 20px;
+    position: relative;
+  }
+  .product-item .card-hover {
+    display: flex;
+    flex-direction: column;
+    transition: 0.4s ease-out;
+  }
+  .btn-active {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 0 24px;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 3;
+    color: white;
+    opacity: 0;
+  }
+  .btn-active button {
+    margin: 0 8px;
+    padding: 8px 16px;
+    border: 0.5px solid $primary-color;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: 0.4s ease;
+  }
+  .card-hover:hover {
+    background-color: $primary-color;
+    .product-image {
+      opacity: 0.3;
+    }
+    .btn-active {
+      opacity: 1;
+    }
+  }
+  .btn-active #edit-btn:hover {
+    color: #004643;
+    background-color: #F9BC60;
+  }
+  .btn-active  #delete-btn:hover {
+    color: #004643;
+    background-color: #E16162;
   }
   .product-image {
     border-radius: 10px;
