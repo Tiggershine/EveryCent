@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
+    userId: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
     createdAt: { type: Date, default: Date.now }
@@ -13,6 +14,8 @@ const userSchema = new Schema(
 const productCardSchema = new Schema(
   {
     title: { type: String, required: true },
+    price: { type: Number, required: true },
+    category: { type: String, required: true },
     description: { type: String, required: true },
     imageUrl: { type: String },
     user: { type: userSchema, required: true },
@@ -34,9 +37,11 @@ export async function getProductCard(id) {
 }
 
 
-export async function createCard(title, description, imageUrl, user, district, dealType, contact) {
+export async function createCard(title, price, category, description, imageUrl, user, district, dealType, contact) {
   return new productCard({
     title,
+    price,
+    category,
     description,
     imageUrl,
     user,
@@ -46,8 +51,8 @@ export async function createCard(title, description, imageUrl, user, district, d
   }).save();
 }
 
-export async function updateCard(id, title, description, imageUrl, user, district, dealType, contact) {
-  return productCard.findByIdAndUpdate(id, {title, description, imageUrl, user, district, dealType, contact}, { returnOriginal: false});
+export async function updateCard(id, title, price, category, description, imageUrl, user, district, dealType, contact) {
+  return productCard.findByIdAndUpdate(id, {title, price, category, description, imageUrl, user, district, dealType, contact}, { returnOriginal: false});
 }
 
 export async function removeCard(id) {

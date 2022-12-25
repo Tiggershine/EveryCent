@@ -1,13 +1,15 @@
+import { user } from "./userInterface";
+
 export class Product{
-  productId!: string;
-  userId?: string;
-  productTitle!: string;
-  productPrice!: number;
-  district?: string;
-  productCategory?: string;
-  productDescription?: string;
-  productImage!: string[];
-  contact?: string;
-  dealType?: string;
-  postDate!: string;
+  _id: string;
+  title: string;
+  price: number;
+  category: string;
+  description: string;
+  imageUrl: string[];
+  user: user["userId"];
+  district: string;
+  dealType: string;
+  contact: string;
+  createdAt?: Date;
 }
