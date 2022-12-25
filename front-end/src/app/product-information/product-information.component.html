@@ -2,7 +2,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <div *ngFor="let x of informationType" class="layout">
     <title>Upload New Item</title>
-    <form formGroup="productForm">
+    <form [formGroup]="productForm">
       <h1 class="text">{{x.sellOption}}</h1>
       <label class="text-button-radio" *ngFor="let trade of tradeOptionRadioButton" for="myRadioId">
         <input type="radio" id="myRadioId" name="sellbuy">

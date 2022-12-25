@@ -16,6 +16,7 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { ProductInformationComponent } from './product-information/product-information.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     ProductDetailPageComponent,
     HeaderComponent,
     SignupPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    ProductInformationComponent
   ],
   imports: [
     BrowserModule,
