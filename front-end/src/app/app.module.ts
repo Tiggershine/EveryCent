@@ -12,6 +12,12 @@ import { HeaderServiceService } from './services/header-service.service';
 import { ProductDescriptionComponent } from './components/product-description/product-description.component';
 import { ProductDetailPageComponent } from './pages/product-detail-page/product-detail-page.component';
 
+import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,12 +29,17 @@ import { ProductDetailPageComponent } from './pages/product-detail-page/product-
     routingComponents,
     ProductDescriptionComponent,
     ProductDetailPageComponent,
+    HeaderComponent,
+    SignupPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [HeaderServiceService],
+  providers: [HeaderServiceService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
