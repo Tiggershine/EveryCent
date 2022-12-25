@@ -10,6 +10,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
 import User from './models/user.model.js';
+import * as productCardRepository from './models/productCard.model.js'
 
 
 /* ==============================
@@ -97,6 +98,47 @@ app.post('/login', (req, res) => {
       console.log(err);
     }
   })
+})
+
+
+// Get all cards
+app.get('/cards', (req, res) => {
+  const productCards = productCardRepository.getAll();
+  if (productCards) {
+    res.status.json(productCards);
+  } else {
+    res.status(400).json({message: 'product-cards are not found'});
+  }
+})
+
+// Update the card
+app.put('/card/:id', async (req, res) => {
+  const { title, description, imageUrl, user, district, dealType, contact } = req.body;
+  const id = req.params.id;
+  const prodcutCard = await productCardRepository.getProductCard(id);
+  if (!prodcutCard) {
+    res.status.json({ message: `can not find product-card with ${id}`});
+  }
+  const updated = await productCardRepository.updateCard(id, title, description, imageUrl, user, district, dealType, contact);
+  res.status(200).json(updated);
+})
+
+// Delete the card
+app.delete('/card/:id', async (req, res) => {
+  const id = req.params.id;
+  const productCard = await productCardRepository.getProductCard(id);
+  if (!productCard) {
+    res.status(404).json({ message: `can not find product-card with ${id}`});
+  }
+  await productCardRepository.removeCard(id);
+  res.sendStatus(204);
+})
+
+// Create a card
+app.post('/card', async (req, res) => {
+  const { title, description, imageUrl, user, district, dealType, contact } = req.body;
+  const productCard = await productCardRepository.createCard(title, description, imageUrl, user, district, dealType, contact);
+  res.status(201).json(productCard);
 })
 
 
