@@ -1,15 +1,21 @@
-<div class="container">
+<div class="container mypage-container">
   <div class="product-list row g-3">
-    <div class="product-card col-md-3 col-6" *ngFor="let product of products">
-      <div class="product-item">
-        <a [href]="product.productId">
+    <div class="product-card col-md-3 col-6" #uiElement *ngFor="let product of products" (scroll)="onScrollLoadData()">
+      <!-- todo: isMypost 함수 추가  -->
+      <div class="product-item" [ngClass]="{'card-hover' : isMypost}" >
+        <a [routerLink]="['/products', product.productId]">
           <img class="product-image" [src]="product.productImage[0]" [alt]="product.productTitle"/>
           <div class="product-content">
-            <span class="product-title">{{ product.productTitle }}</span>
-            <span class="product-price">{{ product.productPrice }}€</span>
-            <span class="register-date">{{ product.postDate }}</span>
-          </div>
+            <span id="product-title">{{ product.productTitle }}</span>
+            <span id="product-price">{{ product.productPrice }}€</span>
+            <span id="register-date">{{ product.postDate }}</span>
+          </div> 
         </a>
+        <!-- todo: isMypost 함수 추가 -->
+        <div class="row btn-active" [hidden]="!isMypost">
+          <button class="col" id="edit-btn">edit</button>
+          <button class="col" id="delete-btn">delete</button>
+        </div>   
       </div>
     </div>
   </div>

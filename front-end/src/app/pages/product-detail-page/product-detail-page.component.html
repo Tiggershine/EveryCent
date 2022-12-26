@@ -1,10 +1,20 @@
 <app-header
-  [iconLWLink]=""
-  [iconR1WLink]=""
-  [iconR2WLink]=""
-  [iconLMLink]=""
+  [iconLWLink]="'/'"
+  [iconR1WLink]="'/login'"
+  [iconR2WLink]="'/signup'"
+  [iconLMLink]="'/'"
   [iconR1MLink]=""
-  [iconR2MLink]=""
+  [iconR2MLink]="'/login'"
 ></app-header>
-<app-product-description></app-product-description>
+<app-product-description *ngIf="product" 
+  [productId]="product.productId"
+  [productTitle]="product.productTitle"
+  [productCategory]="product.productCategory"
+  [productPrice]="product.productPrice"
+  [district]="product.district"
+  [postDate]="product.postDate"
+  [productImage]="product.productImage"
+  [productDescription]="product.productDescription"
+  [contact]="product.contact"
+  ></app-product-description>
 <app-footer></app-footer>

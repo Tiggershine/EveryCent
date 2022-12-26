@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { PRODUCTS } from '../../models/mock-product';
-import { Slide } from "../../models/slideInterface";
-import { Slides } from '../../models/slideData';
+import { Component, Input, OnInit } from '@angular/core';
+import { PRODUCTS } from 'src/app/models/mock-product';
 
 @Component({
   selector: 'app-product-description',
@@ -10,12 +8,22 @@ import { Slides } from '../../models/slideData';
 })
 export class ProductDescriptionComponent implements OnInit {
 
-  slides: Slide[] = Slides;
+  @Input('productId') productId: string;
+  @Input('productTitle') productTitle: string;
+  @Input('productCategory') productCategory: string;
+  @Input('productPrice') productPrice: number;
+  @Input('district') district: string;
+  @Input('postDate') postDate: string;
+  @Input('productImage') productImage: string[];
+  @Input('productDescription') productDescription: string;
+  @Input('contact') contact: string;
+  
   product = PRODUCTS[0];
+  slides: string[]; 
   currentIndex: number = 0;
 
   getCurrentSlideUrl(): string{
-    return this.slides[this.currentIndex].url;
+    return this.slides[this.currentIndex];
   }
 
   goToNext(): void {
@@ -35,6 +43,7 @@ export class ProductDescriptionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.slides = this.productImage;
   }
 
 }
