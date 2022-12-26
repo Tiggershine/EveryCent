@@ -4,8 +4,8 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { ProductDetailPageComponent } from './pages/product-detail-page/product-detail-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
-import { ProductInformationComponent } from './components/product-information/product-information.component';
 import { ProductRegisterPageComponent } from './pages/product-register-page/product-register-page.component';
+import { MypageComponent } from './components/mypage/mypage.component';
 
 const routes: Routes = [
   {
@@ -29,7 +29,6 @@ const routes: Routes = [
       path: 'signup',
     },
   },
-  // todo: change Component to PageComponent
   {
     path: 'post',
     component: ProductRegisterPageComponent,
@@ -42,6 +41,14 @@ const routes: Routes = [
     component: ProductDetailPageComponent,
     data: {
       path: 'products/:productId',
+    },
+  },
+  //Add userId to mypage path
+  {
+    path: 'mypage',
+    component: MypageComponent,
+    data: {
+      path: 'mypage',
     },
   },
 ];
