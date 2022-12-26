@@ -4,10 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.scss']
+  styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent implements OnInit {
-
   leftIcon: string;
   rightIconWeb1: string;
   rightIconWeb2: string;
@@ -20,8 +19,7 @@ export class MainPageComponent implements OnInit {
   rightBtn2Show: boolean;
   rightBtnMobileShow: boolean;
 
-  constructor(
-    private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.leftIcon = this.route.snapshot.data['leftIcon'];
@@ -36,5 +34,4 @@ export class MainPageComponent implements OnInit {
     this.rightBtn2Show = this.route.snapshot.data['rightBtn2Show'];
     this.rightBtnMobileShow = this.route.snapshot.data['rightBtnMobileShow'];
   }
-  
 }

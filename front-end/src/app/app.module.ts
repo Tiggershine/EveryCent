@@ -13,8 +13,8 @@ import { ProductDetailPageComponent } from './pages/product-detail-page/product-
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MypageComponent } from './components/mypage/mypage.component';
-import { ProductInformationComponent } from './product-information/product-information.component';
-
+import { ProductInformationComponent } from './components/product-information/product-information.component';
+import { ProductRegisterPageComponent } from './pages/product-register-page/product-register-page.component';
 import { HeaderServiceService } from './services/header-service.service';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -34,16 +34,17 @@ import { HttpClientModule } from '@angular/common/http';
     SignupPageComponent,
     LoginPageComponent,
     MypageComponent,
-    ProductInformationComponent
+    ProductInformationComponent,
+    ProductRegisterPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [HeaderServiceService, AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
