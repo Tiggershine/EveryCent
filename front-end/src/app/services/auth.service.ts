@@ -17,7 +17,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   signupUser(email: string, password: string) {
-    return this.http.post<any>(`${_signupUrl}/register`, {
+    return this.http.post<any>(`${_signupUrl}/user/register`, {
       email,
       password
     });

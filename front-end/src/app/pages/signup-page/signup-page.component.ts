@@ -11,6 +11,7 @@ import { AuthService } from '../../services/auth.service';
 export class SignupPageComponent implements OnInit {
   singupUserData = {
     "email": "",
+    "username": "",
     "password": ""
   }
   confirmPassword: string;
