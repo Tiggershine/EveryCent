@@ -42,6 +42,8 @@ export class ProductInformationComponent implements OnInit {
   productForm!: FormGroup;
   screenMode: string;
   imageData!: string;
+  previews: string[] = [];
+  selectedFiles?: FileList;
 
   product: Product = {
     productImage: [],
@@ -85,40 +87,62 @@ export class ProductInformationComponent implements OnInit {
     alert('The product has been added');
   }
 
-  onFileSelected(event: Event) {
-    if (event.target as HTMLInputElement) {
-      const file = (event.target as HTMLInputElement).files?.[0];
+  // onFileSelected(event: Event) {
+  //   if (event.target as HTMLInputElement) {
+  //     const file = (event.target as HTMLInputElement).files?.[0];
 
-      const fileHandle: FileHandle = {
-        file: file,
-        url: this.sanitizer.bypassSecurityTrustUrl(
-          window.URL.createObjectURL(file)
-        ),
-      };
+  //     const fileHandle: FileHandle = {
+  //       file: file,
+  //       url: this.sanitizer.bypassSecurityTrustUrl(
+  //         window.URL.createObjectURL(file)
+  //       ),
+  //     };
 
-      this.product.productImage.push(fileHandle);
-    }
-  }
+  //     this.product.productImage.push(fileHandle);
+  //   }
+  // }
 
-  prepareFormData(product: Product): FormData {
-    const formData = new FormData();
-    formData.append(
-      'product',
-      new Blob([JSON.stringify(product)], { type: 'application/json' })
-    );
+  // prepareFormData(product: Product): FormData {
+  //   const formData = new FormData();
+  //   formData.append(
+  //     'product',
+  //     new Blob([JSON.stringify(product)], { type: 'application/json' })
+  //   );
 
-    for (var i = 0; i < product.productImage.length; i++) {
-      formData.append(
-        'imageFile',
-        product.productImage[i].file,
-        product.productImage[i].file.name
-      );
-    }
+  //   for (var i = 0; i < product.productImage.length; i++) {
+  //     formData.append(
+  //       'imageFile',
+  //       product.productImage[i].file,
+  //       product.productImage[i].file.name
+  //     );
+  //   }
 
-    return formData;
-  }
+  //   return formData;
+  // }
 
   removeImage(i: number) {
     this.product.productImage.splice(i, 1);
+  }
+
+  selectFiles(event: any): void {
+    this.selectedFiles = event.target.files;
+
+    this.product.productImage = [];
+    if (this.selectedFiles && this.selectedFiles[0]) {
+      const numberOfFiles = this.selectedFiles.length;
+      for (let i = 0; i < numberOfFiles; i++) {
+        const reader = new FileReader();
+
+        reader.onload = (e: any) => {
+          console.log(e.target.result);
+          this.product.productImage.push(e.target.result);
+        };
+
+        reader.readAsDataURL(this.selectedFiles[i]);
+      }
+
+      console.log(this.selectedFiles);
+      console.log(this.product.productImage);
+    }
   }
 }

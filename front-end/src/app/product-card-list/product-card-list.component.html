@@ -2,13 +2,13 @@
   <div class="product-list row g-3">
     <div class="product-card col-md-3 col-6" *ngFor="let product of products">
       <div class="product-item">
-        <img class="product-image" [src]="product.productImage" [alt]="product.productTitle"/>
+        <img class="product-image" [src]="product.productImage" [alt]="product.productTitle" />
         <div class="product-content">
           <span class="product-title">{{ product.productTitle }}</span>
           <span class="product-price">{{ product.productPrice }}€</span>
           <span class="register-date">{{ product.postDate }}</span>
         </div>
-    </div>
+      </div>
     </div>
   </div>
 </div>

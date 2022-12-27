@@ -5,7 +5,7 @@ export class Product {
   productPrice!: number;
   productCategory?: string;
   productDescription?: string;
-  productImage!: string;
+  productImage!: string[];
   contact?: string;
   dealType?: string;
   postDate!: string;

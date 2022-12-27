@@ -41,16 +41,25 @@
             <h1 class="text text-image">{{x.image}}</h1>
             <div class="box-image">
               <mat-grid-list cols="5" rowHeight="1:1">
-                <mat-grid-tile *ngFor="let file of product.productImage; let i = index;">
+                <mat-grid-tile *ngFor="let preview of previews; let i = index;">
                   <div>
                     <span class="btn-remove-image" (click)="removeImage(i)">x</span>
-                    <img [src]="file.url" class="image-preview" alt="">
+                    <!-- <img [src]="file.url" class="image-preview" alt=""> -->
+                    <img *ngFor="let preview of previews; let i = index;" [src]="previews" class="image-preview" />
                   </div>
+
+
                 </mat-grid-tile>
               </mat-grid-list>
               <label class="button button-image" for="image">Choose File</label>
-              <input type="file" id="image" class="file-image" multiple value="select" #selectFile
-                (change)="onFileSelected($event)">
+              <!-- <input type="file" id="image" class="file-image" multiple value="select" #selectFile
+                (change)="onFileSelected($event)"> -->
+              <div>
+                <img *ngFor="let preview of previews" [src]="preview" class="preview" />
+                {{previews}}
+              </div>
+              <input type="file" accept="image/*" id="image" multiple (change)="selectFiles($event)" />
+
             </div>
           </div>
         </div>
@@ -65,16 +74,16 @@
       <div class="box-image">
         <mat-grid-list cols="4" rowHeight="1:1">
           <mat-grid-tile *ngFor="let file of product.productImage">
-            <div>
+            <!-- <div>
               <span class="btn-remove-image">x</span>
               <img [src]="file.url" class="image-preview" alt="">
-            </div>
+            </div> -->
           </mat-grid-tile>
         </mat-grid-list>
 
         <label class="button button-image" for="image">Choose File</label>
-        <input type="file" id="image" class="file-image" multiple value="select" #selectFile
-          (change)="onFileSelected($event)">
+        <!-- <input type="file" id="image" class="file-image" multiple value="select" #selectFile
+          (change)="onFileSelected($event)"> -->
       </div>
     </div>
 
