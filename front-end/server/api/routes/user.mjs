@@ -10,14 +10,15 @@ router.post('/register', (req, res) => {
     try {
       if (user) {
         return res.status(409).send("This email has already registered!");
-      } else {
+      } 
+      else {
         const user = new User({
           email: userData.email,
           password: userData.password,
           username: userData.username,
           createdAt: Date.now()
         })
-        const result = await user.save();
+        await user.save();
         return res.json({success: true});
       }
     } catch (err) {

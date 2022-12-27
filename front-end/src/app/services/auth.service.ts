@@ -16,37 +16,20 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  signupUser(email: string, password: string) {
+  signupUser(email: string, username: string, password: string) {
     return this.http.post<any>(`${_signupUrl}/user/register`, {
       email,
+      username,
       password
     });
   }
 
-  // signupUser(email: string, password: string) {
-  //   return this.http.post<any>(`api/register`, {
-  //     email,
-  //     password
-  //   });
-  // }
-
-
   loginUser(email: string, password: string) {
-    return this.http.post<any>(`${_signupUrl}/login`, {
+    return this.http.post<any>(`${_signupUrl}/user/login`, {
       email,
       password
     });
   }
-
-
-  // getUserDetails(email: string, password: string) {
-  //   return this.http.post('', {
-  //     email,
-  //     password
-  //   }).subscribe(data => {
-  //     console.log(data, " is what we got from the server!")
-  //   })
-  // }
 
 
 }
