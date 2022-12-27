@@ -79,12 +79,13 @@ export class ProductInformationComponent implements OnInit {
 
     this.previews = [];
     if (this.selectedFiles && this.selectedFiles[0]) {
-      const numberOfFiles = this.selectedFiles.length;
+      const numberOfFiles = 10;
       for (let i = 0; i < numberOfFiles; i++) {
         const reader = new FileReader();
 
         reader.onload = (e: any) => {
           console.log(e.target.result);
+          console.log(this.previews);
           this.previews.push(e.target.result);
         };
 
