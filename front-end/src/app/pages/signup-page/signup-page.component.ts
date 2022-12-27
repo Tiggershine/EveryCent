@@ -9,6 +9,8 @@ import { AuthService } from '../../services/auth.service';
 })
 
 export class SignupPageComponent implements OnInit {
+  iconLWLink: string = '';
+  iconLMLink: string = '';
   singupUserData = {
     "email": "",
     "username": "",
