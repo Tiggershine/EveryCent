@@ -9,8 +9,12 @@ import { AuthService } from '../../services/auth.service';
 })
 
 export class SignupPageComponent implements OnInit {
+  iconLWLink: string = '';
+  iconLMLink: string = '';
+
   singupUserData = {
     "email": "",
+    "username": "",
     "password": ""
   }
   confirmPassword: string;
@@ -18,7 +22,6 @@ export class SignupPageComponent implements OnInit {
   warningMsg: string = "Passwords do not same!";
 
   constructor(private _auth: AuthService) {}
-
   ngOnInit(): void {}
 
   passwordConfirm(): boolean {
@@ -31,7 +34,7 @@ export class SignupPageComponent implements OnInit {
       this.isDataIncorrect = true;
       return console.log("Passwords do not same!");
     } 
-    this._auth.signupUser(this.singupUserData.email, this.singupUserData.password).subscribe(data => {
+    this._auth.signupUser(this.singupUserData.email, this.singupUserData.username, this.singupUserData.password).subscribe(data => {
       // if(data.success) {
         console.log(data);
       // }

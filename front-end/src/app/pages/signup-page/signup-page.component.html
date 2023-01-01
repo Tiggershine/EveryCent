@@ -1,3 +1,7 @@
+<app-header
+  [iconLWLink]="iconLWLink"
+  [iconLMLink]="iconLMLink"
+></app-header>
 <div class="signup-container">
   <div class="signup-greeting">
     Create an Account
@@ -5,6 +9,8 @@
   <div class="form-group">
     <label>ID</label>
     <input [(ngModel)]="singupUserData['email']" type="text" placeholder="" class="id-input" required>
+    <label>USERNAME</label>
+    <input [(ngModel)]="singupUserData['username']" type="text" placeholder="" class="id-input" required>
     <label>PASSWORD</label>
     <input [(ngModel)]="singupUserData['password']" type="password" placeholder="" class="pw-input" required>
     <label>CONFIRM PASSWORD</label>
@@ -19,4 +25,3 @@
       <button type="submit" class="signup-btn" (click)="signupUser()">SIGN UP</button>
     </div>
   </div>
-<app-footer></app-footer>

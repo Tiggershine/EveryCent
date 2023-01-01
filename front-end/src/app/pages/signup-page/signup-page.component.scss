@@ -6,7 +6,7 @@
   width: 280px;
   height: 600px;
   margin: auto;
-  margin-top: 70px;
+  margin-top: 60px;
 }
 .signup-greeting {
   font-size: 1.5rem;
@@ -16,7 +16,7 @@
 .form-group {
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 .form-group label {
   color: $primary-color;
@@ -29,7 +29,7 @@
   border: 1px solid $primary-color;
   border-radius: 5px;
   color:$primary-color;
-  padding: 5px
+  padding: 10px
 }
 .form-group input:focus {
   outline: none !important;
@@ -58,9 +58,8 @@
   font-size: 1.2rem;
  }
  .btn-container {
-  margin-top: 30px;
+  margin-top: 20px;
  }
-
 .signup-btn {
   width: 280px;
   height: 50px;
@@ -70,9 +69,6 @@
   font-weight: bold;
   border-radius: 25px;
   border: none;
-}
-.signup-btn-container {
-  margin-top: 60px;
 }
 .signup-text {
   display: grid;
@@ -98,12 +94,13 @@
   .signup-container {
     width: 500px;
     height: 600px;
+    margin-top: 90px;
   }
   .signup-greeting {
-    font-size: 2rem;
+    font-size: 1.7rem;
   }
   .form-group {
-    margin-top: 40px;
+    margin-top: 30px;
   }
   .form-group label {
     margin-left: 5px;
@@ -122,11 +119,8 @@
     font-size: 0.8rem;
   }
    .btn-container {
-    margin-top: 30px;
+    margin-top: 20px;
    }
-  .login-btn {
-    width: 500px;
-  }
   .signup-btn {
     width: 500px;
   }
