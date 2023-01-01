@@ -7,47 +7,50 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { ProductInformationComponent } from './components/product-information/product-information.component';
 import { ProductRegisterPageComponent } from './pages/product-register-page/product-register-page.component';
 import { AfterSearchComponent } from './components/after-search/after-search.component';
+import { ProductCardListComponent } from './components/product-card-list/product-card-list.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: MainPageComponent,
+    path: '', component: MainPageComponent,
     data: {
       path: 'main',
     },
+    children: [
+      {
+        path: '', component: ProductCardListComponent,
+        data: {
+          path: '',
+        },
+      },
+      {
+        path: 'search', component: AfterSearchComponent,
+        data: {
+          path: 'search',
+        },
+      },
+    ]
   },
   {
-    path: 'login',
-    component: LoginPageComponent,
+    path: 'login', component: LoginPageComponent,
     data: {
       path: 'login',
     },
   },
   {
-    path: 'signup',
-    component: SignupPageComponent,
+    path: 'signup', component: SignupPageComponent,
     data: {
       path: 'signup',
     },
   },
   // todo: change Component to PageComponent
   {
-    path: 'post',
-    component: ProductRegisterPageComponent,
+    path: 'post', component: ProductRegisterPageComponent,
     data: {
       path: 'post',
     },
   },
   {
-    path: 'products',
-    component: AfterSearchComponent,
-    data: {
-      path: 'products',
-    },
-  },
-  {
-    path: 'products/:productId',
-    component: ProductDetailPageComponent,
+    path: 'products/:productId', component: ProductDetailPageComponent,
     data: {
       path: 'products/:productId',
     },
