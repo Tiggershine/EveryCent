@@ -18,7 +18,7 @@
     <div class="col-6 header-search-bar">
       <!-- Web-Searchbar -->
       <div *ngIf="screenMode=='W' && headerC['iconCW']">
-        <input class="search-bar" type="text" placeholder="🔍 Search...">
+        <input class="search-bar" #searchTitle type="text" (keydown.enter)="sendSearch(searchTitle.value)" placeholder="🔍 Search...">
       </div>
       <!-- Mobile-Text -->
       <div *ngIf="screenMode=='M' && headerC['iconCM']">

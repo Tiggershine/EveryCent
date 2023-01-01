@@ -1,8 +1,6 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, Input, OnInit, SimpleChange } from '@angular/core';
 import { Product } from 'src/app/models/product';
-import { PRODUCTS } from '../../models/mock-product';
 import { CardsService } from 'src/app/services/cards.service';
-import { AuditService } from '../../services/audit.service';
 
 @Component({
   selector: 'app-product-card-list',
@@ -10,20 +8,15 @@ import { AuditService } from '../../services/audit.service';
   styleUrls: ['./product-card-list.component.scss']
 })
 export class ProductCardListComponent implements OnInit {
+  
+  @Input() receivedTitle: string= 'no search';
 
-  products = PRODUCTS;
+  products: Product[];
   searchhidden: boolean = true;
   isMypost: boolean= true;
-  public audits: any[]= [];
-  public totalCount=0;
-  public pageIndex: number=0;
-  public pageSize: number=10;
-  
-  @ViewChild('uiElement', { static: false }) public uiElement: ElementRef;
   
   constructor (
-    private cardsService: CardsService,
-    private auditService: AuditService) {}
+    private cardsService: CardsService) {}
   
   @HostListener('window:scroll', ['$event']) onscroll() {
     if(window.scrollY > 250) { // 650으로 바까라
@@ -36,35 +29,9 @@ export class ProductCardListComponent implements OnInit {
     this.cardsService.getAll().subscribe({
       next: (data) => {
         this.products = data;
+        console.log(data);
       },
-      error: (e) => console.error(e)
+      error: (e) => console.log(e)
     });
   }
-
-  // public async ngOnInit(): Promise<void> {
-  //   await this.getAudits(this.pageIndex,this.pageSize);
-  //   this.pageIndex +=1;
-  // }
-  // public async getAudits(pageIndex: number, pageSize: number){
-  //   try {
-  //     const response:any= await   
-  //     this.auditService.getAudits(pageIndex,pageSize).toPromise();
-  //     this.audits = [...this.audits,...response.audits]
-  //     this.totalCount = response.totalCount;
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-  // public async onScrollLoadData() {
-  //   const nativeElement= this.uiElement.nativeElement
-  //   console.log(this.uiElement)
-  //   if(nativeElement.clientHeight + Math.round(nativeElement.scrollTop) === nativeElement.scrollHeight  &&  this.audits.length !== this.totalCount){
-  //     await this.getAudits(this.pageIndex, this.pageSize);
-  //     this.pageIndex +=1;
-  //   }
-    // if(this.audits.length !== this.totalCount){
-    //   await this.getAudits(this.pageIndex, this.pageSize);
-    //   this.pageIndex +=1;
-    // }
-
 }

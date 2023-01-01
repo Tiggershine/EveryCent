@@ -18,7 +18,9 @@ export class MainPageComponent implements OnInit {
   rightBtn1Show: boolean;
   rightBtn2Show: boolean;
   rightBtnMobileShow: boolean;
-
+  searchTitle: string;
+  isSearched: boolean = false;
+  
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -33,5 +35,11 @@ export class MainPageComponent implements OnInit {
     this.rightBtn1Show = this.route.snapshot.data['rightBtn1Show'];
     this.rightBtn2Show = this.route.snapshot.data['rightBtn2Show'];
     this.rightBtnMobileShow = this.route.snapshot.data['rightBtnMobileShow'];
+  }
+  
+  sendSearchTitle(sendedSearchTitle: string) {
+    this.searchTitle = sendedSearchTitle;
+    console.log(this.searchTitle);
+    this.isSearched = true;
   }
 }

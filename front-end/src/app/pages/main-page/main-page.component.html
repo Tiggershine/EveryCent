@@ -5,8 +5,10 @@
   [iconLMLink]="'/'"
   [iconR1MLink]=""
   [iconR2MLink]="'/login'"
+  (searchTitle)="sendSearchTitle($event)"
 ></app-header>
-<app-main-page-nav></app-main-page-nav>
-<app-product-card-list></app-product-card-list>
+<app-main-page-nav *ngIf="!isSearched"></app-main-page-nav>
+<app-product-card-list *ngIf="!isSearched"></app-product-card-list>
+<app-after-search *ngIf="isSearched" [receivedTitle]="searchTitle"></app-after-search>
 <app-footer></app-footer>
 <app-float-btn ></app-float-btn>
