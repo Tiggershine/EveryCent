@@ -1,7 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-information',
@@ -42,11 +40,7 @@ export class ProductInformationComponent implements OnInit {
   screenMode: string;
   imageData!: string;
 
-  selectedFiles?: FileList;
-  previews: string[] = [];
-  imageInfos?: Observable<any>;
-
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
@@ -73,26 +67,7 @@ export class ProductInformationComponent implements OnInit {
       : (this.screenMode = 'mobile');
     console.log(this.screenMode);
   }
-
-  selectFiles(event: any): void {
-    this.selectedFiles = event.target.files;
-
-    this.previews = [];
-    if (this.selectedFiles && this.selectedFiles[0]) {
-      const numberOfFiles = 10;
-      for (let i = 0; i < numberOfFiles; i++) {
-        const reader = new FileReader();
-
-        reader.onload = (e: any) => {
-          console.log(e.target.result);
-          console.log(this.previews);
-          this.previews.push(e.target.result);
-        };
-
-        reader.readAsDataURL(this.selectedFiles[i]);
-      }
-    }
-  }
+  addProduct() {}
 
   onFileSelect(event: Event) {
     const file = (event.target as HTMLInputElement).files?.[0];
@@ -105,13 +80,5 @@ export class ProductInformationComponent implements OnInit {
       };
       reader.readAsDataURL(file);
     }
-  }
-
-  addProduct() {
-    this.router.navigate(['/']);
-  }
-
-  cancelProduct() {
-    this.router.navigate(['/']);
   }
 }
