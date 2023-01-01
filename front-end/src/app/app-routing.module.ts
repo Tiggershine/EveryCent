@@ -6,6 +6,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { ProductInformationComponent } from './components/product-information/product-information.component';
 import { ProductRegisterPageComponent } from './pages/product-register-page/product-register-page.component';
+import { AfterSearchComponent } from './components/after-search/after-search.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,13 @@ const routes: Routes = [
     component: ProductRegisterPageComponent,
     data: {
       path: 'post',
+    },
+  },
+  {
+    path: 'products',
+    component: AfterSearchComponent,
+    data: {
+      path: 'products',
     },
   },
   {
