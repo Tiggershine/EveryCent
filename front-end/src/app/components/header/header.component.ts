@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HeaderServiceService } from 'src/app/services/header-service.service';
 
@@ -8,7 +8,6 @@ import { HeaderServiceService } from 'src/app/services/header-service.service';
   styleUrls: ['./header.component.scss']
 })
 
-
 export class HeaderComponent implements OnInit {
   @Input() iconLWLink?: string;
   @Input() iconR1WLink?: string;
@@ -16,6 +15,8 @@ export class HeaderComponent implements OnInit {
   @Input() iconLMLink?: string;
   @Input() iconR1MLink?: string;
   @Input() iconR2MLink?: string;
+  
+  @Output() searchTitle = new EventEmitter<string>();
 
   routePath: string;  // route path
   screenMode: string;
@@ -30,20 +31,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     // get data from routing.module.ts
     this.routePath = this.route.snapshot.data['path'];
-    
     // screenMode depends on user screen size 
     let screenWidth = window.innerWidth;
     (screenWidth > 767) ? this.screenMode = "W" : this.screenMode = "M";
-    
     this.headerC = this.headerService.getHeaderContentList().find((arr) => arr.id === this.routePath);
-
-    
-    console.log(this.screenMode);
-    console.log(this.headerC['iconLWSource']);
-
-   
   }
-
 
   @HostListener ('window:resize', ['$event'])
   // On every resizing get the screen size data continuously
@@ -59,5 +51,9 @@ export class HeaderComponent implements OnInit {
       this.headerFixed = false;
     }
   }
-
+  
+  sendSearch(search: string) {
+    console.log(search);
+    this.searchTitle.emit(search);
+  }
 }

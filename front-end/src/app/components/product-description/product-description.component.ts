@@ -13,7 +13,7 @@ export class ProductDescriptionComponent implements OnInit {
   @Input('productCategory') productCategory: string;
   @Input('productPrice') productPrice: number;
   @Input('district') district: string;
-  @Input('postDate') postDate: string;
+  @Input('createdAt') createdAt: string;
   @Input('productImage') productImage: string[];
   @Input('productDescription') productDescription: string;
   @Input('contact') contact: string;
