@@ -8,7 +8,6 @@ import { HeaderServiceService } from 'src/app/services/header-service.service';
   styleUrls: ['./header.component.scss']
 })
 
-
 export class HeaderComponent implements OnInit {
   @Input() iconLWLink?: string;
   @Input() iconR1WLink?: string;
@@ -17,6 +16,7 @@ export class HeaderComponent implements OnInit {
   @Input() iconR1MLink?: string;
   @Input() iconR2MLink?: string;
   @Output() InputText = new EventEmitter<string>();
+  @Output() searchTitle = new EventEmitter<string>();
 
   routePath: string;  // route path
   screenMode: string;
@@ -52,8 +52,13 @@ export class HeaderComponent implements OnInit {
       this.headerFixed = false;
     }
   }
+
   searchText() {
     this.InputText.emit(this.searchInput);
     console.log(this.searchInput);
+  }  
+  sendSearch(search: string) {
+    console.log(search);
+    this.searchTitle.emit(search);
   }
 }

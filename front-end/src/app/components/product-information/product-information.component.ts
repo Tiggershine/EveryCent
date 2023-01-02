@@ -1,5 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CardsService } from 'src/app/services/cards.service';
+import { Product } from 'src/app/models/product';
+import { response } from 'express';
 
 @Component({
   selector: 'app-product-information',
@@ -39,8 +42,10 @@ export class ProductInformationComponent implements OnInit {
   productForm!: FormGroup;
   screenMode: string;
   imageData!: string;
+  products: Product = {};
+  submitted = false;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private cardsService: CardsService) {}
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
@@ -67,8 +72,7 @@ export class ProductInformationComponent implements OnInit {
       : (this.screenMode = 'mobile');
     console.log(this.screenMode);
   }
-  addProduct() {}
-
+  
   onFileSelect(event: Event) {
     const file = (event.target as HTMLInputElement).files?.[0];
     this.productForm.patchValue({ image: file });
@@ -80,5 +84,30 @@ export class ProductInformationComponent implements OnInit {
       };
       reader.readAsDataURL(file);
     }
+  }
+  
+  saveProduct(): void {
+    const data = {
+      _id: this.products._id,
+      title: this.products.title,
+      price: this.products.price,
+      category: this.products.category,
+      description: this.products.description,
+      imageUrl: this.products.imageUrl,
+      user: this.products.user,
+      district: this.products.district,
+      dealType: this.products.dealType,
+      contact: this.products.contact,
+      createdAt: this.products.createdAt,
+    };
+    this.cardsService.create(data).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.submitted = true;
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
   }
 }

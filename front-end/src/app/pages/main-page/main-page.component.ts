@@ -18,14 +18,8 @@ export class MainPageComponent implements OnInit {
   rightBtn1Show: boolean;
   rightBtn2Show: boolean;
   rightBtnMobileShow: boolean;
-  
-  isSearched: boolean;
-  inputText: string;
 
-  constructor(
-    private route: ActivatedRoute
-    
-  ) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.leftIcon = this.route.snapshot.data['leftIcon'];
@@ -39,12 +33,5 @@ export class MainPageComponent implements OnInit {
     this.rightBtn1Show = this.route.snapshot.data['rightBtn1Show'];
     this.rightBtn2Show = this.route.snapshot.data['rightBtn2Show'];
     this.rightBtnMobileShow = this.route.snapshot.data['rightBtnMobileShow'];
-  }
-  
-  searchText(text: string) {
-    this.inputText = text;
-    this.isSearched = this.inputText!=='';
-    console.log(this.inputText);
-    console.log(this.isSearched);
   }
 }
