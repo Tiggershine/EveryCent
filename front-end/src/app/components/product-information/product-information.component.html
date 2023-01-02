@@ -30,10 +30,10 @@
         <div>
           <div *ngIf="screenMode == 'web'">
             <h1 class="text text-image">{{x.image}}</h1>
-            <!-- <div class="box-image">
+            <div class="box-image">
               <label class="button button-image" for="image">Choose File</label>
-              <input class="file-image" id="image" (change)="onFileSelect($event)" type="file" />
-            </div> -->
+              <!-- <input class="file-image" id="image" (change)="onFileSelect($event)" type="file" /> -->
+            </div>
             <!-- <div *ngIf="imageData">
               <img [src]="imageData" [alt]="productForm.value.name" />
             </div> -->
@@ -46,10 +46,11 @@
     </form>
     <div *ngIf="screenMode == 'mobile'">
       <h1 class="text text-image">{{x.image}}</h1>
-      <!-- <div class="box-image">
+      <div class="box-image">
         <label class="button-image" for="image">Choose File</label>
-        <input class="file-image" id="image" (change)="onFileSelect($event)" type="file" />
-      </div> -->
+        <!-- (change)="onFileSelect($event)" -->
+        <input class="file-image" id="image" type="file" />
+      </div>
     </div>
     <div class="row-button" [align]="'end'">
       <button class="button button-register" routerLink="/" (click)="addProduct()">REGISTER</button>
