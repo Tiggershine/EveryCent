@@ -39,20 +39,16 @@ export class SignupPageComponent implements OnInit {
     if (!this.passwordConfirm()) {
       this.isDataIncorrect = true;
       this.warningMsg = "Passwords do not same!";
-      return console.log("Passwords do not same!");
     }
 
     if (!this.passwordTooShort()) {
       this.isDataIncorrect = true;
       this.warningMsg = "Password too short!";
-      return console.log("Password too short!");
     }
 
-    if(this.passwordConfirm() && this.passwordTooShort()){
+    if(this.isDataIncorrect){
       this._auth.signupUser(this.signupUserData.email, this.signupUserData.username, this.signupUserData.password).subscribe(data => {
-      //if(data.success) {
-      console.log(data);
-      //}
+        console.log(data);
       })
     }
   }
