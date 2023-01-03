@@ -8,30 +8,31 @@ import { ProductRegisterPageComponent } from './pages/product-register-page/prod
 import { MypageComponent } from './components/mypage/mypage.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: MainPageComponent,
+  { path: '', component: MainPageComponent,
     data: {
       path: 'main',
     },
   },
   {
-    path: 'login',
-    component: LoginPageComponent,
+    path: 'products/:productId', component: ProductDetailPageComponent,
+    data: {
+      path: 'products/:productId',
+    },
+  },    
+  {
+    path: 'login', component: LoginPageComponent,
     data: {
       path: 'login',
     },
   },
   {
-    path: 'signup',
-    component: SignupPageComponent,
+    path: 'signup', component: SignupPageComponent,
     data: {
       path: 'signup',
     },
   },
   {
-    path: 'post',
-    component: ProductRegisterPageComponent,
+    path: 'post', component: ProductRegisterPageComponent,
     data: {
       path: 'post',
     },

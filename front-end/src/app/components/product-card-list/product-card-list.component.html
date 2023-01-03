@@ -1,14 +1,14 @@
 <div class="container mypage-container">
   <div class="product-list row g-3">
-    <div class="product-card col-md-3 col-6" #uiElement *ngFor="let product of products" (scroll)="onScrollLoadData()">
+    <div class="product-card col-md-3 col-6" *ngFor="let product of products | filter: searchText">
       <!-- todo: isMypost 함수 추가  -->
       <div class="product-item" [ngClass]="{'card-hover' : isMypost}" >
-        <a [routerLink]="['/products', product.productId]">
-          <img class="product-image" [src]="product.productImage[0]" [alt]="product.productTitle"/>
+        <a [routerLink]="['/products', product._id]">
+          <img class="product-image" [src]="product.imageUrl[0]" [alt]="product.title"/>
           <div class="product-content">
-            <span id="product-title">{{ product.productTitle }}</span>
-            <span id="product-price">{{ product.productPrice }}€</span>
-            <span id="register-date">{{ product.postDate }}</span>
+            <span id="product-title">{{ product.title }}</span>
+            <span id="product-price">{{ product.price }}€</span>
+            <span id="register-date">{{ product.createdAt }}</span>
           </div> 
         </a>
         <!-- todo: isMypost 함수 추가 -->
