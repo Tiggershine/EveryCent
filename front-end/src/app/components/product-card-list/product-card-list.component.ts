@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { CardsService } from 'src/app/services/cards.service';
 
@@ -16,6 +17,7 @@ export class ProductCardListComponent implements OnInit {
     
   constructor (
     private _cardservice: CardsService,
+    private route: ActivatedRoute,
   ) {}
   
   ngOnInit() {

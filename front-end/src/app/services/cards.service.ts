@@ -15,14 +15,17 @@ export class CardsService {
   getAll(): Observable<Product[]> {
     return this._http.get<Product[]>('http://localhost:3000/card/cards');
   }
+  getProductCard(_id: string): Observable<Product> {
+    return this._http.get<Product>(`http://localhost:3000/card/card/${_id}`);
+  }
   create(data: any): Observable<any> {
     return this._http.post('http://localhost:3000/card/register', data);
   }
   update(id: any, data: any): Observable<any> {
-    return this._http.put(`'http://localhost:3000/card/update'/${id}`, data);
+    return this._http.put(`http://localhost:3000/card/update/${id}`, data);
   }
   delete(id: any): Observable<any> {
-    return this._http.delete(`'http://localhost:3000/card/delete'/${id}`);
+    return this._http.delete(`http://localhost:3000/card/delete/${id}`);
   }
   searchByTitle(searchText: string): Observable<Product[]> {
     return this.getAll().pipe(

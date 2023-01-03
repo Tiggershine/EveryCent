@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PRODUCTS } from 'src/app/models/mock-product';
 
 @Component({
@@ -8,19 +9,22 @@ import { PRODUCTS } from 'src/app/models/mock-product';
 })
 export class ProductDescriptionComponent implements OnInit {
 
-  @Input('productId') productId: string;
-  @Input('productTitle') productTitle: string;
-  @Input('productCategory') productCategory: string;
-  @Input('productPrice') productPrice: number;
-  @Input('district') district: string;
-  @Input('createdAt') createdAt: string;
-  @Input('productImage') productImage: string[];
-  @Input('productDescription') productDescription: string;
-  @Input('contact') contact: string;
+  @Input() productId: string;
+  @Input() productTitle: string;
+  @Input() productCategory: string;
+  @Input() productPrice: number;
+  @Input() district: string;
+  @Input() createdAt: string;
+  @Input() productImage: string[];
+  @Input() productDescription: string;
+  @Input() contact: string;
   
-  product = PRODUCTS[0];
   slides: string[]; 
   currentIndex: number = 0;
+  
+  constructor(
+    private route: ActivatedRoute,
+  ) { }
 
   getCurrentSlideUrl(): string{
     return this.slides[this.currentIndex];
@@ -39,8 +43,6 @@ export class ProductDescriptionComponent implements OnInit {
       : this.currentIndex - 1;
     this.currentIndex = newIndex;
   }
-
-  constructor() { }
 
   ngOnInit(): void {
     this.slides = this.productImage;

@@ -15,6 +15,18 @@ router.get('/cards', async (req, res) => {
   }
 })
 
+// Get product card
+router.get('/card/:id', async (req, res) => {
+  const id = req.params.id;
+  const productCard = await productCardRepository.getProductCard(id);
+  if (productCard) {
+    res.status(200).json(productCard);
+  } else {
+    res.status(404).json({
+      message: 'product-card are not found'
+    });
+  }
+})
 
 // Create a card
 router.post('/register', async (req, res) => {
