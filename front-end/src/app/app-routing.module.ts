@@ -5,6 +5,7 @@ import { ProductDetailPageComponent } from './pages/product-detail-page/product-
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { ProductRegisterPageComponent } from './pages/product-register-page/product-register-page.component';
+import { MypageComponent } from './components/mypage/mypage.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent,
@@ -30,11 +31,25 @@ const routes: Routes = [
       path: 'signup',
     },
   },
-  // todo: change Component to PageComponent
   {
     path: 'post', component: ProductRegisterPageComponent,
     data: {
       path: 'post',
+    },
+  },
+  {
+    path: 'products/:productId',
+    component: ProductDetailPageComponent,
+    data: {
+      path: 'products/:productId',
+    },
+  },
+  //Add userId to mypage path
+  {
+    path: 'mypage',
+    component: MypageComponent,
+    data: {
+      path: 'mypage',
     },
   },
 ];
