@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service'
+import { AuthService } from '../../services/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -9,6 +10,7 @@ import { AuthService } from '../../services/auth.service'
 export class LoginPageComponent implements OnInit {
   iconLWLink: string = '';
   iconLMLink: string = '';
+  loginBtnLink: string = '/login';
   loginUserData = {
     "email": "",
     "password": ""
@@ -16,7 +18,9 @@ export class LoginPageComponent implements OnInit {
 
   isDataInvalid: boolean = false;
 
-  constructor(private _auth: AuthService) { }
+  constructor(
+    private _auth: AuthService,
+    private router: Router,) { }
 
   ngOnInit(): void {}
 
@@ -26,6 +30,7 @@ export class LoginPageComponent implements OnInit {
         this.isDataInvalid = true;
         console.log(`isDataInvalid: ${this.isDataInvalid}`);
       } else {
+        this.router.navigateByUrl('/');
         console.log(`isDataInvalid: ${this.isDataInvalid}`);
         return data;
       }
