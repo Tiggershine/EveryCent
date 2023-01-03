@@ -44,7 +44,6 @@ export class HeaderComponent implements OnInit {
     let screenWidth = window.innerWidth;
     (screenWidth > 767) ? this.screenMode = "W" : this.screenMode = "M";
   }
-
   @HostListener('window:scroll', ['$event']) onscroll() {
     if(window.scrollY > 200) {
       this.headerFixed = true;
@@ -52,13 +51,7 @@ export class HeaderComponent implements OnInit {
       this.headerFixed = false;
     }
   }
-
   searchText() {
-    this.InputText.emit(this.searchInput);
-    console.log(this.searchInput);
+    this.InputText.emit(this.searchInput);    
   }  
-  sendSearch(search: string) {
-    console.log(search);
-    this.searchTitle.emit(search);
-  }
 }

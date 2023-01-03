@@ -7,8 +7,7 @@
   [iconR2MLink]="'/login'"
   (InputText)="searchText($event)"
 ></app-header>
-<app-main-page-nav *ngIf="!isSearched"></app-main-page-nav>
-<!-- <router-outlet [searchText]="inputText"></router-outlet> -->
-<app-product-card-list [searchText]="inputText"></app-product-card-list>
+<app-main-page-nav *ngIf="!isSearched" (InputText)="searchText($event)"></app-main-page-nav>
+<app-product-card-list [searchText]="inputText" [searched]="isSearched"></app-product-card-list>
 <app-footer></app-footer>
 <app-float-btn ></app-float-btn>
