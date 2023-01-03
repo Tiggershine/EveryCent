@@ -8,13 +8,54 @@
   </div>
   <div class="form-group">
     <label>ID</label>
-    <input [(ngModel)]="singupUserData['email']" type="text" placeholder="" class="id-input" required>
-    <label>USERNAME</label>
-    <input [(ngModel)]="singupUserData['username']" type="text" placeholder="" class="id-input" required>
+    <input 
+      [(ngModel)]="signupUserData['email']" 
+      type="email" 
+      placeholder="" 
+      class="email-input" 
+      required
+      [pattern]="emailPattern"
+      #email="ngModel"
+      [ngClass]="{ 'is-invalid': email.errors }"
+    >
+    <div class="invalid-msg" *ngIf="email.errors">
+      <div *ngIf="email.errors['pattern']">
+        ID must be an email
+      </div>
+    </div>
+
+    <label class="username-label">USERNAME</label>
+    <input 
+      [(ngModel)]="signupUserData['username']" 
+      type="text" 
+      placeholder="" 
+      class="id-input" 
+      required
+      >
     <label>PASSWORD</label>
-    <input [(ngModel)]="singupUserData['password']" type="password" placeholder="" class="pw-input" required>
+    <input 
+      [(ngModel)]="signupUserData['password']" 
+      type="password" 
+      placeholder="" 
+      class="pw-input" 
+      required
+      minlength="8"
+      maxlength="20"
+      #password="ngModel"
+      [ngClass]="{ 'is-invalid': password.errors }"
+    >
     <label>CONFIRM PASSWORD</label>
-    <input [(ngModel)]="confirmPassword" type="password" placeholder="" class="pw-re-input" required>
+    <input 
+      [(ngModel)]="confirmPassword" 
+      type="password" 
+      placeholder="" 
+      class="pw-re-input" 
+      required
+      minlength="8"
+      maxlength="20"
+      #password="ngModel"
+      [ngClass]="{ 'is-invalid': password.errors }"
+      >
     <div class="signup-hint-text">
       HINT: 8-20 Characters
     </div>
