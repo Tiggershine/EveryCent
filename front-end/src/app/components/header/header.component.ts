@@ -15,17 +15,18 @@ export class HeaderComponent implements OnInit {
   @Input() iconLMLink?: string;
   @Input() iconR1MLink?: string;
   @Input() iconR2MLink?: string;
-  
+  @Output() InputText = new EventEmitter<string>();
   @Output() searchTitle = new EventEmitter<string>();
 
   routePath: string;  // route path
   screenMode: string;
   headerC: any;
   headerFixed: boolean = false;  
+  searchInput: string;
 
-  // iLW: boolean;
-
-  constructor(private route: ActivatedRoute ,private headerService: HeaderServiceService) { 
+  constructor(
+    private route: ActivatedRoute,
+    private headerService: HeaderServiceService) { 
   }
 
   ngOnInit(): void {
@@ -43,7 +44,6 @@ export class HeaderComponent implements OnInit {
     let screenWidth = window.innerWidth;
     (screenWidth > 767) ? this.screenMode = "W" : this.screenMode = "M";
   }
-
   @HostListener('window:scroll', ['$event']) onscroll() {
     if(window.scrollY > 200) {
       this.headerFixed = true;
@@ -51,9 +51,7 @@ export class HeaderComponent implements OnInit {
       this.headerFixed = false;
     }
   }
-  
-  sendSearch(search: string) {
-    console.log(search);
-    this.searchTitle.emit(search);
-  }
+  searchText() {
+    this.InputText.emit(this.searchInput);    
+  }  
 }

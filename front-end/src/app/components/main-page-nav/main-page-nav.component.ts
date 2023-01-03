@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-main-page-nav',
@@ -7,7 +7,10 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class MainPageNavComponent implements OnInit {
   
+  @Output() InputText = new EventEmitter<string>();
+  
   screenMode: string;
+  searchInput: string;
 
   constructor() {}
 
@@ -21,4 +24,7 @@ export class MainPageNavComponent implements OnInit {
     (screenWidth > 767) ? this.screenMode = "web" : this.screenMode = "mobile"
     console.log(this.screenMode);
   }
+  searchText() {
+    this.InputText.emit(this.searchInput);    
+  }  
 }
