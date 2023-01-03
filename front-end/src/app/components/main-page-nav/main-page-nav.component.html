@@ -3,7 +3,7 @@
     <div class="avatar-wrapper">
       <img class="avatar-image" src="../assets/images/Avatar_buyer.png" alt="Buyer Avatar">
       <span class="avatar-text">You want to save?<br/>Every cent counts!</span>
-      <input class="avatar-btn avatar-search-bar" type="text" placeholder="Search...">
+      <input class="avatar-btn avatar-search-bar" [(ngModel)]="searchInput" type="search" placeholder="Search..." (keydown.enter)="searchText()">
     </div>
     <div class="avatar-wrapper">
       <img class="avatar-image" src="../assets/images/Avatar_seller.png" alt="Seller Avatar">

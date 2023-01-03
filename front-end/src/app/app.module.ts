@@ -18,6 +18,7 @@ import { ProductRegisterPageComponent } from './pages/product-register-page/prod
 import { HeaderServiceService } from './services/header-service.service';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FilterPipe } from './components/product-card-list/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
     MypageComponent,
     ProductInformationComponent,
     ProductRegisterPageComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
