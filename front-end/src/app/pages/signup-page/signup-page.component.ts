@@ -46,7 +46,7 @@ export class SignupPageComponent implements OnInit {
       this.warningMsg = "Password too short!";
     }
 
-    if(this.isDataIncorrect){
+    if(!this.isDataIncorrect){
       this._auth.signupUser(this.signupUserData.email, this.signupUserData.username, this.signupUserData.password).subscribe(data => {
         console.log(data);
       })
