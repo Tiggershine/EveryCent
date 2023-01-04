@@ -27,34 +27,48 @@ router.post('/register', (req, res) => {
             if (err) throw err;
             user.password = hash;
             await user.save()
-            return res.json({success: true});
+            return res.json({ success: true });
           })
         })
-        // await user.save();
       }
     } catch (err) {
       console.log(err);
-      return res.json({success: false});
+      return res.json({ success: false });
     }
   })
 })
 
 
 // Login 
-router.post('/login', (req, res, next) => {
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/user/login'
-  })(req, res, next);
-});
+router.post('/login', passport.authenticate('local', {
+  successRedirect: 'user/login-success',
+  failureRedirect: 'user/login-failure'
+}));
 
 
 // Logout
-router.get('/logout', (req, res) => {
+router.post('/logout', (req, res) => {
   req.logout();
-  res.redirect('/users/login');
+  res.redirect('user/login');
 });
 
+// const isAuthenticated = (req, res, next) => {
+//   if (req.isAuthenticated()) return next();
+
+//   res.redirect('/login');
+// }
+
+// Logged In
+router.get('/user/login-success', (req, res) => {
+  res.send('login-success');
+});
+router.post('/user/login-success', (req, res) => {
+  res.send('login-success');
+});
+
+router.get('/login-failure', (req, res) => {
+  res.send('login-failure');
+});
 
 export default router;
 
