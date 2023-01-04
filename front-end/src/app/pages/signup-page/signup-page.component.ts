@@ -30,7 +30,7 @@ export class SignupPageComponent implements OnInit {
     return this.signupUserData.password === this.confirmPassword;
   }
 
-  passwordTooShort(): boolean {
+  passwordLongEnough(): boolean {
     return this.signupUserData.password.length > 7;
   }
 
@@ -41,7 +41,7 @@ export class SignupPageComponent implements OnInit {
       this.warningMsg = "Passwords do not same!";
     }
 
-    if (!this.passwordTooShort()) {
+    if (!this.passwordLongEnough()) {
       this.isDataIncorrect = true;
       this.warningMsg = "Password too short!";
     }
