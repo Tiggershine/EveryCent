@@ -43,7 +43,7 @@ export default function (passport) {
   // After success of login store the user information into session 
   passport.serializeUser((user, done) => {
     process.nextTick(() => {
-      return done(null, user.id);
+      return done(null, user);
     })
   });
 

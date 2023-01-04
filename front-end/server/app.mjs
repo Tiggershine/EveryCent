@@ -57,7 +57,7 @@ app.use((req, res, next) => {
 app.use('/user', userRoutes);
 app.use('/card', productCardRoutes);
 
-
+// TODO: 나중에 지울것
 app.get('/', (req, res) => {
   res.send('Hello!')
 });
