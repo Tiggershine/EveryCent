@@ -28,10 +28,8 @@ export class LoginPageComponent implements OnInit {
     this._auth.loginUser(this.loginUserData.email, this.loginUserData.password).subscribe((data) => {
       if(data.validUser === false) {
         this.isDataInvalid = true;
-        console.log(`isDataInvalid: ${this.isDataInvalid}`);
       } else {
         this.router.navigateByUrl('/');
-        console.log(`isDataInvalid: ${this.isDataInvalid}`);
         return data;
       }
     });
