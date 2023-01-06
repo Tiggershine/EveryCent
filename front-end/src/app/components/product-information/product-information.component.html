@@ -2,29 +2,27 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <div *ngFor="let x of informationType" class="layout">
     <title>Upload New Item</title>
-    <!-- [formGroup]="productForm" -->
-    <form>
+    <form [formGroup]="productForm">
       <h1 class="text">{{x.sellOption}}</h1>
-      <label class="text-button-radio" *ngFor="let trx of tradeOptionRadioButton" for="myRadioId">
-        <input type="radio" id="myRadioId" [(ngModel)]="product.dealType" [value]="trx" name="dealType">
-        {{trx}}
+      <label class="text-button-radio" *ngFor="let trade of tradeOptionRadioButton" for="myRadioId">
+        <input type="radio" id="myRadioId" name="sellbuy">
+        {{trade}}
       </label>
       <div class="row">
         <div>
           <h1 class="text text-type">{{x.title}}</h1>
-          <input class="form-field" type="text" required [(ngModel)]="product.productTitle" name="productTitle">
+          <input class="form-field" formControlName="title" type="text">
           <h1 class="text text-type">{{x.category}}</h1>
           <select class="form-field form-field-arrow" formControlName="category">
             <option hidden></option>
             <option *ngFor="let y of categoryType" value="">{{y.category}}</option>
           </select>
           <h1 class="text text-type">{{x.price}}</h1>
-          <input class="form-field form-field-euro" [(ngModel)]="product.productPrice" name="productPrice"
-            type="number">
+          <input class="form-field form-field-euro" formControlName="price" type="number">
           <h1 class="text text-type">{{x.district}}</h1>
-          <select class="form-field form-field-arrow" [(ngModel)]="product.district" name="district">
+          <select class="form-field form-field-arrow" formControlName="district">
             <option hidden></option>
-            <option *ngFor="let dT of districtType" [ngValue]="dT">{{dT}}</option>
+            <option *ngFor="let z of districtType" value="">{{z.place}}</option>
           </select>
         </div>
         <div>
@@ -32,24 +30,22 @@
             <h1 class="text text-image">{{x.image}}</h1>
             <div class="box-image">
               <label class="button button-image" for="image">Choose File</label>
-              <!-- <input class="file-image" id="image" (change)="onFileSelect($event)" type="file" /> -->
+              <input class="file-image" id="image" (change)="onFileSelect($event)" type="file" />
             </div>
-            <!-- <div *ngIf="imageData">
+            <div *ngIf="imageData">
               <img [src]="imageData" [alt]="productForm.value.name" />
-            </div> -->
+            </div>
           </div>
         </div>
       </div>
       <h1 class="text text-type-two">{{x.description}}</h1>
-      <textarea class="form-field form-field-two" [(ngModel)]="product.productDescription"
-        name="productDescription"></textarea>
+      <textarea class="form-field form-field-two" formControlName="comment"></textarea>
     </form>
     <div *ngIf="screenMode == 'mobile'">
       <h1 class="text text-image">{{x.image}}</h1>
       <div class="box-image">
         <label class="button-image" for="image">Choose File</label>
-        <!-- (change)="onFileSelect($event)" -->
-        <input class="file-image" id="image" type="file" />
+        <input class="file-image" id="image" (change)="onFileSelect($event)" type="file" />
       </div>
     </div>
     <div class="row-button" [align]="'end'">

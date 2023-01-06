@@ -11,7 +11,6 @@ import { response } from 'express';
 })
 export class ProductInformationComponent implements OnInit {
   tradeOptionRadioButton = ['sell', 'buy'];
-
   informationType = [
     {
       sellOption: 'I want',
@@ -31,63 +30,16 @@ export class ProductInformationComponent implements OnInit {
   ];
 
   districtType = [
-    'Markt',
-    'Theater',
-    'Lindenplatz',
-    'St. Jakob',
-    'Westpark',
-    'Kronenberg',
-    'Hörn',
-    'Ponttor',
-    'Hansemannplatz',
-    'Soers',
-    'Jülicher Straße',
-    'Kalkofen',
-    'Kaiserplatz',
-    'Adalbertsteinweg',
-    'Panneschopp',
-    'Rothe Erde',
-    'Forst',
-    'Frankenberger Viertel',
-    'Burtscheid',
-    'Marschiertor',
-    'Beverau',
+    { place: 'Aachen Mitte' },
+    { place: 'Brand' },
+    { place: 'Eilendorf' },
+    { place: 'Haarem' },
+    { place: 'Kornelimünster Walheim' },
+    { place: 'Laurensberg' },
+    { place: 'Richterich' },
   ];
 
-  product: Product = {
-    productId: '',
-    productTitle: 'productTitleWorks',
-    productPrice: 123213,
-    district: '',
-    productCategory: '',
-    productDescription: 'descriptionWorks',
-    productImage: ['232332'],
-    contact: '',
-    dealType: 'buy',
-    postDate: '',
-  };
-
-  // title,
-  // description,
-  // price,
-  // imageUrl,
-  // user,
-  // district,
-  // dealType,
-
-  // productId!: string;
-  // userId?: string;
-  // productTitle!: string;
-  // productPrice!: number;
-  // district?: string;
-  // productCategory?: string;
-  // productDescription?: string;
-  // productImage!: string[];
-  // contact?: string;
-  // dealType?: string;
-  // postDate!: string;
-
-  //productForm!: FormGroup;
+  productForm!: FormGroup;
   screenMode: string;
   imageData!: string;
   products: Product = {};
@@ -96,15 +48,15 @@ export class ProductInformationComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private cardsService: CardsService) {}
 
   ngOnInit(): void {
-    // this.productForm = this.formBuilder.group({
-    //   productName: ['', Validators.required],
-    //   category: ['', Validators.required],
-    //   date: ['', Validators.required],
-    //   tradeOption: ['', Validators.required],
-    //   price: ['', Validators.required],
-    //   comment: ['', Validators.required],
-    //   district: ['', Validators.required],
-    // });
+    this.productForm = this.formBuilder.group({
+      productName: ['', Validators.required],
+      category: ['', Validators.required],
+      date: ['', Validators.required],
+      tradeOption: ['', Validators.required],
+      price: ['', Validators.required],
+      comment: ['', Validators.required],
+      district: ['', Validators.required],
+    });
 
     let screenWidth = window.innerWidth;
     screenWidth > 767
