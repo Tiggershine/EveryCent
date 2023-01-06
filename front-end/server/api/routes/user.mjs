@@ -52,11 +52,6 @@ router.post('/logout', (req, res) => {
   res.redirect('user/login');
 });
 
-// const isAuthenticated = (req, res, next) => {
-//   if (req.isAuthenticated()) return next();
-
-//   res.redirect('/login');
-// }
 
 // Logged In
 router.get('/user/login-success', (req, res) => {
