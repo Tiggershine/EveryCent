@@ -6,9 +6,20 @@
   <div class="login-greeting">Welcome Back!</div>
   <div class="form-group">
     <label>ID</label>
-    <input [(ngModel)]="loginUserData['email']" type="text" class="id-input">
+    <input 
+      [(ngModel)]="loginUserData['email']" 
+      type="text" 
+      class="id-input"
+      >
     <label>PASSWORD</label>
-    <input [(ngModel)]="loginUserData['password']" type="password" class="pw-input">
+    <input 
+      [(ngModel)]="loginUserData['password']" 
+      type="password" 
+      class="pw-input"
+      required
+      minlength="8"
+      maxlength="20"
+      >
   </div>
   <span class="error-container">
     <div *ngIf="isDataInvalid" class="login-error-text">
@@ -19,7 +30,7 @@
     <button class="login-btn" (click)="loginUser()">LOG IN</button>
     <div class="signup-btn-container">
       <div class="signup-text">Don't you have an account?</div>
-      <button class="signup-btn">SIGN UP</button>
+      <button routerLink="/signup" class="signup-btn">SIGN UP</button>
     </div>
   </div>
 
