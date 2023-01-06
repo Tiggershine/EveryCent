@@ -19,7 +19,7 @@ $background-color: #FEF6ED;
   width: 400px;
   padding: 0;
   padding-top: 16px;
-  margin-bottom: 0px;
+  margin-bottom: 40px;
 }
 .slider {
   display: flex;
@@ -99,6 +99,9 @@ span {
 #contact-hint {
   font-size: 0.8rem;
   color: #F9BC60;
+}
+#contact-icon {
+  width: 32px;
 }
 
 // for mobile
