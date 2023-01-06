@@ -1,6 +1,6 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { PRODUCTS } from '../../models/mock-product';
-import { AuditService } from '../../services/audit.service';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Product } from 'src/app/models/product';
+import { CardsService } from 'src/app/services/cards.service';
 
 @Component({
   selector: 'app-product-card-list',
@@ -9,51 +9,29 @@ import { AuditService } from '../../services/audit.service';
 })
 export class ProductCardListComponent implements OnInit {
 
-  products = PRODUCTS;
-  searchhidden: boolean = true;
-  isMypost: boolean= true;
-  public audits: any[]= [];
-  public totalCount=0;
-  public pageIndex: number=0;
-  public pageSize: number=10;
+  @Input() searchText: string = '';
+  @Input() searched: boolean;
+  products: Product[];
+  isMypost: boolean= false;
+    
+  constructor (
+    private _cardservice: CardsService,
+  ) {}
   
-  
-  @ViewChild('uiElement', { static: false }) public uiElement: ElementRef;
-  
-  constructor (private auditService: AuditService) {}
-  
-  @HostListener('window:scroll', ['$event']) onscroll() {
-    if(window.scrollY > 250) { // 650으로 바까라
-      this.searchhidden = false;
-    } else {
-      this.searchhidden = true;
-    }
+  ngOnInit() {
+    this._cardservice.getAll().subscribe({
+      next: (data) => {
+        this.products = data;
+        console.log(this.products);
+      },
+      error: (e) => console.log(e)
+    });
   }
-
-  public async ngOnInit(): Promise<void> {
-    await this.getAudits(this.pageIndex,this.pageSize);
-    this.pageIndex +=1;
-  }
-  public async getAudits(pageIndex: number, pageSize: number){
-    try {
-      const response:any= await   
-      this.auditService.getAudits(pageIndex,pageSize).toPromise();
-      this.audits = [...this.audits,...response.audits]
-      this.totalCount = response.totalCount;
-    } catch (error) {
-      console.log(error)
-    }
-  }
-  public async onScrollLoadData() {
-    const nativeElement= this.uiElement.nativeElement
-    console.log(this.uiElement)
-    if(nativeElement.clientHeight + Math.round(nativeElement.scrollTop) === nativeElement.scrollHeight  &&  this.audits.length !== this.totalCount){
-      await this.getAudits(this.pageIndex, this.pageSize);
-      this.pageIndex +=1;
-    }
-    // if(this.audits.length !== this.totalCount){
-    //   await this.getAudits(this.pageIndex, this.pageSize);
-    //   this.pageIndex +=1;
-    // }
+  
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+    this._cardservice.searchByTitle(this.searchText).subscribe(res => {
+      this.products = res;
+    });
   }
 }

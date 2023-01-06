@@ -1,5 +1,6 @@
 export interface user {
-  userId!: string;
-  password!: string;
-  userProducts!: string[];
+  username: string;
+  email: string;
+  password: string;
+  userProducts: string[];
 }

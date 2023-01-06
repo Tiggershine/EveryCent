@@ -29,16 +29,19 @@
   border: 1px solid $primary-color;
   border-radius: 5px;
   color:$primary-color;
-  padding: 10px
+  padding: 10px;
 }
 .form-group input:focus {
   outline: none !important;
   border: solid 1px $secondary-color;
 }
 .id-input, .pw-input {
-  margin-bottom: 20px;
+  padding-bottom: 20px;
   border: solid 1px $primary-color;
  }
+.email-input{
+  border: solid 1px $primary-color;
+}
  .signup-hint-text {
    display: grid;
    justify-content: end;
@@ -89,6 +92,11 @@
   border: none;
 }
 
+.invalid-msg {
+  margin-left: 5px;
+  color: hsl(356, 100%, 38%);
+}
+
 
 @media (min-width: 768px) {
   .signup-container {
@@ -104,6 +112,9 @@
   }
   .form-group label {
     margin-left: 5px;
+  }
+  .username-label{
+    margin-top: 20px;
   }
   .form-group input {
     width: 500px;
