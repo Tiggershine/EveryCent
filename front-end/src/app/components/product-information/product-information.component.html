@@ -1,24 +1,23 @@
 <div class="container">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <div *ngFor="let x of informationType" class="layout">
+  <div class="layout">
     <title>Upload New Item</title>
-    <h1 class="text">{{x.sellOption}}</h1>
+    <h1 class="text">I want</h1>
     <label class="text-button-radio" *ngFor="let trade of tradeOptionRadioButton" for="myRadioId">
       <input type="radio" id="myRadioId" name="sellbuy">
       {{trade}}
     </label>
     <div class="row">
       <div>
-        <h1 class="text text-type">{{x.title}}</h1>
+        <h1 class="text text-type">Title</h1>
         <input class="form-field" formControlName="title" type="text">
-        <h1 class="text text-type">{{x.category}}</h1>
+        <h1 class="text text-type">Category</h1>
         <select class="form-field form-field-arrow" formControlName="category">
           <option hidden></option>
           <option *ngFor="let y of categoryType" value="">{{y.category}}</option>
         </select>
-        <h1 class="text text-type">{{x.price}}</h1>
+        <h1 class="text text-type">Price</h1>
         <input class="form-field form-field-euro" formControlName="price" type="number">
-        <h1 class="text text-type">{{x.district}}</h1>
+        <h1 class="text text-type">District</h1>
         <select class="form-field form-field-arrow" formControlName="district">
           <option hidden></option>
           <option *ngFor="let z of districtType" value="">{{z.place}}</option>
@@ -26,7 +25,7 @@
       </div>
       <div>
         <div *ngIf="screenMode == 'web'">
-          <h1 class="text text-image">{{x.image}}</h1>
+          <h1 class="text text-image">Image</h1>
           <div class="box-image row-two">
             <div *ngFor="let preview of previews">
               <img class="image-data column" [src]="preview" />
@@ -41,10 +40,10 @@
         </div>
       </div>
     </div>
-    <h1 class="text text-type-two">{{x.description}}</h1>
+    <h1 class="text text-type-two">Description</h1>
     <textarea class="form-field form-field-two" formControlName="comment"></textarea>
     <div *ngIf="screenMode == 'mobile'">
-      <h1 class="text text-image">{{x.image}}</h1>
+      <h1 class="text text-image">Image</h1>
       <div class="box-image">
         <div *ngFor="let preview of previews">
           <img class="image-data column" [src]="preview" />

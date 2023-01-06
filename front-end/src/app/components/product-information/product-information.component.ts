@@ -9,17 +9,6 @@ import { Product } from 'src/app/models/product';
 })
 export class ProductInformationComponent implements OnInit {
   tradeOptionRadioButton = ['sell', 'buy'];
-  informationType = [
-    {
-      sellOption: 'I want',
-      title: 'Title',
-      category: 'Category',
-      price: 'Price',
-      district: 'District',
-      description: 'Description',
-      image: 'Image',
-    },
-  ];
 
   categoryType = [
     { category: 'Shoes' },
