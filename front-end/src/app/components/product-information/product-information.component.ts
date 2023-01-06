@@ -1,8 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CardsService } from 'src/app/services/cards.service';
 import { Product } from 'src/app/models/product';
-import { response } from 'express';
 
 @Component({
   selector: 'app-product-information',
@@ -39,25 +37,15 @@ export class ProductInformationComponent implements OnInit {
     { place: 'Richterich' },
   ];
 
-  productForm!: FormGroup;
   screenMode: string;
-  imageData!: string;
   products: Product = {};
   submitted = false;
+  selectedFiles?: FileList;
+  previews: string[] = [];
 
-  constructor(private formBuilder: FormBuilder, private cardsService: CardsService) {}
+  constructor(private cardsService: CardsService) {}
 
   ngOnInit(): void {
-    this.productForm = this.formBuilder.group({
-      productName: ['', Validators.required],
-      category: ['', Validators.required],
-      date: ['', Validators.required],
-      tradeOption: ['', Validators.required],
-      price: ['', Validators.required],
-      comment: ['', Validators.required],
-      district: ['', Validators.required],
-    });
-
     let screenWidth = window.innerWidth;
     screenWidth > 767
       ? (this.screenMode = 'web')
@@ -72,20 +60,46 @@ export class ProductInformationComponent implements OnInit {
       : (this.screenMode = 'mobile');
     console.log(this.screenMode);
   }
-  
-  onFileSelect(event: Event) {
-    const file = (event.target as HTMLInputElement).files?.[0];
-    this.productForm.patchValue({ image: file });
-    const allowedMimeTypes = ['image/png', 'image/jpeg', 'image/jpg'];
-    if (file && allowedMimeTypes.includes(file.type)) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.imageData = reader.result as string;
-      };
-      reader.readAsDataURL(file);
+
+  // onFileSelect(event: Event) {
+  //   const file = (event.target as HTMLInputElement).files?.[0];
+  //   this.selectedFiles = event.target.files;
+
+  //   const allowedMimeTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+  //   const numberOfFiles = this.selectedFiles.length;
+
+  //   if (file && allowedMimeTypes.includes(file.type)) {
+  //     for (let i = 0; i < numberOfFiles; i++) {
+  //       const reader = new FileReader();
+  //       reader.onload = (e: any) => {
+  //         //this.imageData = reader.result as string;
+  //         this.previews.push(e.target.result);
+  //         console.log(this.previews);
+  //       };
+  //       reader.readAsDataURL(file);
+  //     }
+  //   }
+  // }
+
+  onFileSelect(event: any): void {
+    this.selectedFiles = event.target.files;
+
+    this.previews = [];
+    if (this.selectedFiles && this.selectedFiles[0]) {
+      const numberOfFiles = this.selectedFiles.length;
+      for (let i = 0; i < 10; i++) {
+        const reader = new FileReader();
+
+        reader.onload = (e: any) => {
+          console.log(e.target.result);
+          this.previews.push(e.target.result);
+          console.log(this.previews);
+        };
+        reader.readAsDataURL(this.selectedFiles[i]);
+      }
     }
   }
-  
+
   saveProduct(): void {
     const data = {
       _id: this.products._id,
@@ -107,7 +121,7 @@ export class ProductInformationComponent implements OnInit {
       },
       error: (error) => {
         console.log(error);
-      }
+      },
     });
   }
 }
