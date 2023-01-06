@@ -91,12 +91,13 @@
   margin-top: 10px;
   border: none;
 }
-
 .invalid-msg {
   margin-left: 5px;
   color: hsl(356, 100%, 38%);
 }
-
+#m-form-margin {
+  margin-top: 16px;
+}
 
 @media (min-width: 768px) {
   .signup-container {
