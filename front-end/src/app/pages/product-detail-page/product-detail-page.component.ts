@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product';
-import { PRODUCTS } from '../../models/mock-product';
+import { CardsService } from 'src/app/services/cards.service';
 
 @Component({
   selector: 'app-product-detail-page',
@@ -12,11 +12,23 @@ export class ProductDetailPageComponent implements OnInit {
   
   product: Product;
   
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private _cardservice: CardsService,  
+  ) { }
 
   ngOnInit(): void {
-    const routeParams = this.route.snapshot.paramMap;
-    const productIdFormRoute = String(routeParams.get('productId'));
-    this.product = PRODUCTS.find(product => product._id === productIdFormRoute);
+    this.getProduct(this.route.snapshot.params['productId']);
+  }
+  
+  getProduct(_id: string): void {
+    this._cardservice.getProduct(_id)
+      .subscribe({
+        next: (data) => {
+          this.product = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
   }
 }

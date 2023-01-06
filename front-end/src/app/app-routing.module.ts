@@ -13,6 +13,11 @@ const routes: Routes = [
       path: 'main',
     },
   },
+  { path: 'home', component: MainPageComponent,
+    data: {
+      path: 'main',
+    },
+  },  
   {
     path: 'products/:productId', component: ProductDetailPageComponent,
     data: {
@@ -37,14 +42,7 @@ const routes: Routes = [
       path: 'post',
     },
   },
-  {
-    path: 'products/:productId',
-    component: ProductDetailPageComponent,
-    data: {
-      path: 'products/:productId',
-    },
-  },
-  //Add userId to mypage path
+  // todo: Add userId to mypage path
   {
     path: 'mypage',
     component: MypageComponent,
