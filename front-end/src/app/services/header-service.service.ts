@@ -99,7 +99,7 @@ export class HeaderServiceService {
         iconCM: false,
         iconR1M: false,
         iconR2M: false,
-        iconLMSource: '../../assets/icons/everycent.svg',
+        iconLMSource: '../../assets/icons/backIcon.svg',
         iconCMSource: '',
         iconR1MSource: '',
         iconR2MSource: '',
