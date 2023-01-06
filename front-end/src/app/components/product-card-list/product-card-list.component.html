@@ -8,7 +8,7 @@
           <div class="product-content">
             <span id="product-title">{{ product.title }}</span>
             <span id="product-price">{{ product.price }}€</span>
-            <span id="register-date">{{ product.createdAt }}</span>
+            <span id="register-date">{{ product.createdAt | date: 'dd/MM/yy'}}</span>
           </div> 
         </a>
         <!-- todo: isMypost 함수 추가 -->
