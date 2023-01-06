@@ -1,13 +1,15 @@
-export class Product {
-  productId!: string;
-  userId?: string;
-  productTitle!: string;
-  productPrice!: number;
+import { user } from "./userInterface";
+
+export class Product{
+  _id?: string;
+  title?: string;
+  price?: number;
+  category?: string;
+  description?: string;
+  imageUrl?: string[];
+  user?: user["username"];
   district?: string;
-  productCategory?: string;
-  productDescription?: string;
-  productImage!: string[];
-  contact?: string;
   dealType?: string;
-  postDate!: string;
+  contact?: user["email"];
+  createdAt?: string;
 }

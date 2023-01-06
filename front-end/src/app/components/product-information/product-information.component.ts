@@ -1,8 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { json } from 'body-parser';
+import { CardsService } from 'src/app/services/cards.service';
 import { Product } from 'src/app/models/product';
-import { ProductServiceService } from 'src/app/services/product-service.service';
+import { response } from 'express';
 
 @Component({
   selector: 'app-product-information',
@@ -90,11 +90,10 @@ export class ProductInformationComponent implements OnInit {
   //productForm!: FormGroup;
   screenMode: string;
   imageData!: string;
+  products: Product = {};
+  submitted = false;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private productService: ProductServiceService
-  ) {}
+  constructor(private formBuilder: FormBuilder, private cardsService: CardsService) {}
 
   ngOnInit(): void {
     // this.productForm = this.formBuilder.group({
@@ -121,40 +120,42 @@ export class ProductInformationComponent implements OnInit {
       : (this.screenMode = 'mobile');
     console.log(this.screenMode);
   }
-
-  addProduct(): void {
+  
+  onFileSelect(event: Event) {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    this.productForm.patchValue({ image: file });
+    const allowedMimeTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+    if (file && allowedMimeTypes.includes(file.type)) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imageData = reader.result as string;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  
+  saveProduct(): void {
     const data = {
-      title: this.product.productTitle,
-      description: this.product.productDescription,
-      price: this.product.productPrice,
-      imageUrl: this.product.productImage,
-      user: {
-        email: 'hanbit@gmail.com',
-        password: 'love0324465',
-        username: 'hanbitt',
-      },
-      district: this.product.district,
-      dealType: this.product.dealType,
+      _id: this.products._id,
+      title: this.products.title,
+      price: this.products.price,
+      category: this.products.category,
+      description: this.products.description,
+      imageUrl: this.products.imageUrl,
+      user: this.products.user,
+      district: this.products.district,
+      dealType: this.products.dealType,
+      contact: this.products.contact,
+      createdAt: this.products.createdAt,
     };
-
-    this.productService.create(data).subscribe({
-      next: (res) => {
-        console.log(res);
+    this.cardsService.create(data).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.submitted = true;
       },
-      error: (err) => console.log(err),
+      error: (error) => {
+        console.log(error);
+      }
     });
   }
-
-  // onFileSelect(event: Event) {
-  //   const file = (event.target as HTMLInputElement).files?.[0];
-  //   this.productForm.patchValue({ image: file });
-  //   const allowedMimeTypes = ['image/png', 'image/jpeg', 'image/jpg'];
-  //   if (file && allowedMimeTypes.includes(file.type)) {
-  //     const reader = new FileReader();
-  //     reader.onload = () => {
-  //       this.imageData = reader.result as string;
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // }
 }

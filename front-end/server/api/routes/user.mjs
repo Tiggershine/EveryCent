@@ -1,25 +1,36 @@
 import express from 'express';
 const router = express.Router();
+import bcrypt from 'bcryptjs';
+import passport from 'passport';
 import User from '../models/user.model.mjs'
 
 // Register new user
 router.post('/register', (req, res) => {
-  let userData  = req.body;
+  let { email, username, password }  = req.body;
 
-  User.findOne( { email: userData.email }, async (err, user) => {
+  User.findOne( { email: email }, async (err, user) => {
     try {
       if (user) {
         return res.status(409).send("This email has already registered!");
       } 
       else {
         const user = new User({
-          email: userData.email,
-          password: userData.password,
-          username: userData.username,
+          email: email,
+          username: username,
+          password: password,
           createdAt: Date.now()
         })
-        await user.save();
-        return res.json({success: true});
+
+        // Hash the password
+        bcrypt.genSalt(10, (err, salt) => {
+          bcrypt.hash(user.password, salt, async (err, hash) => {
+            if (err) throw err;
+            user.password = hash;
+            await user.save()
+            return res.json({success: true});
+          })
+        })
+        // await user.save();
       }
     } catch (err) {
       console.log(err);
@@ -28,27 +39,21 @@ router.post('/register', (req, res) => {
   })
 })
 
-// Login user
-router.post('/login', (req, res) => {
-  let userData = req.body;
 
-  User.findOne({ email: userData.email }, (err, user) => {
-    try {
-      if (!user || (user.password !== userData.password)) {
-        res.json({validUser: false});
-        res.status(401).send("Invalid email or password!");
-       
-      } else {
-        res.json({validUser: true});
-        res.status(200).send(user);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  })
-})
+// Login 
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/user/login'
+  })(req, res, next);
+});
 
 
+// Logout
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/users/login');
+});
 
 
 export default router;
