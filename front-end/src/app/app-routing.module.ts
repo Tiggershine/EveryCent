@@ -6,19 +6,20 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { ProductRegisterPageComponent } from './pages/product-register-page/product-register-page.component';
 import { MypageComponent } from './components/mypage/mypage.component';
+import { ProductCardListComponent } from './components/product-card-list/product-card-list.component';
+import { AfterSearchComponent } from './pages/after-search/after-search.component';
 import { DetailOpenGuard } from './pages/product-detail-page/guard/detail-open.guard';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent,
     data: {
-      path: 'main',
+      path: 'main',             
     },
+    children: [
+      { path: '', component: ProductCardListComponent, },
+      { path: 'search', component: AfterSearchComponent, },
+    ]
   },
-  { path: 'home', component: MainPageComponent,
-    data: {
-      path: 'main',
-    },
-  },  
   {
     path: 'products/:productId', component: ProductDetailPageComponent,
     data: {
