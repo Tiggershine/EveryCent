@@ -26,7 +26,7 @@ export class HeaderServiceService {
         iconLMSource: '../../assets/icons/everycent.svg',
         iconCMSource: '',
         iconR1MSource: '',
-        iconR2MSource: '../../assets/icons/loginIcon.svg',
+        iconR2MSource: '../../assets/icons/loginBtn.svg',
       },
       {
         id: 'login',
