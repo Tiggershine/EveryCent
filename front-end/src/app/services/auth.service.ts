@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { response } from 'express';
 
 interface loginResponse {
   validUser: boolean
@@ -30,9 +31,14 @@ export class AuthService {
   }
 
   loginUser(email: string, password: string) {
+    
+    //for test
+    this.isLoggedIn$ = true;
+
     return this.http.post<any>(`${_signupUrl}/user/login`, {
       email,
-      password
-    });
+      password,
+    },{ responseType: 'text' as 'json' });
   }
 }
+ 

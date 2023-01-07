@@ -61,7 +61,7 @@ router.post('/user/login-success', (req, res) => {
   res.send('login-success');
 });
 
-router.get('/login-failure', (req, res) => {
+router.get('/user/login-failure', (req, res) => {
   res.send('login-failure');
 });
 
