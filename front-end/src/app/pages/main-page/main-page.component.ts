@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
@@ -7,17 +7,23 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent implements OnInit {
-  isSearched: boolean;
-  inputText: string;
-  searched: boolean;
+  public isSearched: boolean;
+  public inputText: string;
+  public searched: boolean;
 
-  constructor() {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
   }
   
   searchText(text: string) {
     this.inputText = text;
-    this.isSearched = (this.inputText.length !== 0);
+    if(this.inputText.length !== 0) {
+      this.isSearched = true;
+      this.router.navigate(['']);
+    }
   }
 }

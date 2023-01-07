@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
 
 interface loginResponse {
   validUser: boolean
@@ -12,6 +13,7 @@ const _signupUrl = "http://localhost:3000";
   providedIn: 'root'
 })
 export class AuthService {
+
   private loggedIn: boolean = false;
 
   private setLoggedIn(data: boolean) {
@@ -24,6 +26,9 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
+  // todo: get data from sessions
+  isLoggedIn$: boolean = false;
+
   signupUser(email: string, username: string, password: string) {
     return this.http.post<any>(`${_signupUrl}/user/register`, {
       email,
@@ -35,5 +40,4 @@ export class AuthService {
   loginUser(email: string, password: string) {
     return this.http.post<any>(`${_signupUrl}/login`, { email, password });
   }
-  
 }
