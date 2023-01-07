@@ -6,24 +6,26 @@
       <img src="../../assets/icons/arrow-right-circle.svg" class="rightArrow" (click)="goToNext()" />
     </div>
       <div class="product-description-content">
-        <span class="product-description-title">{{ product.title }}</span>
-        <span class="product-description-category">{{ product.price }}</span>
+        <span class="product-description-title">{{ productTitle }}</span>
+        <span class="product-description-category">{{ productCategory }}</span>
         <div class="price-location-wrapper">
-          <div class="product-description-price">{{ product.price }} €</div>
+          <div class="product-description-price">{{ productPrice }} €</div>
           <div class="product-description-location">
             <img class="location-item" src="../../assets/icons/geo.svg"/>
-            {{ product.district }}
+            {{ district }}
           </div>
         </div>
         <hr class="product-description-line"/>
-        <span class="product-description-date">{{ product.createdAt }}</span>
+        <span class="product-description-date">{{ createdAt | date: 'dd/MM/yy'}}</span>
         <span class="product-description-desc">
-          <span class="product-description-descTitle">
-            [Description]
-          </span>
-            {{ product.description }}
+          {{ productDescription }}
         </span>
-        <span class="product-description-contact">{{ product.contact }}</span>
+        <!-- todo: connect DB -->
+        <div class="product-description-contact">
+          <span id="contact-hint">Are you interested? Contact the seller.</span>
+          <img id="contact-icon" src="../../../assets/icons/mail.svg">  hyejin.kang@rwth-aachen.de
+        </div>
+        <!-- <span class="product-description-contact">{{ contact }}</span> -->
       </div>
   </div>
 </div>

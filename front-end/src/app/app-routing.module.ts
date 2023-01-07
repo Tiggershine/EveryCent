@@ -6,18 +6,26 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { ProductRegisterPageComponent } from './pages/product-register-page/product-register-page.component';
 import { MypageComponent } from './components/mypage/mypage.component';
+import { ProductCardListComponent } from './components/product-card-list/product-card-list.component';
+import { AfterSearchComponent } from './pages/after-search/after-search.component';
+import { DetailOpenGuard } from './pages/product-detail-page/guard/detail-open.guard';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent,
     data: {
-      path: 'main',
+      path: 'main',             
     },
+    children: [
+      { path: '', component: ProductCardListComponent, },
+      { path: 'search', component: AfterSearchComponent, },
+    ]
   },
   {
     path: 'products/:productId', component: ProductDetailPageComponent,
     data: {
       path: 'products/:productId',
     },
+    canActivate: [DetailOpenGuard],
   },    
   {
     path: 'login', component: LoginPageComponent,
@@ -36,21 +44,16 @@ const routes: Routes = [
     data: {
       path: 'post',
     },
+    canActivate: [DetailOpenGuard],
   },
-  {
-    path: 'products/:productId',
-    component: ProductDetailPageComponent,
-    data: {
-      path: 'products/:productId',
-    },
-  },
-  //Add userId to mypage path
+  // todo: Add userId to mypage path
   {
     path: 'mypage',
     component: MypageComponent,
     data: {
       path: 'mypage',
     },
+    canActivate: [DetailOpenGuard],
   },
 ];
 @NgModule({

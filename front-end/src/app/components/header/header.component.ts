@@ -1,5 +1,5 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderServiceService } from 'src/app/services/header-service.service';
 
 @Component({
@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private headerService: HeaderServiceService) { 
   }
 
@@ -52,6 +53,7 @@ export class HeaderComponent implements OnInit {
     }
   }
   searchText() {
-    this.InputText.emit(this.searchInput);    
+    this.InputText.emit(this.searchInput);
+    this.router.navigate(['search']);
   }  
 }

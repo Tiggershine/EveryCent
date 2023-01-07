@@ -24,7 +24,7 @@
       </div>
     </div>
 
-    <label class="username-label">USERNAME</label>
+    <label class="username-label" id="m-form-margin">USERNAME</label>
     <input 
       [(ngModel)]="signupUserData['username']" 
       type="text" 
@@ -32,7 +32,7 @@
       class="id-input" 
       required
       >
-    <label>PASSWORD</label>
+    <label id="m-form-margin">PASSWORD</label>
     <input 
       [(ngModel)]="signupUserData['password']" 
       type="password" 
@@ -44,7 +44,7 @@
       #password="ngModel"
       [ngClass]="{ 'is-invalid': password.errors }"
     >
-    <label>CONFIRM PASSWORD</label>
+    <label id="m-form-margin">CONFIRM PASSWORD</label>
     <input 
       [(ngModel)]="confirmPassword" 
       type="password" 

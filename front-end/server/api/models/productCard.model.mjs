@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
-import * as User from '../models/user.model.mjs'
+// import * as User from '../models/user.model.mjs'
  
 
 const productCardSchema = new Schema(
@@ -17,12 +17,17 @@ const productCardSchema = new Schema(
       type: Number, 
       required: true 
     },
+    category: {
+			type: String,
+			enum: [ 'Book', 'Clothing', 'Food', 'Electronics', 'Kitchen', 'Furniture', 'Sporting goods', 'Hobbies' ],
+			required: true
+		},
     imageUrl: { 
       type: [String],
       dafault: ['no image']
     },
     user: { 
-      type: User.userSchema, 
+      type: String,  // User.username 
       required: true 
     },
     district: { 
@@ -38,7 +43,7 @@ const productCardSchema = new Schema(
     },
     createdAt: { 
       type: Date, 
-      dafault: Date.now 
+      dafault: Date.now
     }
   }
 );
@@ -57,21 +62,23 @@ export async function getProductCard(id) {
 }
 
 
-export async function createCard(title, description, price, imageUrl, user, district, dealType) {
+export async function createCard(title, description, price, category, imageUrl, user, district, dealType) {
   return new ProductCard({
     title,
     description,
     price,
+    category,
     imageUrl,
     user,
     district,
     dealType,
+    createdAt: Date.now()
   }).save();
 }
 
 
 export async function updateCard(id, title, description, price, imageUrl, user, district, dealType) {
-  return ProductCard.findByIdAndUpdate(id, { title, description, price, imageUrl, user, district, dealType }, { returnOriginal: false});
+  return ProductCard.findByIdAndUpdate(id, { title, description, price, category, imageUrl, user, district, dealType }, { returnOriginal: false});
 }
 
 

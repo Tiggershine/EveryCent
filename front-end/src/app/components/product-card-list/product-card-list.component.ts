@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { CardsService } from 'src/app/services/cards.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-product-card-list',
@@ -12,10 +13,12 @@ export class ProductCardListComponent implements OnInit {
   @Input() searchText: string = '';
   @Input() searched: boolean;
   products: Product[];
-  isMypost: boolean= false;
+  // isMypost: boolean= false;
+  isMypost: boolean = this.authservice.isLoggedIn$;
     
   constructor (
     private _cardservice: CardsService,
+    public authservice: AuthService
   ) {}
   
   ngOnInit() {

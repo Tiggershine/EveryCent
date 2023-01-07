@@ -8,13 +8,13 @@
           <div class="product-content">
             <span id="product-title">{{ product.title }}</span>
             <span id="product-price">{{ product.price }}€</span>
-            <span id="register-date">{{ product.createdAt }}</span>
+            <span id="register-date">{{ product.createdAt | date: 'dd/MM/yy'}}</span>
           </div> 
         </a>
         <!-- todo: isMypost 함수 추가 -->
-        <div class="row btn-active" [hidden]="!isMypost">
-          <button class="col" id="edit-btn">edit</button>
-          <button class="col" id="delete-btn">delete</button>
+        <div class="btn-active" [hidden]="!isMypost">
+          <button class="btn" id="edit-btn">edit</button>
+          <button class="btn" id="delete-btn">delete</button>
         </div>   
       </div>
     </div>

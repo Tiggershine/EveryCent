@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PRODUCTS } from 'src/app/models/mock-product';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-product-description',
@@ -8,17 +9,17 @@ import { PRODUCTS } from 'src/app/models/mock-product';
 })
 export class ProductDescriptionComponent implements OnInit {
 
-  @Input('productId') productId: string;
-  @Input('productTitle') productTitle: string;
-  @Input('productCategory') productCategory: string;
-  @Input('productPrice') productPrice: number;
-  @Input('district') district: string;
-  @Input('createdAt') createdAt: string;
-  @Input('productImage') productImage: string[];
-  @Input('productDescription') productDescription: string;
-  @Input('contact') contact: string;
+  @Input() productId: string;
+  @Input() productTitle: string;
+  @Input() productCategory: string;
+  @Input() productPrice: number;
+  @Input() district: string;
+  @Input() createdAt: string;
+  @Input() productImage: string[];
+  @Input() productDescription: string;
+  @Input() contact: string;
   
-  product = PRODUCTS[0];
+  product: Product;
   slides: string[]; 
   currentIndex: number = 0;
 

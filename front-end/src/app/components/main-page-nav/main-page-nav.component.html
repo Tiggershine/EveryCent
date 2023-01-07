@@ -24,7 +24,7 @@
     </div>
     <div class="row">
       <div class="col-12 search-bar">
-        <input type="text" placeholder="🔍 What do you need?"/>
+        <input [(ngModel)]="searchInput" type="search" placeholder="🔍 What do you need?" (keydown.enter)="searchText()"/>
       </div>
     </div>
   </div>
