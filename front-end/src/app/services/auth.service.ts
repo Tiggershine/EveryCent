@@ -12,7 +12,15 @@ const _signupUrl = "http://localhost:3000";
   providedIn: 'root'
 })
 export class AuthService {
+  private loggedIn: boolean = false;
 
+  private setLoggedIn(data: boolean) {
+    this.loggedIn = data;
+  }
+
+  public getLoggedIn() {
+    return this.loggedIn;
+  }
 
   constructor(private http: HttpClient) {}
 
@@ -25,11 +33,7 @@ export class AuthService {
   }
 
   loginUser(email: string, password: string) {
-    return this.http.post<any>(`${_signupUrl}/user/login`, {
-      email,
-      password
-    });
+    return this.http.post<any>(`${_signupUrl}/login`, { email, password });
   }
-
-
+  
 }

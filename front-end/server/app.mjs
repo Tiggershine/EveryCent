@@ -46,27 +46,39 @@ app.use(morgan('tiny'));
 // set CORS
 app.use(cors());
 
-// TODO: 나중에 지울것
-app.use((req, res, next) => {
-  console.log(req.session);
-  console.log(req.user);
-  next();
-})
+
+// Login -  If login success, the value of 'req.isAuthenticated' = true'
+app.post('/login', passport.authenticate('local', {failureRedirect: '/loginFail'}),
+  (req, res) => {
+    console.log(req.user)
+    res.json({ loggedIn: true });
+  });
+
+
+
+// Logout - If logout success, the value of 'req.isAuthenticated' = 'false'
+app.post('/logout', (req, res, next) => {
+  req.logout((err) => {
+    if (err)  { res.send(err); return next(err); }
+    res.redirect('/');
+  });
+});
+
+
 
 // Routes which should handle requests
 app.use('/user', userRoutes);
 app.use('/card', productCardRoutes);
 
-// TODO: 나중에 지울것
+
 app.get('/', (req, res) => {
-  res.send('Hello!')
-});
-app.post('/', (req, res) => {
+  res.send('Home');
 });
 
-app.get('/login-success', (req, res) => {
-  res.send('loggedin');
+app.get('/loginFail', (req, res) => {
+  res.json({ loggedIn: false });
 })
+
 
 app.use((req, res, next) => {
   const error = new Error('Not found');
