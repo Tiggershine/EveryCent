@@ -35,6 +35,7 @@ export class SignupPageComponent implements OnInit {
   }
 
   signupUser() {
+    this.isDataIncorrect = false;
     // If password and comfirmPassword do not same, show the warning message.
     if (!this.passwordConfirm()) {
       this.isDataIncorrect = true;
