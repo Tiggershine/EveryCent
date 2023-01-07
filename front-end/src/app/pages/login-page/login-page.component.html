@@ -2,8 +2,9 @@
 [iconLWLink]="iconLWLink"
 [iconLMLink]="iconLMLink"
 ></app-header>
+
 <div class="login-container">
-  <div class="login-greeting">Welcome Back!</div>
+  <div class="login-greeting">Welcome back!</div>
   <div class="form-group">
     <label>ID</label>
     <input 
@@ -26,12 +27,25 @@
       Please enter the correct ID or Password.
     </div>
   </span>
+
   <div class="btn-container">
-    <button class="login-btn" (click)="loginUser()">LOG IN</button>
-    <div class="signup-btn-container">
-      <div class="signup-text">Don't you have an account?</div>
-      <button routerLink="/signup" class="signup-btn">SIGN UP</button>
+    <div class="login-btn-container">
+      <button type="submit" class="login-btn" (click)="loginUser()">
+        LOG IN
+      </button>
     </div>
+
+    <div class="signup-btn-container">
+
+      <div class="signup-text">
+        Don't you have an account?
+      </div>
+
+      <button [routerLink]="signupBtnLink" class="signup-btn">
+        SIGN UP
+      </button>
+    </div>
+    
   </div>
 
 
