@@ -34,7 +34,7 @@ input[type="number"] {
 .box-image {
   margin: auto;
   margin-left: 0;
-  margin-bottom: 80px;
+  margin-bottom: 10px;
   width: 290px;
   height: 107px;
   border: solid 1px $black;
@@ -105,7 +105,7 @@ title,
 }
 
 .text-type {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .text-type-two,
@@ -116,7 +116,7 @@ title,
 
 .text-button-radio {
   font-size: 1rem;
-  margin-right: 50px;
+  margin-right: 40px;
 }
 
 .image-data {
@@ -148,20 +148,29 @@ title,
     width: 100%;
     height: 70px;
     margin-inline: auto;
+    margin-top: 34px;
     display: flex;
     align-items: flex-end;
     font-family: "Poppins";
     font-style: normal;
     font-weight: 500;
-    font-size: 3.4rem;
+    font-size: 3rem;
   }
 
-  .text,
+  .text {
+    font-size: 1.2rem;
+    margin-bottom: 0px;
+  }
   .text-button-radio {
     font-size: 1.2rem;
+    margin-left: 40px;
+    margin-right: 10px;
   }
 
-  .text-type,
+  .text-type {
+    font-size: 1.2rem;
+    height: 30px;
+  }
   .text-type-two {
     font-size: 1.2rem;
     height: 30px;
@@ -172,11 +181,12 @@ title,
   }
 
   .form-field {
-    width: 90%;
-    height: 60px;
+    width: 100%;
+    height: 55px;
     background-color: $white;
     font-size: 1.2rem;
-    padding-left: 20px;
+    padding-left: 15px;
+    margin-bottom: 10px;
     border: 1px solid $primary-color;
     background: $background-color;
     background-color: $background-color;
@@ -196,14 +206,15 @@ title,
   }
 
   .form-field-two {
+    padding-top: 10px;
     width: 100%;
-    height: 240px;
+    height: 230px;
   }
 
   .box-image {
     width: 100%;
-    height: 420px;
-    margin-top: 40px;
+    height: 355px;
+    margin-top: 35px;
     background-color: #e7e7e7;
   }
 
@@ -212,7 +223,7 @@ title,
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-top: 10px;
+    margin-bottom: 15px;
     width: 45%;
     height: 50px;
     border-radius: 40px;
@@ -232,7 +243,7 @@ title,
 
   .button-label {
     padding-left: 150px;
-    padding-top: 190px;
+    padding-top: 160px;
   }
 
   .button-cancel {

@@ -8,26 +8,50 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./product-information.component.scss'],
 })
 export class ProductInformationComponent implements OnInit {
-  tradeOptionRadioButton = ['sell', 'buy'];
+  tradeOptionRadioButton = ['sell', 'buy', 'freecycle'];
 
   categoryType = [
-    { category: 'Shoes' },
-    { category: 'Electronics' },
-    { category: 'Etc.' },
+    'Book',
+    'Clothing',
+    'Food',
+    'Electronics',
+    'Kitchen',
+    'Furniture',
+    'Sporting goods',
+    'Hobbies',
   ];
 
   districtType = [
-    { place: 'Aachen Mitte' },
-    { place: 'Brand' },
-    { place: 'Eilendorf' },
-    { place: 'Haarem' },
-    { place: 'Kornelimünster Walheim' },
-    { place: 'Laurensberg' },
-    { place: 'Richterich' },
+    'Markt',
+    'Theater',
+    'Lindenplatz',
+    'St. Jakob',
+    'Westpark',
+    'Kronenberg',
+    'Hörn',
+    'Ponttor',
+    'Hansemannplatz',
+    'Soers',
+    'Jülicher Straße',
+    'Kalkofen',
+    'Kaiserplatz',
+    'Adalbertsteinweg',
+    'Panneschopp',
+    'Rothe Erde',
+    'Forst',
+    'Frankenberger Viertel',
+    'Burtscheid',
+    'Marschiertor',
+    'Beverau',
   ];
 
   screenMode: string;
-  products: Product = {};
+  imageuri: any;
+
+  products: Product = {
+    user: 'hanbit',
+  };
+
   submitted = false;
   selectedFiles?: FileList;
   previews: string[] = [];
@@ -84,7 +108,7 @@ export class ProductInformationComponent implements OnInit {
           this.previews.push(e.target.result);
           console.log(this.previews);
         };
-        reader.readAsDataURL(this.selectedFiles[i]);
+        this.imageuri = reader.readAsDataURL(this.selectedFiles[i]);
       }
     }
   }
@@ -93,13 +117,13 @@ export class ProductInformationComponent implements OnInit {
     const data = {
       _id: this.products._id,
       title: this.products.title,
+      description: this.products.description,
       price: this.products.price,
       category: this.products.category,
-      description: this.products.description,
       imageUrl: this.products.imageUrl,
-      user: this.products.user,
       district: this.products.district,
       dealType: this.products.dealType,
+      user: this.products.user,
       contact: this.products.contact,
       createdAt: this.products.createdAt,
     };

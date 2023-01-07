@@ -2,25 +2,26 @@
   <div class="layout">
     <title>Upload New Item</title>
     <h1 class="text">I want</h1>
+
     <label class="text-button-radio" *ngFor="let trade of tradeOptionRadioButton" for="myRadioId">
-      <input type="radio" id="myRadioId" name="sellbuy">
+      <input type="radio" id="myRadioId" name="sellbuy" [(ngModel)]="products.dealType" [value]="trade">
       {{trade}}
     </label>
     <div class="row">
       <div>
         <h1 class="text text-type">Title</h1>
-        <input class="form-field" formControlName="title" type="text">
+        <input class="form-field" [(ngModel)]="products.title" name="title" type="text">
         <h1 class="text text-type">Category</h1>
-        <select class="form-field form-field-arrow" formControlName="category">
+        <select [(ngModel)]="products.category" class="form-field form-field-arrow" name="category">
           <option hidden></option>
-          <option *ngFor="let y of categoryType" value="">{{y.category}}</option>
+          <option *ngFor="let y of categoryType" [ngValue]="y">{{y}}</option>
         </select>
         <h1 class="text text-type">Price</h1>
-        <input class="form-field form-field-euro" formControlName="price" type="number">
+        <input class="form-field form-field-euro" [(ngModel)]="products.price" name="price" type="number">
         <h1 class="text text-type">District</h1>
-        <select class="form-field form-field-arrow" formControlName="district">
+        <select [(ngModel)]="products.district" class="form-field form-field-arrow" name="district">
           <option hidden></option>
-          <option *ngFor="let z of districtType" value="">{{z.place}}</option>
+          <option *ngFor="let z of districtType" [ngValue]="z">{{z}}</option>
         </select>
       </div>
       <div>
@@ -41,7 +42,7 @@
       </div>
     </div>
     <h1 class="text text-type-two">Description</h1>
-    <textarea class="form-field form-field-two" formControlName="comment"></textarea>
+    <textarea class="form-field form-field-two" [(ngModel)]="products.description" name="description"></textarea>
     <div *ngIf="screenMode == 'mobile'">
       <h1 class="text text-image">Image</h1>
       <div class="box-image">
@@ -55,8 +56,8 @@
       <input class="file-image" id="image" multiple (change)="onFileSelect($event)" type="file" />
     </div>
     <div class="row-button" [align]="'end'">
-      <button class="button button-register" routerLink="/post">REGISTER</button>
-      <button mat-dialog-close class="button button-cancel">CANCEL</button>
+      <button class="button button-register" (click)="saveProduct()" routerLink="/">REGISTER</button>
+      <button mat-dialog-close class="button button-cancel" routerLink="/">CANCEL</button>
     </div>
   </div>
 </div>
