@@ -19,6 +19,7 @@ import { HeaderServiceService } from './services/header-service.service';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './components/product-card-list/filter.pipe';
+import { AfterSearchComponent } from './pages/after-search/after-search.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { FilterPipe } from './components/product-card-list/filter.pipe';
     ProductInformationComponent,
     ProductRegisterPageComponent,
     FilterPipe,
+    AfterSearchComponent,
   ],
   imports: [
     BrowserModule,

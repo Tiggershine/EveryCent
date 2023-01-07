@@ -16,14 +16,16 @@
           </div>
         </div>
         <hr class="product-description-line"/>
-        <span class="product-description-date">{{ createdAt }}</span>
+        <span class="product-description-date">{{ createdAt | date: 'dd/MM/yy'}}</span>
         <span class="product-description-desc">
-          <span class="product-description-descTitle">
-            [Description]
-          </span>
-            {{ productDescription }}
+          {{ productDescription }}
         </span>
-        <span class="product-description-contact">{{ contact }}</span>
+        <!-- todo: connect DB -->
+        <div class="product-description-contact">
+          <span id="contact-hint">Are you interested? Contact the seller.</span>
+          <img id="contact-icon" src="../../../assets/icons/mail.svg">  hyejin.kang@rwth-aachen.de
+        </div>
+        <!-- <span class="product-description-contact">{{ contact }}</span> -->
       </div>
   </div>
 </div>

@@ -81,7 +81,7 @@ export class HeaderServiceService {
         iconR1M: false,
         iconR2M: true,
         iconLMSource: '../../assets/icons/everycent.svg',
-        iconCMSource: 'POST',
+        iconCMSource: '',
         iconR1MSource: '',
         iconR2MSource: '../../assets/icons/saveBtn.svg',
       },

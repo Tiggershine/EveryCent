@@ -30,15 +30,15 @@ router.get('/card/:id', async(req, res) => {
 
 // Create a card
 router.post('/register', async (req, res) => {
-  const { title, description, price, imageUrl, user, district, dealType } = req.body;
-  const productCard = await productCardRepository.createCard(title, description, price, imageUrl, user, district, dealType);
+  const { title, description, price, category, imageUrl, user, district, dealType } = req.body;
+  const productCard = await productCardRepository.createCard(title, description, price, category, imageUrl, user, district, dealType);
   res.status(201).json(productCard);
 })
 
 
 // Update the card
 router.put('/update/:id', async (req, res) => {
-  const { title, description, price, imageUrl, user, district, dealType } = req.body;
+  const { title, description, price, category, imageUrl, user, district, dealType } = req.body;
   const id = req.params.id;
   const prodcutCard = await productCardRepository.getProductCard(id);
   if (!prodcutCard) {
@@ -46,7 +46,7 @@ router.put('/update/:id', async (req, res) => {
       message: `can not find product-card with ${id}`
     });
   }
-  const updated = await productCardRepository.updateCard(title, description, price, imageUrl, user, district, dealType);
+  const updated = await productCardRepository.updateCard(title, description, price, category, imageUrl, user, district, dealType);
   res.status(200).json(updated);
 })
 
