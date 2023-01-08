@@ -2,6 +2,8 @@ import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { CardsService } from 'src/app/services/cards.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { ActivatedRoute, NavigationEnd, Route, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-card-list',
@@ -10,29 +12,52 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ProductCardListComponent implements OnInit {
 
-  @Input() searchText: string = '';
+  @Input() searchText: string;
   @Input() searched: boolean;
   products: Product[];
-  // isMypost: boolean= false;
+  product: Product;
   isMypost: boolean = this.authservice.getLoggedIn();
-    
+  currentRoute: any;
+  
   constructor (
     private _cardservice: CardsService,
-    public authservice: AuthService
-  ) {}
+    private _authservice: AuthService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    router.events.pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event) => {
+        this.currentRoute = event;
+    });
+  }
   
+  private writer: string = this._authservice.userId;
+
   ngOnInit() {
+    console.log(this.writer);
+    if(this.currentRoute.url === "/mypage" && this.writer !== null) {
+      this._cardservice.findByUser(this.writer).subscribe({
+        next: (data) => {
+          this.products = data;
+          this.isMypost = true;
+        },
+        error: (e) => console.log(e)
+      });
+    } else {
+      this.retrieveProducts();
+    }
+  }
+  
+  retrieveProducts() {
     this._cardservice.getAll().subscribe({
       next: (data) => {
         this.products = data;
-        console.log(this.products);
       },
       error: (e) => console.log(e)
     });
   }
   
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
     this._cardservice.searchByTitle(this.searchText).subscribe(res => {
       this.products = res;
     });
