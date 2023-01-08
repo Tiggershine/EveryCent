@@ -39,14 +39,12 @@ const strategy = new LocalStrategy(customFields, verifyCallback);
 export default function (passport) {
   passport.use(strategy);
 
-
   // After success of login store the user information into session 
   passport.serializeUser((user, done) => {
     process.nextTick(() => {
       return done(null, user);
     })
   });
-
 
   // Deserialize user info through the info from session
   passport.deserializeUser((userId, done) => {

@@ -50,10 +50,9 @@ app.use(cors());
 // Login -  If login success, the value of 'req.isAuthenticated' = true'
 app.post('/login', passport.authenticate('local', {failureRedirect: '/loginFail'}),
   (req, res) => {
-    console.log(req.user)
-    res.json({ loggedIn: true });
+    console.log(req.user);
+    res.json({ loggedIn: true, user: req.user });
   });
-
 
 
 // Logout - If logout success, the value of 'req.isAuthenticated' = 'false'
