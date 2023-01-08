@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
-import { response } from 'express';
 
 interface loginResponse {
   validUser: boolean

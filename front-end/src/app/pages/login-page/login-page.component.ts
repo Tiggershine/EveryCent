@@ -26,17 +26,6 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // loginUser() {
-  //   this._auth.loginUser(this.loginUserData.email, this.loginUserData.password).subscribe((data) => {
-  //     if(data.validUser === false) {
-  //       this.isDataInvalid = true;
-  //     } else {
-  //       this.router.navigateByUrl('/');
-  //       return data;
-  //     }
-  //   });
-  // }
-
    loginUser() {
      this._auth.loginUser(this.loginUserData.email, this.loginUserData.password).subscribe(data => {
       this.loggedIn = data.loggedIn;
