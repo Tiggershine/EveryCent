@@ -10,22 +10,31 @@
         </label>
       </div>
     </div>
+
     <div class="row">
       <div>
-        <h1 class="text text-type">Title</h1>
-        <input class="form-field" [(ngModel)]="products.title" name="title" type="text">
-        <h1 class="text text-type">Category</h1>
-        <select [(ngModel)]="products.category" class="form-field form-field-arrow" name="category">
-          <option hidden></option>
-          <option *ngFor="let y of categoryType" [ngValue]="y">{{y}}</option>
-        </select>
-        <h1 class="text text-type">Price</h1>
-        <input class="form-field form-field-euro" [(ngModel)]="products.price" name="price" type="number">
-        <h1 class="text text-type">District</h1>
-        <select [(ngModel)]="products.district" class="form-field form-field-arrow" name="district">
-          <option hidden></option>
-          <option *ngFor="let z of districtType" [ngValue]="z">{{z}}</option>
-        </select>
+        <div class="layout-input">
+          <h1 class="text text-type">Title</h1>
+          <input class="form-field" [(ngModel)]="products.title" name="title" type="text">
+        </div>
+        <div class="layout-input">
+          <h1 class="text text-type">Category</h1>
+          <select [(ngModel)]="products.category" class="form-field form-field-arrow" name="category">
+            <option hidden></option>
+            <option *ngFor="let y of categoryType" [ngValue]="y">{{y}}</option>
+          </select>
+        </div>
+        <div class="layout-input">
+          <h1 class="text text-type">Price</h1>
+          <input class="form-field form-field-euro" [(ngModel)]="products.price" name="price" type="number">
+        </div>
+        <div class="layout-input">
+          <h1 class="text text-type">District</h1>
+          <select [(ngModel)]="products.district" class="form-field form-field-arrow" name="district">
+            <option hidden></option>
+            <option *ngFor="let z of districtType" [ngValue]="z">{{z}}</option>
+          </select>
+        </div>
       </div>
       <div>
         <div *ngIf="screenMode == 'web'">
@@ -36,7 +45,7 @@
             </div>
             <div class="count" *ngIf="counts">+{{numberOfFiles - 1}}</div>
             <div>
-              <label class="button-position button-image" for="image">Choose File</label>
+              <label class="button-position button-image" for="image">Add Image</label>
             </div>
           </div>
           <input class="file-image" id="image" multiple (change)="onFileSelect($event)" type="file" />
@@ -49,11 +58,11 @@
       <h1 class="text text-image">Image</h1>
       <div class="box-image">
         <div *ngFor="let preview of previews">
-          <img class="image-data column" [src]="preview" />
+          <img class="image-data" [src]="preview" />
         </div>
         <div class="count" *ngIf="counts">+{{numberOfFiles - 1}}</div>
-        <div class="button-label">
-          <label class="button-image" for="image">Choose File</label>
+        <div>
+          <label class="button-position button-image" for="image">Add Image</label>
         </div>
       </div>
       <input class="file-image" id="image" multiple (change)="onFileSelect($event)" type="file" />
