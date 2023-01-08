@@ -1,12 +1,15 @@
 <div class="container">
   <div class="layout">
     <title>Upload New Item</title>
-    <h1 class="text">I want</h1>
-
-    <label class="text-button-radio" *ngFor="let trade of tradeOptionRadioButton" for="myRadioId">
-      <input type="radio" id="myRadioId" name="sellbuy" [(ngModel)]="products.dealType" [value]="trade">
-      {{trade}}
-    </label>
+    <div class="layout-iwant">
+      <h1 class="text">I want</h1>
+      <div class="layout-radio-button">
+        <label class="text-button-radio" *ngFor="let trade of tradeOptionRadioButton" for="myRadioId">
+          <input type="radio" id="myRadioId" name="sellbuy" [(ngModel)]="products.dealType" [value]="trade">
+          {{trade}}
+        </label>
+      </div>
+    </div>
     <div class="row">
       <div>
         <h1 class="text text-type">Title</h1>
@@ -27,17 +30,16 @@
       <div>
         <div *ngIf="screenMode == 'web'">
           <h1 class="text text-image">Image</h1>
-          <div class="box-image row-two">
+          <div class="box-image">
             <div *ngFor="let preview of previews">
-              <img class="image-data column" [src]="preview" />
+              <img class="image-data " [src]="preview" />
             </div>
-            <div class="button-label">
-              <div>
-                <label class="button-image column" for="image">Choose File</label>
-              </div>
+            <div class="count" *ngIf="counts">+{{numberOfFiles - 1}}</div>
+            <div>
+              <label class="button-position button-image" for="image">Choose File</label>
             </div>
           </div>
-          <input class="file-image right" id="image" multiple (change)="onFileSelect($event)" type="file" />
+          <input class="file-image" id="image" multiple (change)="onFileSelect($event)" type="file" />
         </div>
       </div>
     </div>
@@ -49,6 +51,7 @@
         <div *ngFor="let preview of previews">
           <img class="image-data column" [src]="preview" />
         </div>
+        <div class="count" *ngIf="counts">+{{numberOfFiles - 1}}</div>
         <div class="button-label">
           <label class="button-image" for="image">Choose File</label>
         </div>

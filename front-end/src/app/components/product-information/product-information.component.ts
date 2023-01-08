@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { CardsService } from 'src/app/services/cards.service';
 import { Product } from 'src/app/models/product';
+import { getNumberOfCurrencyDigits } from '@angular/common';
 
 @Component({
   selector: 'app-product-information',
@@ -47,6 +48,7 @@ export class ProductInformationComponent implements OnInit {
 
   screenMode: string;
   imageuri: any;
+  imagename: string[] = [];
 
   products: Product = {
     user: 'hanbit',
@@ -74,42 +76,31 @@ export class ProductInformationComponent implements OnInit {
     console.log(this.screenMode);
   }
 
-  // onFileSelect(event: Event) {
-  //   const file = (event.target as HTMLInputElement).files?.[0];
-  //   this.selectedFiles = event.target.files;
-
-  //   const allowedMimeTypes = ['image/png', 'image/jpeg', 'image/jpg'];
-  //   const numberOfFiles = this.selectedFiles.length;
-
-  //   if (file && allowedMimeTypes.includes(file.type)) {
-  //     for (let i = 0; i < numberOfFiles; i++) {
-  //       const reader = new FileReader();
-  //       reader.onload = (e: any) => {
-  //         //this.imageData = reader.result as string;
-  //         this.previews.push(e.target.result);
-  //         console.log(this.previews);
-  //       };
-  //       reader.readAsDataURL(file);
-  //     }
-  //   }
-  // }
+  counts: boolean;
+  numberOfFiles: number = null;
 
   onFileSelect(event: any): void {
     this.selectedFiles = event.target.files;
-
     this.previews = [];
     if (this.selectedFiles && this.selectedFiles[0]) {
-      const numberOfFiles = this.selectedFiles.length;
-      for (let i = 0; i < 10; i++) {
-        const reader = new FileReader();
-
+      let reader: FileReader;
+      for (let i = 0; i < this.selectedFiles.length; i++) {
+        reader = new FileReader();
         reader.onload = (e: any) => {
-          console.log(e.target.result);
           this.previews.push(e.target.result);
-          console.log(this.previews);
         };
-        this.imageuri = reader.readAsDataURL(this.selectedFiles[i]);
+        this.imagename[i] = event.target.files[i].name;
       }
+      this.numberOfFiles = this.selectedFiles.length;
+      console.log(this.numberOfFiles);
+
+      if (this.numberOfFiles <= 1) {
+        this.counts = false;
+      } else {
+        this.counts = true;
+      }
+      this.imageuri = reader.readAsDataURL(this.selectedFiles[0]);
+      console.log(this.imagename);
     }
   }
 

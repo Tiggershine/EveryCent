@@ -116,7 +116,7 @@ title,
 
 .text-button-radio {
   font-size: 1rem;
-  margin-right: 40px;
+  margin-right: 10px;
 }
 
 .image-data {
@@ -132,6 +132,16 @@ title,
 @media (min-width: 768px) {
   .layout {
     width: 100%;
+  }
+
+  .layout-iwant {
+    display: flex;
+  }
+
+  .layout-radio-button {
+    display: flex;
+    justify-content: space-between;
+    width: 39%;
   }
 
   .row > * {
@@ -160,11 +170,11 @@ title,
   .text {
     font-size: 1.2rem;
     margin-bottom: 0px;
+    width: 10%;
   }
   .text-button-radio {
     font-size: 1.2rem;
-    margin-left: 40px;
-    margin-right: 10px;
+    margin-top: 30px;
   }
 
   .text-type {
@@ -212,6 +222,7 @@ title,
   }
 
   .box-image {
+    position: relative;
     width: 100%;
     height: 355px;
     margin-top: 35px;
@@ -224,7 +235,7 @@ title,
     align-items: center;
     text-align: center;
     margin-bottom: 15px;
-    width: 45%;
+    width: 47%;
     height: 50px;
     border-radius: 40px;
     font-size: 1.5rem;
@@ -233,17 +244,12 @@ title,
   }
 
   .button-image {
-    width: 196px;
-    height: 34px;
+    width: 30%;
+    height: auto;
     font-size: 1.2rem;
     background-color: #d9d9d9;
     border-radius: 10px;
     font-weight: 500;
-  }
-
-  .button-label {
-    padding-left: 150px;
-    padding-top: 160px;
   }
 
   .button-cancel {
@@ -258,7 +264,23 @@ title,
   }
 
   .image-data {
-    width: 95px;
-    height: 95px;
+    position: relative;
+    width: 100%;
+    height: 353px;
+    border-radius: 5px;
+  }
+
+  .button-position {
+    position: absolute;
+    top: 43%;
+    left: 36%;
+  }
+
+  .count {
+    position: absolute;
+    top: 25%;
+    left: 43%;
+    font-size: 3rem;
+    color: #000000;
   }
 }
