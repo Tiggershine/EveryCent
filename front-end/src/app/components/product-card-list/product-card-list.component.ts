@@ -14,7 +14,7 @@ export class ProductCardListComponent implements OnInit {
   @Input() searched: boolean;
   products: Product[];
   // isMypost: boolean= false;
-  isMypost: boolean = this.authservice.isLoggedIn$;
+  isMypost: boolean = this.authservice.getLoggedIn();
     
   constructor (
     private _cardservice: CardsService,

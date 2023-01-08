@@ -15,7 +15,7 @@ export class DetailOpenGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if(!this._authservice.isLoggedIn$) {
+      if(!this._authservice.getLoggedIn()) {
         this.router.navigate(['login']);
         return false;
       }
