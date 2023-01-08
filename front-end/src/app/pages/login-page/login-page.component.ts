@@ -16,34 +16,31 @@ export class LoginPageComponent implements OnInit {
     "password": ""
   }
 
-  // value shows id && pw are correctly given or not
+  // value shows inputs for id && pw are correctly given or not
   isDataInvalid: boolean = false;
   loggedIn: boolean = false;
 
   constructor(
     private _auth: AuthService,
-    private router: Router,) { }
+    private router: Router) { }
 
   ngOnInit(): void {}
 
-  // loginUser() {
-  //   this._auth.loginUser(this.loginUserData.email, this.loginUserData.password).subscribe((data) => {
-  //     if(data.validUser === false) {
-  //       this.isDataInvalid = true;
-  //     } else {
-  //       this.router.navigateByUrl('/');
-  //       return data;
-  //     }
-  //   });
-  // }
-
-   loginUser() {
-     this._auth.loginUser(this.loginUserData.email, this.loginUserData.password).subscribe(data => {
+  loginUser() {
+    this._auth.loginUser(this.loginUserData.email, this.loginUserData.password).subscribe(data => {
+      console.log(data);
       this.loggedIn = data.loggedIn;
-      
-      return this.loggedIn ? this.router.navigateByUrl('/') : this.isDataInvalid = true;
-     });
-  }
 
+      this.loggedIn ?
+      (
+        this.router.navigateByUrl('/'), 
+        this._auth.loginUpdate(data.loggedIn, data.user), 
+        this.isDataInvalid = false
+      ) : (
+        this.router.navigateByUrl('/login'),
+        this.isDataInvalid = true
+      );
+    });
+  }
 
 }
