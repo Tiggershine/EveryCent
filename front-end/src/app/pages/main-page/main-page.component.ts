@@ -23,7 +23,7 @@ export class MainPageComponent implements OnInit {
     this.inputText = text;
     if(this.inputText.length !== 0) {
       this.isSearched = true;
-      this.router.navigate(['']);
+      this.router.navigate(['search']);
     }
   }
 }
