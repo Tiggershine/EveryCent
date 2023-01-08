@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Product } from '../models/product';
 
@@ -39,5 +39,15 @@ export class CardsService {
           );
         });
     }));
+  }
+  findByUser(userId: string): Observable<Product[]> {
+    return this.getAll().pipe(
+      map((data) => {
+        return data.filter((product) => {
+          // const query = userId.toLowerCase();
+          return product.user === userId;
+        });
+      })
+    )
   }
 }
