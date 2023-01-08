@@ -16,8 +16,11 @@ const routes: Routes = [
       path: 'main',             
     },
     children: [
-      { path: '', component: ProductCardListComponent, },
-      { path: 'search', component: AfterSearchComponent, },
+      { path: '', component: ProductCardListComponent },
+      { path: 'products', component: ProductCardListComponent },
+      { path: 'search', component: AfterSearchComponent, 
+        data: { path: 'search', searchText: 'searchText' },
+      },
     ]
   },
   {
@@ -46,7 +49,6 @@ const routes: Routes = [
     },
     canActivate: [DetailOpenGuard],
   },
-  // todo: Add userId to mypage path
   {
     path: 'mypage',
     component: MypageComponent,
