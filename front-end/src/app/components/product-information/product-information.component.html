@@ -1,56 +1,63 @@
 <div class="container">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <div *ngFor="let x of informationType" class="layout">
+  <div class="layout">
     <title>Upload New Item</title>
-    <form [formGroup]="productForm">
-      <h1 class="text">{{x.sellOption}}</h1>
-      <label class="text-button-radio" *ngFor="let trade of tradeOptionRadioButton" for="myRadioId">
-        <input type="radio" id="myRadioId" name="sellbuy">
-        {{trade}}
-      </label>
-      <div class="row">
-        <div>
-          <h1 class="text text-type">{{x.title}}</h1>
-          <input class="form-field" formControlName="title" type="text">
-          <h1 class="text text-type">{{x.category}}</h1>
-          <select class="form-field form-field-arrow" formControlName="category">
-            <option hidden></option>
-            <option *ngFor="let y of categoryType" value="">{{y.category}}</option>
-          </select>
-          <h1 class="text text-type">{{x.price}}</h1>
-          <input class="form-field form-field-euro" formControlName="price" type="number">
-          <h1 class="text text-type">{{x.district}}</h1>
-          <select class="form-field form-field-arrow" formControlName="district">
-            <option hidden></option>
-            <option *ngFor="let z of districtType" value="">{{z.place}}</option>
-          </select>
-        </div>
-        <div>
-          <div *ngIf="screenMode == 'web'">
-            <h1 class="text text-image">{{x.image}}</h1>
-            <div class="box-image">
-              <label class="button button-image" for="image">Choose File</label>
-              <input class="file-image" id="image" (change)="onFileSelect($event)" type="file" />
+    <h1 class="text">I want</h1>
+
+    <label class="text-button-radio" *ngFor="let trade of tradeOptionRadioButton" for="myRadioId">
+      <input type="radio" id="myRadioId" name="sellbuy" [(ngModel)]="products.dealType" [value]="trade">
+      {{trade}}
+    </label>
+    <div class="row">
+      <div>
+        <h1 class="text text-type">Title</h1>
+        <input class="form-field" [(ngModel)]="products.title" name="title" type="text">
+        <h1 class="text text-type">Category</h1>
+        <select [(ngModel)]="products.category" class="form-field form-field-arrow" name="category">
+          <option hidden></option>
+          <option *ngFor="let y of categoryType" [ngValue]="y">{{y}}</option>
+        </select>
+        <h1 class="text text-type">Price</h1>
+        <input class="form-field form-field-euro" [(ngModel)]="products.price" name="price" type="number">
+        <h1 class="text text-type">District</h1>
+        <select [(ngModel)]="products.district" class="form-field form-field-arrow" name="district">
+          <option hidden></option>
+          <option *ngFor="let z of districtType" [ngValue]="z">{{z}}</option>
+        </select>
+      </div>
+      <div>
+        <div *ngIf="screenMode == 'web'">
+          <h1 class="text text-image">Image</h1>
+          <div class="box-image row-two">
+            <div *ngFor="let preview of previews">
+              <img class="image-data column" [src]="preview" />
             </div>
-            <div *ngIf="imageData">
-              <img [src]="imageData" [alt]="productForm.value.name" />
+            <div class="button-label">
+              <div>
+                <label class="button-image column" for="image">Choose File</label>
+              </div>
             </div>
           </div>
+          <input class="file-image right" id="image" multiple (change)="onFileSelect($event)" type="file" />
         </div>
       </div>
-      <h1 class="text text-type-two">{{x.description}}</h1>
-      <textarea class="form-field form-field-two" formControlName="comment"></textarea>
-    </form>
+    </div>
+    <h1 class="text text-type-two">Description</h1>
+    <textarea class="form-field form-field-two" [(ngModel)]="products.description" name="description"></textarea>
     <div *ngIf="screenMode == 'mobile'">
-      <h1 class="text text-image">{{x.image}}</h1>
+      <h1 class="text text-image">Image</h1>
       <div class="box-image">
-        <label class="button-image" for="image">Choose File</label>
-        <input class="file-image" id="image" (change)="onFileSelect($event)" type="file" />
+        <div *ngFor="let preview of previews">
+          <img class="image-data column" [src]="preview" />
+        </div>
+        <div class="button-label">
+          <label class="button-image" for="image">Choose File</label>
+        </div>
       </div>
+      <input class="file-image" id="image" multiple (change)="onFileSelect($event)" type="file" />
     </div>
     <div class="row-button" [align]="'end'">
-      <button class="button button-register" (click)="saveProduct()">REGISTER</button>
-      <button mat-dialog-close class="button button-cancel">CANCEL</button>
+      <button class="button button-register" (click)="saveProduct()" routerLink="/">REGISTER</button>
+      <button mat-dialog-close class="button button-cancel" routerLink="/">CANCEL</button>
     </div>
   </div>
 </div>

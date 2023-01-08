@@ -10,13 +10,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class LoginPageComponent implements OnInit {
   iconLWLink: string = '';
   iconLMLink: string = '';
-  loginBtnLink: string = '/login';
+  signupBtnLink: string = '/signup';
   loginUserData = {
     "email": "",
     "password": ""
   }
 
+  // value shows id && pw are correctly given or not
   isDataInvalid: boolean = false;
+  loggedIn: boolean = false;
 
   constructor(
     private _auth: AuthService,
@@ -24,18 +26,24 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  loginUser() {
-    this._auth.loginUser(this.loginUserData.email, this.loginUserData.password).subscribe((data) => {
-      if (data === 'login-success') {
-        console.log(data);
-        this.router.navigate(['/']);
-      } else {
-      }
-    });
+  // loginUser() {
+  //   this._auth.loginUser(this.loginUserData.email, this.loginUserData.password).subscribe((data) => {
+  //     if(data.validUser === false) {
+  //       this.isDataInvalid = true;
+  //     } else {
+  //       this.router.navigateByUrl('/');
+  //       return data;
+  //     }
+  //   });
+  // }
+
+   loginUser() {
+     this._auth.loginUser(this.loginUserData.email, this.loginUserData.password).subscribe(data => {
+      this.loggedIn = data.loggedIn;
+      
+      return this.loggedIn ? this.router.navigateByUrl('/') : this.isDataInvalid = true;
+     });
   }
 
-  
-
-  
 
 }

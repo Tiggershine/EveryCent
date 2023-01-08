@@ -38,33 +38,6 @@ router.post('/register', (req, res) => {
   })
 })
 
-
-// Login 
-router.post('/login', passport.authenticate('local', {
-  successRedirect: 'user/login-success',
-  failureRedirect: 'user/login-failure'
-}));
-
-
-// Logout
-router.post('/logout', (req, res) => {
-  req.logout();
-  res.redirect('user/login');
-});
-
-
-// Logged In
-router.get('/user/login-success', (req, res) => {
-  res.send('login-success');
-});
-router.post('/user/login-success', (req, res) => {
-  res.send('login-success');
-});
-
-router.get('/user/login-failure', (req, res) => {
-  res.send('login-failure');
-});
-
 export default router;
 
 
