@@ -2,7 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { CardsService } from 'src/app/services/cards.service';
 import { Product } from 'src/app/models/product';
 import { getNumberOfCurrencyDigits } from '@angular/common';
-
+import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-product-information',
   templateUrl: './product-information.component.html',
@@ -46,9 +46,6 @@ export class ProductInformationComponent implements OnInit {
     'Beverau',
   ];
 
-  screenMode: string;
-  imageuri: any;
-
   products: Product = {
     user: 'hanbit',
     title: 'hanbit',
@@ -59,11 +56,14 @@ export class ProductInformationComponent implements OnInit {
     dealType: 'sell',
   };
 
+  screenMode: string;
   submitted = false;
   selectedFiles?: FileList;
   previews: string[] = [];
   imagename: string[] = [];
-
+  multipleImages: string[] = [];
+  counts: boolean;
+  numberOfFiles: number = null;
   constructor(private cardsService: CardsService) {}
 
   ngOnInit(): void {
@@ -82,42 +82,33 @@ export class ProductInformationComponent implements OnInit {
     console.log(this.screenMode);
   }
 
-  counts: boolean;
-  numberOfFiles: number = null;
-
   onFileSelect(event: any): void {
     this.selectedFiles = event.target.files;
+    this.numberOfFiles = this.selectedFiles.length;
     this.previews = [];
     if (this.selectedFiles && this.selectedFiles[0]) {
       let reader: FileReader;
-      for (let i = 0; i < this.selectedFiles.length; i++) {
+      for (let i = 0; i < this.numberOfFiles; i++) {
         reader = new FileReader();
+        this.multipleImages = event.target.files;
+        this.imagename[i] =
+          '../../assets/images/productcardImages/' + event.target.files[i].name;
         reader.onload = (e: any) => {
           this.previews.push(e.target.result);
         };
-        this.imagename[i] = event.target.files[i].name;
       }
-      this.numberOfFiles = this.selectedFiles.length;
-      console.log(this.numberOfFiles);
-
       if (this.numberOfFiles <= 1) {
         this.counts = false;
       } else {
         this.counts = true;
       }
-      this.imageuri = reader.readAsDataURL(this.selectedFiles[0]);
-      //console.log(this.imagename);
-      //console.log(this.selectedFiles);
+      reader.readAsDataURL(this.selectedFiles[0]);
       this.products.imageUrl = this.imagename;
-      console.log(this.products.imageUrl);
-      //this.products.file = this.selectedFiles;
-      // console.log(this.products.file);
     }
   }
 
   saveProduct(): void {
     const data = {
-      _id: this.products._id,
       title: this.products.title,
       description: this.products.description,
       price: this.products.price,
@@ -127,16 +118,11 @@ export class ProductInformationComponent implements OnInit {
       dealType: this.products.dealType,
       user: this.products.user,
       contact: this.products.contact,
-      createdAt: this.products.createdAt,
-    };
-
-    const fileData = {
-      file: this.selectedFiles,
     };
 
     this.cardsService.create(data).subscribe({
       next: (response) => {
-        //console.log(response);
+        console.log(response);
         this.submitted = true;
       },
       error: (error) => {
@@ -144,14 +130,12 @@ export class ProductInformationComponent implements OnInit {
       },
     });
 
-    this.cardsService.createFile(fileData).subscribe({
-      next: (response) => {
-        //console.log(response);
-        this.submitted = true;
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+    const formData = new FormData();
+
+    for (let imgs of this.multipleImages) {
+      formData.append('files', imgs);
+      this.cardsService.createFile(formData);
+      console.log(formData);
+    }
   }
 }

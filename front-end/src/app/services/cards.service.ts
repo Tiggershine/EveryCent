@@ -23,12 +23,6 @@ export class CardsService {
     return this._http.get(`http://localhost:3000/card/card/${_id}`);
   }
   create(data: any): Observable<HttpEvent<Product>> {
-    //console.log('this is formdata' + formData);
-    //console.log('this is data' + data);
-    const formData: FormData = new FormData();
-
-    formData.append('file', data);
-    console.log(formData);
     const req = new HttpRequest(
       'POST',
       'http://localhost:3000/card/register',
@@ -42,22 +36,13 @@ export class CardsService {
     return this._http.request(req);
   }
 
-  createFile(data: any): Observable<HttpEvent<Product>> {
-    const formData: FormData = new FormData();
-
-    formData.append('file', data);
-    console.log(formData);
-    const req = new HttpRequest(
-      'POST',
-      'http://localhost:3000/card/register/image',
-      formData,
-      {
-        reportProgress: true,
-        responseType: 'json',
-      }
-    );
+  createFile(data: FormData): void {
     console.log(data);
-    return this._http.request(req);
+    this._http
+      .post<any>('http://localhost:3000/card/register/image', data)
+      .subscribe((res) => {
+        console.log(res);
+      });
   }
 
   update(id: any, data: any): Observable<any> {

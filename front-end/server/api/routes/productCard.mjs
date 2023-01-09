@@ -49,11 +49,12 @@ router.post("/register", async (req, res) => {
     dealType
   );
   res.status(201).json(productCard);
-  console.log("This is post");
 });
 
 router.post("/register/image", storage, async (req, res) => {
-  console.log("This is image");
+  console.log(req.body);
+  console.log(req.files);
+  res.json({ message: "Successfully uploaded files" });
 });
 
 // Update the card
