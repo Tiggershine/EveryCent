@@ -15,12 +15,12 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MypageComponent } from './components/mypage/mypage.component';
 import { ProductInformationComponent } from './components/product-information/product-information.component';
 import { ProductRegisterPageComponent } from './pages/product-register-page/product-register-page.component';
-import { HeaderServiceService } from './services/header-service.service';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './components/product-card-list/filter.pipe';
 import { AfterSearchComponent } from './pages/after-search/after-search.component';
 import { AfterLoginComponent } from './pages/after-login/after-login.component';
+import { CardsService } from './services/cards.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,7 @@ import { AfterLoginComponent } from './pages/after-login/after-login.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [HeaderServiceService, AuthService],
+  providers: [AuthService, CardsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
