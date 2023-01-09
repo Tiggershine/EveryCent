@@ -1,6 +1,7 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { ShareDataService } from 'src/app/services/share-data.service';
 
 @Component({
   selector: 'app-header',
@@ -9,15 +10,11 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 
 export class HeaderComponent implements OnInit {
-  @Output() InputText = new EventEmitter<string>();
-  @Output() searchTitle = new EventEmitter<string>();
 
   routePath: string;  // route path
   screenMode: string;
-  headerC: any;
   headerFixed: boolean = false;  
   searchInput: string;
-  
   isLoggedIn: boolean;
   inMainpage: boolean = true;
 
@@ -25,7 +22,10 @@ export class HeaderComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private _authservice: AuthService,
-  ) { }
+    private _shareservice: ShareDataService,
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   ngOnInit(): void {
     // get data from routing.module.ts
@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
     }
   }
   searchText() {
-    this.InputText.emit(this.searchInput);
+    this._shareservice.setSearchText(this.searchInput);
     this.router.navigate(['search']);
   }  
 }
