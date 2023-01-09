@@ -16,7 +16,7 @@ export class ProductCardListComponent implements OnInit {
   @Input() searched: boolean;
   products: Product[];
   product: Product;
-  isMypost: boolean = this.authservice.getLoggedIn();
+  isMypost: boolean = false;
   currentRoute: any;
   
   constructor (
@@ -30,11 +30,10 @@ export class ProductCardListComponent implements OnInit {
         this.currentRoute = event;
     });
   }
-  
-  private writer: string = this._authservice.userId;
+  // todo: username -> userid
+  private writer: string = this._authservice.getUsername();
 
   ngOnInit() {
-    console.log(this.writer);
     if(this.currentRoute.url === "/mypage" && this.writer !== null) {
       this._cardservice.findByUser(this.writer).subscribe({
         next: (data) => {

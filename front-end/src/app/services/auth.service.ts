@@ -11,38 +11,33 @@ const _signupUrl = "http://localhost:3000";
   providedIn: 'root'
 })
 export class AuthService {
-  private isLoggedIn$: boolean = false;
+  private isLoggedIn$: boolean = true;
 
   private setLoggedIn(data: boolean): void {
     this.isLoggedIn$ = data;
   }
-
   public getLoggedIn(): boolean {
     return this.isLoggedIn$;
   }
-
   private userInfo = {
     id: "",
     email: "",
     username: ""
   }
-
   private setUserInfo(userInfo: { _id: string; email: string; username: string }) {
     this.userInfo["id"] = userInfo._id;
     this.userInfo["email"] = userInfo.email;
     this.userInfo["username"] = userInfo.username;
   }
-
-  public getUserInfo() {
-    return this.userInfo;
+  // todo : getUsername -> gerUserId
+  // public getUserId() {
+  //   return this.userInfo.id;
+  // }
+  public getUsername() {
+  return this.userInfo.username;
   }
 
-
   constructor(private http: HttpClient) {}
-
-
-  userId: string = 'aa';
-
 
   signupUser(email: string, username: string, password: string) {
     return this.http.post<any>(`${_signupUrl}/user/register`, {
@@ -51,8 +46,7 @@ export class AuthService {
       password
     });
   }
-
-
+  
   // http post login
   // return Observerble
   loginUser(email: string, password: string) {
@@ -64,9 +58,5 @@ export class AuthService {
     this.setLoggedIn(loggedin);
     this.setUserInfo(user);
   }
-
-
-
-
 }
 

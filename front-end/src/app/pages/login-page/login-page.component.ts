@@ -33,7 +33,7 @@ export class LoginPageComponent implements OnInit {
 
       this.loggedIn ?
       (
-        this.router.navigateByUrl('/'), 
+        this.router.navigateByUrl('/welcome'), 
         this._auth.loginUpdate(data.loggedIn, data.user), 
         this.isDataInvalid = false
       ) : (

@@ -5,7 +5,9 @@ import { MainPageComponent } from '../pages/main-page/main-page.component';
   providedIn: 'root',
 })
 export class HeaderServiceService {
-  constructor() {}
+  constructor(
+    
+  ) {}
 
   getHeaderContentList() {
     return [

@@ -1,0 +1,11 @@
+<app-header
+  [iconLWLink]="'/'"
+  [iconR2WLink]="'/mypage'"
+  [iconLMLink]="'/'"
+  [iconR2MLink]="'/mypage'"
+  (InputText)="searchText($event)"
+></app-header>
+<app-main-page-nav *ngIf="!isSearched" (InputText)="searchText($event)"></app-main-page-nav>
+<app-product-card-list [searchText]="inputText" [searched]="isSearched"></app-product-card-list>
+<app-footer></app-footer>
+<app-float-btn ></app-float-btn>

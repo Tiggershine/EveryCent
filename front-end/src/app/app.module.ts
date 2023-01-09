@@ -20,6 +20,7 @@ import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './components/product-card-list/filter.pipe';
 import { AfterSearchComponent } from './pages/after-search/after-search.component';
+import { AfterLoginComponent } from './pages/after-login/after-login.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AfterSearchComponent } from './pages/after-search/after-search.componen
     ProductRegisterPageComponent,
     FilterPipe,
     AfterSearchComponent,
+    AfterLoginComponent,
   ],
   imports: [
     BrowserModule,

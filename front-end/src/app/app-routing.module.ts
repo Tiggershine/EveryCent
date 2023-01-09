@@ -9,6 +9,7 @@ import { MypageComponent } from './components/mypage/mypage.component';
 import { ProductCardListComponent } from './components/product-card-list/product-card-list.component';
 import { AfterSearchComponent } from './pages/after-search/after-search.component';
 import { DetailOpenGuard } from './pages/product-detail-page/guard/detail-open.guard';
+import { AfterLoginComponent } from './pages/after-login/after-login.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent,
@@ -22,6 +23,12 @@ const routes: Routes = [
         data: { path: 'search', searchText: 'searchText' },
       },
     ]
+  },
+  {
+    path: 'welcome', component: AfterLoginComponent,
+    data: {
+      path: 'welcome'
+    }
   },
   {
     path: 'products/:productId', component: ProductDetailPageComponent,
