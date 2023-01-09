@@ -1,4 +1,6 @@
-<app-header (InputText)="searchText($event)"></app-header>
+<app-header
+  (InputText)="searchText($event)"
+></app-header>
 <app-main-page-nav *ngIf="!isSearched" (InputText)="searchText($event)"></app-main-page-nav>
 <app-product-card-list [searchText]="inputText" [searched]="isSearched"></app-product-card-list>
 <app-footer></app-footer>
