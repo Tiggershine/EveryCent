@@ -48,15 +48,21 @@ export class ProductInformationComponent implements OnInit {
 
   screenMode: string;
   imageuri: any;
-  imagename: string[] = [];
 
   products: Product = {
     user: 'hanbit',
+    title: 'hanbit',
+    description: 'hello',
+    price: 123,
+    category: 'Book',
+    district: 'Markt',
+    dealType: 'sell',
   };
 
   submitted = false;
   selectedFiles?: FileList;
   previews: string[] = [];
+  imagename: string[] = [];
 
   constructor(private cardsService: CardsService) {}
 
@@ -100,7 +106,12 @@ export class ProductInformationComponent implements OnInit {
         this.counts = true;
       }
       this.imageuri = reader.readAsDataURL(this.selectedFiles[0]);
-      console.log(this.imagename);
+      //console.log(this.imagename);
+      //console.log(this.selectedFiles);
+      this.products.imageUrl = this.imagename;
+      console.log(this.products.imageUrl);
+      //this.products.file = this.selectedFiles;
+      // console.log(this.products.file);
     }
   }
 
@@ -118,9 +129,24 @@ export class ProductInformationComponent implements OnInit {
       contact: this.products.contact,
       createdAt: this.products.createdAt,
     };
+
+    const fileData = {
+      file: this.selectedFiles,
+    };
+
     this.cardsService.create(data).subscribe({
       next: (response) => {
-        console.log(response);
+        //console.log(response);
+        this.submitted = true;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+
+    this.cardsService.createFile(fileData).subscribe({
+      next: (response) => {
+        //console.log(response);
         this.submitted = true;
       },
       error: (error) => {

@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpEvent,
+  HttpParams,
+  HttpRequest,
+} from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Product } from '../models/product';
 
@@ -17,12 +22,44 @@ export class CardsService {
   getProduct(_id: string): Observable<object> {
     return this._http.get(`http://localhost:3000/card/card/${_id}`);
   }
-  create(data: any): Observable<Product> {
-    return this._http.post<Product>(
+  create(data: any): Observable<HttpEvent<Product>> {
+    //console.log('this is formdata' + formData);
+    //console.log('this is data' + data);
+    const formData: FormData = new FormData();
+
+    formData.append('file', data);
+    console.log(formData);
+    const req = new HttpRequest(
+      'POST',
       'http://localhost:3000/card/register',
-      data
+      data,
+      {
+        reportProgress: true,
+        responseType: 'json',
+      }
     );
+    console.log(data);
+    return this._http.request(req);
   }
+
+  createFile(data: any): Observable<HttpEvent<Product>> {
+    const formData: FormData = new FormData();
+
+    formData.append('file', data);
+    console.log(formData);
+    const req = new HttpRequest(
+      'POST',
+      'http://localhost:3000/card/register/image',
+      formData,
+      {
+        reportProgress: true,
+        responseType: 'json',
+      }
+    );
+    console.log(data);
+    return this._http.request(req);
+  }
+
   update(id: any, data: any): Observable<any> {
     return this._http.put(`http://localhost:3000/card/update/${id}`, data);
   }
@@ -51,6 +88,6 @@ export class CardsService {
           return product.user === userId;
         });
       })
-    )
+    );
   }
 }
