@@ -59,4 +59,3 @@ export class AuthService {
     this.setUserInfo(user);
   }
 }
-
