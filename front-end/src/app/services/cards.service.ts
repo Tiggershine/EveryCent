@@ -19,9 +19,7 @@ export class CardsService {
   }
   create(data: any): Observable<Product> {
     return this._http.post<Product>(
-      'http://localhost:3000/card/register',
-      data
-    );
+      'http://localhost:3000/card/register', data);
   }
   update(id: any, data: any): Observable<any> {
     return this._http.put(`http://localhost:3000/card/update/${id}`, data);
@@ -32,12 +30,13 @@ export class CardsService {
   searchByTitle(searchText: string): Observable<Product[]> {
     return this.getAll().pipe(
       map((data) => {
-        if (!searchText) return data;
+        if(!data) return [];
+        if(!searchText) return data;
         return data.filter((product) => {
           const query = searchText.toLowerCase();
           return (
-            product.title.toLowerCase().includes(query) ||
-            product.description.toLowerCase().includes(query)
+            product.title.toLowerCase().includes(query) 
+            // || product.description.toLowerCase().includes(query)
           );
         });
       })
@@ -47,7 +46,6 @@ export class CardsService {
     return this.getAll().pipe(
       map((data) => {
         return data.filter((product) => {
-          // const query = userId.toLowerCase();
           return product.user === userId;
         });
       })

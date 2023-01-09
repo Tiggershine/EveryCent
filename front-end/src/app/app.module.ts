@@ -21,6 +21,7 @@ import { FilterPipe } from './components/product-card-list/filter.pipe';
 import { AfterSearchComponent } from './pages/after-search/after-search.component';
 import { AfterLoginComponent } from './pages/after-login/after-login.component';
 import { CardsService } from './services/cards.service';
+import { ShareDataService } from './services/share-data.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { CardsService } from './services/cards.service';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [AuthService, CardsService],
+  providers: [AuthService, CardsService, ShareDataService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

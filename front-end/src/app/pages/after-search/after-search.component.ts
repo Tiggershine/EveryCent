@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-after-search',
@@ -12,9 +12,18 @@ export class AfterSearchComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+  }
+
+  searchText(text: string) {
+    this.inputText = text;
+    if(this.inputText.length !== 0) {
+      this.isSearched = true;
+      this.router.navigate(['search']);
+    }
   }
 
 }
