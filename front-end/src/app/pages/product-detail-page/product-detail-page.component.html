@@ -1,11 +1,4 @@
-<app-header
-  [iconLWLink]="'/'"
-  [iconR1WLink]="'/login'"
-  [iconR2WLink]="'/signup'"
-  [iconLMLink]="'/'"
-  [iconR1MLink]=""
-  [iconR2MLink]="'/login'"
-></app-header>
+<app-header></app-header>
 <app-product-description *ngIf="product" 
   [productId]="product._id"
   [productTitle]="product.title"
@@ -17,4 +10,3 @@
   [productDescription]="product.description"
   [contact]="product.contact"
   ></app-product-description>
-<!-- <app-footer></app-footer> -->

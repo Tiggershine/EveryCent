@@ -19,9 +19,7 @@ const routes: Routes = [
     children: [
       { path: '', component: ProductCardListComponent },
       { path: 'products', component: ProductCardListComponent },
-      { path: 'search', component: AfterSearchComponent, 
-        data: { path: 'search', searchText: 'searchText' },
-      },
+      
     ]
   },
   {
@@ -30,6 +28,9 @@ const routes: Routes = [
       path: 'welcome'
     }
   },
+  { path: 'search', component: AfterSearchComponent, 
+        data: { path: 'search' },
+      },
   {
     path: 'products/:productId', component: ProductDetailPageComponent,
     data: {

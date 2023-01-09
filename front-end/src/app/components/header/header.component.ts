@@ -1,6 +1,6 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HeaderServiceService } from 'src/app/services/header-service.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,12 +9,6 @@ import { HeaderServiceService } from 'src/app/services/header-service.service';
 })
 
 export class HeaderComponent implements OnInit {
-  @Input() iconLWLink?: string;
-  @Input() iconR1WLink?: string;
-  @Input() iconR2WLink?: string;
-  @Input() iconLMLink?: string;
-  @Input() iconR1MLink?: string;
-  @Input() iconR2MLink?: string;
   @Output() InputText = new EventEmitter<string>();
   @Output() searchTitle = new EventEmitter<string>();
 
@@ -23,12 +17,15 @@ export class HeaderComponent implements OnInit {
   headerC: any;
   headerFixed: boolean = false;  
   searchInput: string;
+  
+  isLoggedIn: boolean;
+  inMainpage: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private headerService: HeaderServiceService) { 
-  }
+    private _authservice: AuthService,
+  ) { }
 
   ngOnInit(): void {
     // get data from routing.module.ts
@@ -36,7 +33,7 @@ export class HeaderComponent implements OnInit {
     // screenMode depends on user screen size 
     let screenWidth = window.innerWidth;
     (screenWidth > 767) ? this.screenMode = "W" : this.screenMode = "M";
-    this.headerC = this.headerService.getHeaderContentList().find((arr) => arr.id === this.routePath);
+    this.isLoggedIn = this._authservice.getLoggedIn();
   }
 
   @HostListener ('window:resize', ['$event'])

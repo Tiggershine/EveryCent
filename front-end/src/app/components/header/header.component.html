@@ -1,60 +1,47 @@
 <div class="container-fluid" (scroll)="onscroll()" [ngClass]="headerFixed?'fixed':'nofixed'">
-  <div class="row header-container">
-    <!--  LEFT -->
-    <!-- Web-Left-icon -->
-    <div *ngIf="screenMode === 'W' && headerC['iconLW']" class="col-3 left-icon-container">
-      <a [routerLink]="iconLWLink">
-        <img [src]="headerC['iconLWSource']" alt="header-left-icon">
+  <!-- Web -->
+  <div *ngIf="screenMode === 'W'" class="row header-container">
+    <div class="col-3 left-icon-container">
+      <a routerLink="/">
+        <img src="../../../assets/icons/everycent.svg" alt="go-Home">
       </a>
     </div>
-    <!-- Mobile-Left-icon -->
-    <div *ngIf="screenMode=='M' &&  headerC['iconLM']" class="col-3 left-icon-container">
-      <a [routerLink]="iconLMLink">
-        <img [src]="headerC['iconLMSource']" alt="header-left-icon">
-      </a>
-    </div>
-
-    <!--  CENTER -->
     <div class="col-6 header-search-bar">
-      <!-- Web-Searchbar -->
-      <div *ngIf="screenMode=='W' && headerC['iconCW']">
+      <div>
         <input class="search-bar" name="searchInput" [(ngModel)]="searchInput" type="search" placeholder="🔍 Search..." (keydown.enter)="searchText()">
       </div>
-      <!-- Mobile-Text -->
-      <div *ngIf="screenMode=='M' && headerC['iconCM']">
-        <div class="center-text">
-            {{ headerC['iconCMSource'] }}
-        </div>
+    </div>
+    <div class="col-3 right-icon-container">
+      <div *ngIf="!isLoggedIn" class="right-icon1-web">
+        <a routerLink="/login">
+          <img src="../../../assets/icons/loginBtn.svg" alt="header-right-icon1">
+        </a>
+      </div>
+      <div *ngIf="!isLoggedIn" class="right-icon2-web">
+        <a routerLink="/signup">
+          <img src="../../../assets/icons/signupBtn.svg" alt="header-right-icon2">
+        </a>
+      </div>
+      <div *ngIf="isLoggedIn" class="right-icon2-web">
+        <a routerLink="/mypage">
+          <img src="../../../assets/icons/member.svg" alt="header-right-icon2">
+        </a>
       </div>
     </div>
-    
-    <!--  RIGHT -->
-    <div class="col-3 right-icon-container">
-       <!-- Web-Right-icon-1 -->
-      <div *ngIf="screenMode=='W' && headerC['iconR1WSource']" class="right-icon1-web">
-        <a [routerLink]="iconR1WLink">
-          <img [src]="headerC['iconR1WSource']" alt="header-right-icon1">
-        </a>
-      </div>
-      <!-- Web-Right-icon-2 -->
-      <div *ngIf="screenMode=='W' && headerC['iconR2WSource']" class="right-icon2-web">
-        <a [routerLink]="iconR2WLink">
-          <img [src]="headerC['iconR2WSource']" alt="header-right-icon2">
-        </a>
-      </div>
-
-       <!-- Mobile-Right-icon-1 -->
-      <div *ngIf="screenMode=='M' && headerC['iconR1MSource']" class="right-icon1-mobile">
-        <a [routerLink]="iconR1MLink">
-          <img [src]="headerC['iconR1MSource']" alt="header-right-icon1">
-        </a>
-      </div>
-      <!-- Mobile-Right-icon-2 -->
-      <div *ngIf="screenMode=='M' && headerC['iconR2MSource']" class="right-icon2-mobile">
-        <a [routerLink]="iconR2MLink">
-          <img [src]="headerC['iconR2MSource']" alt="header-right-icon1">
-        </a>
-      </div>
+  </div>
+  <!-- Mobile -->
+  <div *ngIf="screenMode === 'M'" class="row header-container">
+    <div *ngIf="inMainpage" class="col-3 left-icon-container">
+      <a routerLink="/"><img src="../../../assets/icons/everycent.svg" alt="go-Home"></a>
+    </div>
+    <div *ngIf="!inMainpage" class="col-3 left-icon-container">
+      <a routerLink="/"><img src="../../../assets/icons/everycent.svg" alt="go-Home"></a>
+    </div>
+    <div *ngIf="isLoggedIn" class="col-3 right-icon-container">
+      <a routerLink="/mypage" id="mobile-icon"><img src="../../../assets/icons/member.svg" alt="header-right-icon1"></a>
+    </div>
+    <div *ngIf="!isLoggedIn" class="col-3 right-icon-container">
+      <a routerLink="/login"><img src="../../../assets/icons/loginIcon.svg" alt="header-right-icon1"></a>
     </div>
   </div>
 </div>

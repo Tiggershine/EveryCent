@@ -11,7 +11,7 @@ const _signupUrl = "http://localhost:3000";
   providedIn: 'root'
 })
 export class AuthService {
-  private isLoggedIn$: boolean = true;
+  private isLoggedIn$: boolean = false;
 
   private setLoggedIn(data: boolean): void {
     this.isLoggedIn$ = data;
