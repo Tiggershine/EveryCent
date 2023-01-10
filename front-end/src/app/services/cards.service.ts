@@ -22,18 +22,11 @@ export class CardsService {
   getProduct(_id: string): Observable<object> {
     return this._http.get(`http://localhost:3000/card/card/${_id}`);
   }
-  create(data: any): Observable<HttpEvent<Product>> {
-    const req = new HttpRequest(
-      'POST',
+  create(data: any): Observable<Product> {
+    return this._http.post<Product>(
       'http://localhost:3000/card/register',
-      data,
-      {
-        reportProgress: true,
-        responseType: 'json',
-      }
+      data
     );
-    console.log(data);
-    return this._http.request(req);
   }
 
   createFile(data: FormData): void {

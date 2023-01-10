@@ -1,8 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { CardsService } from 'src/app/services/cards.service';
 import { Product } from 'src/app/models/product';
-import { getNumberOfCurrencyDigits } from '@angular/common';
-import { FormGroup } from '@angular/forms';
+
 @Component({
   selector: 'app-product-information',
   templateUrl: './product-information.component.html',
@@ -57,13 +56,13 @@ export class ProductInformationComponent implements OnInit {
   };
 
   screenMode: string;
-  submitted = false;
   selectedFiles?: FileList;
   previews: string[] = [];
   imagename: string[] = [];
   multipleImages: string[] = [];
   counts: boolean;
   numberOfFiles: number = null;
+
   constructor(private cardsService: CardsService) {}
 
   ngOnInit(): void {
@@ -123,7 +122,6 @@ export class ProductInformationComponent implements OnInit {
     this.cardsService.create(data).subscribe({
       next: (response) => {
         console.log(response);
-        this.submitted = true;
       },
       error: (error) => {
         console.log(error);
