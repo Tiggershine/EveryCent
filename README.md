@@ -9,7 +9,7 @@
 
 ## Technologies
 - Frontend: **Angular**
-- Backend: **Node JS**
+- Backend:  **Node JS**
 - Database: **MongoDB**
 
 ## Design 
@@ -24,3 +24,13 @@
 - Meine Beiträge verwalten
 
 ![Semantic description of image](Login.gif)
+
+<br>
+
+### Post Verwaltung
+- Create
+- Read
+- Update
+- Delete
+
+![Semantic description of image](Crud.gif)
