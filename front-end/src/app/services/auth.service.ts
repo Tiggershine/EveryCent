@@ -58,4 +58,8 @@ export class AuthService {
     this.setLoggedIn(loggedin);
     this.setUserInfo(user);
   }
+
+  logoutUser() {
+    return this.http.post<any>(`${_signupUrl}/logout`, null);
+  }
 }

@@ -59,7 +59,7 @@ app.post('/login', passport.authenticate('local', {failureRedirect: '/loginFail'
 app.post('/logout', (req, res, next) => {
   req.logout((err) => {
     if (err)  { res.send(err); return next(err); }
-    res.redirect('/');
+    res.json({ loggedOut: true });
   });
 });
 

@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   searchInput: string;
   isLoggedIn: boolean;
   inMainpage: boolean = true;
+  toggleVisible: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -52,5 +53,23 @@ export class HeaderComponent implements OnInit {
   searchText() {
     this._shareservice.setSearchText(this.searchInput);
     this.router.navigate(['search']);
-  }  
+  } 
+
+  memberIconOnClick() {
+    this.toggleVisible = !this.toggleVisible;
+  }
+
+  logOutUser(){
+    if (confirm('Are you sure you to log out?')) {
+      this._authservice.logoutUser().subscribe(data => {
+        if(data.loggedOut){
+          this._authservice.loginUpdate(false, {_id: "", email: "", username: ""});
+          this.router.navigate(['']);
+        }
+      })
+    } else {
+      // Do nothing!
+    }
+  };
 }
+

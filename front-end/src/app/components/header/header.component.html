@@ -23,12 +23,16 @@
         </a>
       </div>
       <div *ngIf="isLoggedIn" class="right-icon2-web">
-        <a routerLink="/mypage">
+        <a (click)="memberIconOnClick()" alt="header-right-icon2">
           <img src="../../../assets/icons/member.svg" alt="header-right-icon2">
         </a>
       </div>
     </div>
   </div>
+    <div *ngIf="screenMode === 'W' && isLoggedIn && toggleVisible" class="dropdown-content-web">
+      <a routerLink="/mypage">My Page</a>
+      <a (click)="logOutUser()">Log Out</a>
+    </div>
   <!-- Mobile -->
   <div *ngIf="screenMode === 'M'" class="row header-container">
     <div *ngIf="inMainpage" class="col-3 left-icon-container">
@@ -37,12 +41,17 @@
     <div *ngIf="!inMainpage" class="col-3 left-icon-container">
       <a routerLink="/"><img src="../../../assets/icons/everycent.svg" alt="go-Home"></a>
     </div>
-    <div *ngIf="isLoggedIn" class="col-3 right-icon-container">
-      <a routerLink="/mypage" id="mobile-icon"><img src="../../../assets/icons/member.svg" alt="header-right-icon1"></a>
+    <div *ngIf="isLoggedIn" class="col-3 right-icon-container dropdown">
+      <a (click)="memberIconOnClick()" id="mobile-icon"><img src="../../../assets/icons/member.svg" alt="header-right-icon1"></a>
     </div>
     <div *ngIf="!isLoggedIn" class="col-3 right-icon-container">
       <a routerLink="/login"><img src="../../../assets/icons/loginIcon.svg" alt="header-right-icon1"></a>
     </div>
   </div>
+  <div *ngIf="screenMode === 'M' &&  isLoggedIn && toggleVisible" class="dropdown-content-mobile">
+    <a routerLink="/mypage">My Page</a>
+    <a (click)="logOutUser()">Log Out</a>
+  </div>
 </div>
+
 
