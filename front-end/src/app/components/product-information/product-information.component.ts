@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { CardsService } from 'src/app/services/cards.service';
 import { Product } from 'src/app/models/product';
+import { getNumberOfCurrencyDigits } from '@angular/common';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
@@ -48,7 +49,7 @@ export class ProductInformationComponent implements OnInit {
   ];
 
   products: Product = {
-    user: this._auth.getUsername(),
+    user: this._authService.getUserId(),
   };
 
   screenMode: string;
@@ -61,9 +62,9 @@ export class ProductInformationComponent implements OnInit {
 
   constructor(
     private cardsService: CardsService,
-    private _auth: AuthService,
-    private router: Router,
-    ) {}
+    private _authService: AuthService,   
+    private router: Router      
+  ) {}
 
   ngOnInit(): void {
     let screenWidth = window.innerWidth;
