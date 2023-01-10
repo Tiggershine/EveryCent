@@ -48,7 +48,6 @@ export class ProductEditComponent implements OnInit {
 
   products: Product = {
     user: 'hanbit',
-    title: 'Product'
   };
 
   screenMode: string;
@@ -114,15 +113,14 @@ export class ProductEditComponent implements OnInit {
       title: this.products.title,
       description: this.products.description,
       price: this.products.price,
-      category: this.products.category,
+      category: 'Book',
       imageUrl: this.products.imageUrl,
       district: this.products.district,
       dealType: this.products.dealType,
       user: this.products.user,
       contact: this.products.contact,
     };
-
-    this.cardsService.create(data).subscribe({
+    this.cardsService.update(this.products._id, data).subscribe({
       next: (response) => {
         console.log(response);
       },
@@ -131,19 +129,16 @@ export class ProductEditComponent implements OnInit {
       },
     });
 
-    const formData = new FormData();
+    // const formData = new FormData();
 
-    for (let imgs of this.multipleImages) {
-      formData.append('files', imgs);
-      this.cardsService.createFile(formData);
-      console.log(formData);
-    }
+    // for (let imgs of this.multipleImages) {
+    //   formData.append('files', imgs);
+    //   this.cardsService.createFile(formData);
+    //   console.log(formData);
+    // }
   }
 
-
-
   deleteCard(){
-
     this.cardsService.delete(this.products._id).subscribe({
       next: (response) => {
         console.log(response);
