@@ -1,48 +1,48 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 // import * as User from '../models/user.model.mjs'
- 
+
 
 const productCardSchema = new Schema(
   {
-    title: { 
-      type: String, 
-      required: true 
+    title: {
+      type: String,
+      required: true
     },
     description: {
-       type: String, 
-       required: true 
-    }, 
-    price: { 
-      type: Number, 
-      required: true 
+       type: String,
+       required: true
+    },
+    price: {
+      type: Number,
+      required: true
     },
     category: {
 			type: String,
 			enum: [ 'Book', 'Clothing', 'Food', 'Electronics', 'Kitchen', 'Furniture', 'Sporting goods', 'Hobbies' ],
 			required: true
 		},
-    imageUrl: { 
+    imageUrl: {
       type: [String],
       dafault: ['no image']
     },
-    user: { 
+    user: {
       type: String,  // User.userId
-      required: true 
+      required: true
     },
-    district: { 
-      type: String, 
-      enum: ['Markt', 'Theater', 'Lindenplatz', 'St. Jakob', 'Westpark', 'Kronenberg', 'Hörn', 'Ponttor', 'Hansemannplatz', 'Soers', 'Jülicher Straße', 'Kalkofen', 'Kaiserplatz', 'Adalbertsteinweg', 'Panneschopp', 'Rothe Erde', 'Forst', 'Frankenberger Viertel', 'Burtscheid', 'Marschiertor', 'Beverau' ], 
-      default: 'Markt', 
+    district: {
+      type: String,
+      enum: ['Markt', 'Theater', 'Lindenplatz', 'St. Jakob', 'Westpark', 'Kronenberg', 'Hörn', 'Ponttor', 'Hansemannplatz', 'Soers', 'Jülicher Straße', 'Kalkofen', 'Kaiserplatz', 'Adalbertsteinweg', 'Panneschopp', 'Rothe Erde', 'Forst', 'Frankenberger Viertel', 'Burtscheid', 'Marschiertor', 'Beverau' ],
+      default: 'Markt',
       required: true },
-    dealType: { 
-      type: String, 
-      enum: ['sell', 'buy', 'freecycle'], 
-      default: 'sell', 
-      required: true 
+    dealType: {
+      type: String,
+      enum: ['sell', 'buy', 'freecycle'],
+      default: 'sell',
+      required: true
     },
-    createdAt: { 
-      type: Date, 
+    createdAt: {
+      type: Date,
       dafault: Date.now
     }
   }
@@ -81,7 +81,7 @@ export async function createCard(title, description, price, category, imageUrl, 
 }
 
 
-export async function updateCard(id, title, description, price, imageUrl, user, district, dealType) {
+export async function updateCard(id, title, description, price, category, imageUrl, user, district, dealType) {
   return ProductCard.findByIdAndUpdate(id, { title, description, price, category, imageUrl, user, district, dealType }, { returnOriginal: false});
 }
 

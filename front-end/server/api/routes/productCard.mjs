@@ -62,7 +62,7 @@ router.put('/update/:id', async (req, res) => {
       message: `can not find product-card with ${id}`
     });
   }
-  const updated = await productCardRepository.updateCard(title, description, price, category, imageUrl, user, district, dealType);
+  const updated = await productCardRepository.updateCard(id, title, description, price, category, imageUrl, user, district, dealType);
   res.status(200).json(updated);
 })
 

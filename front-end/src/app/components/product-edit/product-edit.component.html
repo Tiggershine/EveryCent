@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div class="container">
   <div class="layout">
-    <title>Upload New Item</title>
+    <title>Update Your Item</title>
     <div class="layout-iwant">
       <h1 class="text">I want</h1>
       <div class="layout-radio-button">
@@ -69,7 +69,7 @@
       <input class="file-image" id="image" multiple (change)="onFileSelect($event)" type="file" />
     </div>
     <div class="row-button" [align]="'end'">
-      <button class="button button-register" (click)="updateCard()" routerLink="/">UPDATE</button>
+      <button class="button button-register" (click)="updateCard()">UPDATE</button>
       <button mat-dialog-close class="button button-cancel" (click)="cancelAlert()">CANCEL</button>
     </div>
   </div>

@@ -60,16 +60,16 @@ export class ProductEditComponent implements OnInit {
   numberOfFiles: number = null;
 
   constructor(
-    private cardsService: CardsService, 
+    private cardsService: CardsService,
     private activatedRoute: ActivatedRoute,
     private _auth: AuthService,
     private router: Router
-    ) {
+  ) {
     activatedRoute.params.subscribe((params) => {
-      if(params['productId'])
-      cardsService.getProduct(params['productId']).subscribe((editCard) =>{
-        this.products = editCard
-      })
+      if (params['productId'])
+        cardsService.getProduct(params['productId']).subscribe((editCard) => {
+          this.products = editCard
+        })
     })
   }
 
@@ -126,14 +126,9 @@ export class ProductEditComponent implements OnInit {
       user: this.products.user,
       contact: this.products.contact,
     };
-    this.cardsService.update(this.products._id, data).subscribe({
-      next: (response) => {
-        console.log(response);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+    this.cardsService.update(this.products._id, data).subscribe(data => {
+      this.router.navigate(['mypage']);
+    })
 
     // const formData = new FormData();
 
@@ -155,8 +150,8 @@ export class ProductEditComponent implements OnInit {
   //   })
   // }
 
-  cancelAlert(){
-    if(confirm("Your changes could not be saved. Are you sure you want to cancel?")){
+  cancelAlert() {
+    if (confirm("Your changes could not be saved. Are you sure you want to cancel?")) {
       this.router.navigate([''])
     } else {
 
