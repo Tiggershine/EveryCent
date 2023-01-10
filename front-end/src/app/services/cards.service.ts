@@ -17,6 +17,9 @@ export class CardsService {
   getProduct(_id: string): Observable<object> {
     return this._http.get(`http://localhost:3000/card/card/${_id}`);
   }
+  getProductByUser(_userId: string): Observable<Product[]> {
+    return this._http.get<Product[]>(`http://localhost:3000/card/user/${_userId}`);
+  }
   create(data: any): Observable<Product> {
     return this._http.post<Product>(
       'http://localhost:3000/card/register', data);
@@ -53,7 +56,7 @@ export class CardsService {
     );
   }
   findByUser(userId: string): Observable<Product[]> {
-    return this.getAll().pipe(
+    return this.getProductByUser(userId).pipe(
       map((data) => {
         return data.filter((product) => {
           return product.user === userId;
