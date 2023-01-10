@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   searchInput: string;
   isLoggedIn: boolean;
   inMainpage: boolean = true;
-  toggleVisible: boolean = false;
+  dropdownVisible: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -46,6 +46,7 @@ export class HeaderComponent implements OnInit {
   @HostListener('window:scroll', ['$event']) onscroll() {
     if(window.scrollY > 200) {
       this.headerFixed = true;
+      this.dropdownVisible = false;
     } else {
       this.headerFixed = false;
     }
@@ -56,7 +57,8 @@ export class HeaderComponent implements OnInit {
   } 
 
   memberIconOnClick() {
-    this.toggleVisible = !this.toggleVisible;
+    this.dropdownVisible = !this.dropdownVisible;
+    console.log(this.dropdownVisible);
   }
 
   logOutUser(){

@@ -28,11 +28,13 @@
         </a>
       </div>
     </div>
-  </div>
-    <div *ngIf="screenMode === 'W' && isLoggedIn && toggleVisible" class="dropdown-content-web">
-      <a routerLink="/mypage">My Page</a>
-      <a (click)="logOutUser()">Log Out</a>
+    <div class="dropdown-container">
+      <div *ngIf="screenMode === 'W' && isLoggedIn && dropdownVisible" class="dropdown-content-web">
+        <a routerLink="/mypage">My Page</a>
+        <a (click)="logOutUser()">Log Out</a>
+      </div>
     </div>
+  </div>
   <!-- Mobile -->
   <div *ngIf="screenMode === 'M'" class="row header-container">
     <div *ngIf="inMainpage" class="col-3 left-icon-container">
@@ -48,7 +50,7 @@
       <a routerLink="/login"><img src="../../../assets/icons/loginIcon.svg" alt="header-right-icon1"></a>
     </div>
   </div>
-  <div *ngIf="screenMode === 'M' &&  isLoggedIn && toggleVisible" class="dropdown-content-mobile">
+  <div *ngIf="screenMode === 'M' &&  isLoggedIn && dropdownVisible" class="dropdown-content-mobile">
     <a routerLink="/mypage">My Page</a>
     <a (click)="logOutUser()">Log Out</a>
   </div>

@@ -96,9 +96,15 @@
     font-size: 1.3rem;
     opacity: .5;
   }
+  .dropdown-container{
+    position: relative;
+    max-width: 1180px;
+    display: flex; 
+    justify-content: flex-end;
+  }
   .dropdown-content-web {
-    position: absolute;
-    right: 0;
+    top: 80px;
+    position: fixed;
     display: flex;
     flex-direction: column;
     z-index : 1;
