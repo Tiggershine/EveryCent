@@ -116,6 +116,7 @@ export async function updateCard(
   title,
   description,
   price,
+  category,
   imageUrl,
   user,
   district,

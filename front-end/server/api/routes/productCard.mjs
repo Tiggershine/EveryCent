@@ -77,6 +77,7 @@ router.put("/update/:id", async (req, res) => {
     });
   }
   const updated = await productCardRepository.updateCard(
+    id,
     title,
     description,
     price,
