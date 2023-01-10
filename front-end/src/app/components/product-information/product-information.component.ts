@@ -47,21 +47,21 @@ export class ProductInformationComponent implements OnInit {
     'Beverau',
   ];
 
-  screenMode: string;
-  imageuri: any;
-  imagename: string[] = [];
-
   products: Product = {
     user: this._authService.getUserId(),
   };
 
-  submitted = false;
+  screenMode: string;
   selectedFiles?: FileList;
   previews: string[] = [];
+  imagename: string[] = [];
+  multipleImages: string[] = [];
+  counts: boolean;
+  numberOfFiles: number = null;
 
   constructor(
     private cardsService: CardsService,
-    private _authService: AuthService          ) {}
+    private _authService: AuthService) { }
 
   ngOnInit(): void {
     let screenWidth = window.innerWidth;
@@ -79,37 +79,33 @@ export class ProductInformationComponent implements OnInit {
     console.log(this.screenMode);
   }
 
-  counts: boolean;
-  numberOfFiles: number = null;
-
   onFileSelect(event: any): void {
     this.selectedFiles = event.target.files;
+    this.numberOfFiles = this.selectedFiles.length;
     this.previews = [];
     if (this.selectedFiles && this.selectedFiles[0]) {
       let reader: FileReader;
-      for (let i = 0; i < this.selectedFiles.length; i++) {
+      for (let i = 0; i < this.numberOfFiles; i++) {
         reader = new FileReader();
+        this.multipleImages = event.target.files;
+        this.imagename[i] =
+          '../../assets/images/productcardImages/' + event.target.files[i].name;
         reader.onload = (e: any) => {
           this.previews.push(e.target.result);
         };
-        this.imagename[i] = event.target.files[i].name;
       }
-      this.numberOfFiles = this.selectedFiles.length;
-      console.log(this.numberOfFiles);
-
       if (this.numberOfFiles <= 1) {
         this.counts = false;
       } else {
         this.counts = true;
       }
-      this.imageuri = reader.readAsDataURL(this.selectedFiles[0]);
-      console.log(this.imagename);
+      reader.readAsDataURL(this.selectedFiles[0]);
+      this.products.imageUrl = this.imagename;
     }
   }
 
   saveProduct(): void {
     const data = {
-      _id: this.products._id,
       title: this.products.title,
       description: this.products.description,
       price: this.products.price,
@@ -119,16 +115,23 @@ export class ProductInformationComponent implements OnInit {
       dealType: this.products.dealType,
       user: this.products.user,
       contact: this.products.contact,
-      createdAt: this.products.createdAt,
     };
+
     this.cardsService.create(data).subscribe({
       next: (response) => {
         console.log(response);
-        this.submitted = true;
       },
       error: (error) => {
         console.log(error);
       },
     });
+
+    const formData = new FormData();
+
+    for (let imgs of this.multipleImages) {
+      formData.append('files', imgs);
+      this.cardsService.createFile(formData);
+      console.log(formData);
+    }
   }
 }

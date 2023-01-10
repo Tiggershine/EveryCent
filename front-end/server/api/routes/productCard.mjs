@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 import * as productCardRepository from '../models/productCard.model.mjs'
-
+import storage from "../middleware/upload.js";
 
 // Get all cards
 router.get('/cards', async (req, res) => {
@@ -45,6 +45,12 @@ router.post('/register', async (req, res) => {
   res.status(201).json(productCard);
 })
 
+router.post("/register/image", storage, async (req, res) => {
+  console.log(req.body);
+  console.log(req.files);
+  res.json({ message: "Successfully uploaded files" });
+});
+
 
 // Update the card
 router.put('/update/:id', async (req, res) => {
@@ -52,7 +58,7 @@ router.put('/update/:id', async (req, res) => {
   const id = req.params.id;
   const prodcutCard = await productCardRepository.getProductCard(id);
   if (!prodcutCard) {
-    res.status.json({ 
+    res.status.json({
       message: `can not find product-card with ${id}`
     });
   }

@@ -25,8 +25,8 @@ export class SignupPageComponent implements OnInit {
   constructor(
     private _auth: AuthService,
     private router: Router,
-  ) {}
-  ngOnInit(): void {}
+  ) { }
+  ngOnInit(): void { }
 
   passwordConfirm(): boolean {
     return this.signupUserData.password === this.confirmPassword;
@@ -58,7 +58,7 @@ export class SignupPageComponent implements OnInit {
       this.warningMsg = "ID must be an email!";
     }
 
-    if(!this.isDataIncorrect){
+    if (!this.isDataIncorrect) {
       this._auth.signupUser(this.signupUserData.email, this.signupUserData.username, this.signupUserData.password).subscribe(data => {
         if (data.success = true) {
           this.router.navigate(['/login']);
