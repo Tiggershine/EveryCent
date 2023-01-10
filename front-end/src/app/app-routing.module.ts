@@ -9,20 +9,18 @@ import { MypageComponent } from './components/mypage/mypage.component';
 import { ProductCardListComponent } from './components/product-card-list/product-card-list.component';
 import { AfterSearchComponent } from './pages/after-search/after-search.component';
 import { DetailOpenGuard } from './pages/product-detail-page/guard/detail-open.guard';
+import { AfterLoginComponent } from './pages/after-login/after-login.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent,
-    data: {
-      path: 'main',             
-    },
     children: [
       { path: '', component: ProductCardListComponent },
       { path: 'products', component: ProductCardListComponent },
-      { path: 'search', component: AfterSearchComponent, 
-        data: { path: 'search', searchText: 'searchText' },
-      },
     ]
   },
+  { path: 'welcome', component: AfterLoginComponent, },
+  { path: 'search', component: AfterSearchComponent, },
   {
     path: 'products/:productId', component: ProductDetailPageComponent,
     data: {
@@ -59,8 +57,8 @@ const routes: Routes = [
   },
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-export const routingComponents = [MainPageComponent];
+export const routingComponents = [ MainPageComponent ];

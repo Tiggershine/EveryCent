@@ -4,6 +4,7 @@ import { CardsService } from 'src/app/services/cards.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute, NavigationEnd, Route, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { ShareDataService } from 'src/app/services/share-data.service';
 
 @Component({
   selector: 'app-product-card-list',
@@ -12,30 +13,37 @@ import { filter } from 'rxjs/operators';
 })
 export class ProductCardListComponent implements OnInit {
 
-  @Input() searchText: string;
-  @Input() searched: boolean;
   products: Product[];
   product: Product;
-  isMypost: boolean;
+  isMypost: boolean = false;
   currentRoute: any;
   
   constructor (
     private _cardservice: CardsService,
     private _authservice: AuthService,
+    private _shareservice: ShareDataService,
     private route: ActivatedRoute,
     private router: Router
   ) {
-    router.events.pipe(filter(event => event instanceof NavigationEnd))
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event) => {
         this.currentRoute = event;
     });
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
-  
-  private writer: string = this._authservice.userId;
+  // todo: username -> userid
+  private writer: string = this._authservice.getUsername();
+  private searchText: string;
 
   ngOnInit() {
-    console.log(this.writer);
-    if(this.currentRoute.url === "/mypage" && this.writer !== null) {
+    if(this.currentRoute.url === "/search") {
+      this._shareservice.sharedSearchText.subscribe((data) => {
+        this.searchText = data;
+      });
+      this._cardservice.searchByTitle(this.searchText).subscribe(res => {
+        this.products = res;
+      });  
+    } else if (this.currentRoute.url === "/mypage" && this.writer !== null) {
       this._cardservice.findByUser(this.writer).subscribe({
         next: (data) => {
           this.products = data;
@@ -54,12 +62,6 @@ export class ProductCardListComponent implements OnInit {
         this.products = data;
       },
       error: (e) => console.log(e)
-    });
-  }
-  
-  ngOnChanges(changes: SimpleChanges) {
-    this._cardservice.searchByTitle(this.searchText).subscribe(res => {
-      this.products = res;
     });
   }
 }

@@ -22,7 +22,6 @@ export class MainPageNavComponent implements OnInit {
   onResize(event: any) {
     let screenWidth = window.innerWidth;
     (screenWidth > 767) ? this.screenMode = "web" : this.screenMode = "mobile"
-    console.log(this.screenMode);
   }
   searchText() {
     this.InputText.emit(this.searchInput);    
