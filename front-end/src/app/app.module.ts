@@ -22,6 +22,7 @@ import { AfterSearchComponent } from './pages/after-search/after-search.componen
 import { AfterLoginComponent } from './pages/after-login/after-login.component';
 import { CardsService } from './services/cards.service';
 import { ShareDataService } from './services/share-data.service';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ShareDataService } from './services/share-data.service';
     FilterPipe,
     AfterSearchComponent,
     AfterLoginComponent,
+    ProductEditComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ import { AfterSearchComponent } from './pages/after-search/after-search.componen
 import { DetailOpenGuard } from './pages/product-detail-page/guard/detail-open.guard';
 import { AfterLoginComponent } from './pages/after-login/after-login.component';
 import { AppComponent } from './app.component';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent,
@@ -27,7 +28,7 @@ const routes: Routes = [
       path: 'products/:productId',
     },
     canActivate: [DetailOpenGuard],
-  },    
+  },
   {
     path: 'login', component: LoginPageComponent,
     data: {
@@ -55,6 +56,7 @@ const routes: Routes = [
     },
     canActivate: [DetailOpenGuard],
   },
+  { path: 'edit/:productId', component: ProductEditComponent, }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
