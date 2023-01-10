@@ -113,7 +113,7 @@ export class ProductEditComponent implements OnInit {
       title: this.products.title,
       description: this.products.description,
       price: this.products.price,
-      category: 'Book',
+      category: this.products.category,
       imageUrl: this.products.imageUrl,
       district: this.products.district,
       dealType: this.products.dealType,
