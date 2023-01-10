@@ -23,4 +23,4 @@
 - Login
 - Meine Beiträge verwalten
 
-![Semantic description of image](App1.mov)
+![Semantic description of image](Login.gif)
