@@ -1,6 +1,7 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 // import * as User from '../models/user.model.mjs'
+ 
 
 const productCardSchema = new Schema(
   {
@@ -47,12 +48,14 @@ const productCardSchema = new Schema(
   }
 );
 
-const ProductCard = mongoose.model("ProductCard", productCardSchema);
+const ProductCard = mongoose.model('ProductCard', productCardSchema);
 export default ProductCard;
+
 
 export async function getAll() {
   return ProductCard.find({});
 }
+
 
 export async function getProductCard(id) {
   return ProductCard.findById(id);
@@ -64,7 +67,6 @@ export async function getProductCardByUser(userId) {
 
 
 export async function createCard(title, description, price, category, imageUrl, user, district, dealType) {
-
   return new ProductCard({
     title,
     description,
@@ -74,27 +76,15 @@ export async function createCard(title, description, price, category, imageUrl, 
     user,
     district,
     dealType,
-    createdAt: Date.now(),
+    createdAt: Date.now()
   }).save();
 }
 
-export async function updateCard(
-  id,
-  title,
-  description,
-  price,
-  category,
-  imageUrl,
-  user,
-  district,
-  dealType
-) {
-  return ProductCard.findByIdAndUpdate(
-    id,
-    { title, description, price, category, imageUrl, user, district, dealType },
-    { returnOriginal: false }
-  );
+
+export async function updateCard(id, title, description, price, imageUrl, user, district, dealType) {
+  return ProductCard.findByIdAndUpdate(id, { title, description, price, category, imageUrl, user, district, dealType }, { returnOriginal: false});
 }
+
 
 export async function removeCard(id) {
   return ProductCard.findByIdAndDelete(id);
