@@ -1,7 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { CardsService } from 'src/app/services/cards.service';
 import { Product } from 'src/app/models/product';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-product-edit',
@@ -47,7 +48,7 @@ export class ProductEditComponent implements OnInit {
   ];
 
   products: Product = {
-    user: 'hanbit',
+    user: this._auth.getUsername(),
   };
 
   screenMode: string;
@@ -58,7 +59,12 @@ export class ProductEditComponent implements OnInit {
   counts: boolean;
   numberOfFiles: number = null;
 
-  constructor(private cardsService: CardsService, private activatedRoute: ActivatedRoute,) {
+  constructor(
+    private cardsService: CardsService, 
+    private activatedRoute: ActivatedRoute,
+    private _auth: AuthService,
+    private router: Router
+    ) {
     activatedRoute.params.subscribe((params) => {
       if(params['productId'])
       cardsService.getProduct(params['productId']).subscribe((editCard) =>{
@@ -138,14 +144,22 @@ export class ProductEditComponent implements OnInit {
     // }
   }
 
-  deleteCard(){
-    this.cardsService.delete(this.products._id).subscribe({
-      next: (response) => {
-        console.log(response);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-  })
-}
+  // deleteCard(){
+  //   this.cardsService.delete(this.products._id).subscribe({
+  //     next: (response) => {
+  //       console.log(response);
+  //     },
+  //     error: (error) => {
+  //       console.log(error);
+  //     },
+  //   })
+  // }
+
+  cancelAlert(){
+    if(confirm("Your changes could not be saved. Are you sure you want to cancel?")){
+      this.router.navigate([''])
+    } else {
+
+    }
+  }
 }

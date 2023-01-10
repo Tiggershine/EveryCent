@@ -69,7 +69,7 @@
     </div>
     <div class="row-button" [align]="'end'">
       <button class="button button-register" (click)="saveProduct()" routerLink="/">REGISTER</button>
-      <button mat-dialog-close class="button button-cancel" routerLink="/">CANCEL</button>
+      <button mat-dialog-close class="button button-cancel" (click)="cancelAlert()">CANCEL</button>
     </div>
   </div>
 </div>

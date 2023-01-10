@@ -64,4 +64,13 @@ export class ProductCardListComponent implements OnInit {
       error: (e) => console.log(e)
     });
   }
+
+  deleteProduct(productId: string) {
+    if(confirm("Are you sure you want to delete this post?")) {
+      this._cardservice.delete(productId).subscribe(data => {
+        this.router.navigate(['mypage']);
+      })
+    } else {
+    }
+  }
 }

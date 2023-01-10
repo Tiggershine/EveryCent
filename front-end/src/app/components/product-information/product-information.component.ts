@@ -1,6 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { CardsService } from 'src/app/services/cards.service';
 import { Product } from 'src/app/models/product';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-information',
@@ -46,7 +48,7 @@ export class ProductInformationComponent implements OnInit {
   ];
 
   products: Product = {
-    user: 'hanbit',
+    user: this._auth.getUsername(),
   };
 
   screenMode: string;
@@ -57,7 +59,11 @@ export class ProductInformationComponent implements OnInit {
   counts: boolean;
   numberOfFiles: number = null;
 
-  constructor(private cardsService: CardsService) {}
+  constructor(
+    private cardsService: CardsService,
+    private _auth: AuthService,
+    private router: Router,
+    ) {}
 
   ngOnInit(): void {
     let screenWidth = window.innerWidth;
@@ -116,6 +122,7 @@ export class ProductInformationComponent implements OnInit {
     this.cardsService.create(data).subscribe({
       next: (response) => {
         console.log(response);
+        this.router.navigate([''])
       },
       error: (error) => {
         console.log(error);
@@ -128,6 +135,14 @@ export class ProductInformationComponent implements OnInit {
       formData.append('files', imgs);
       this.cardsService.createFile(formData);
       console.log(formData);
+    }
+  }
+
+  cancelAlert(){
+    if(confirm("Your changes could not be saved. Are you sure you want to cancel?")){
+      this.router.navigate([''])
+    } else {
+
     }
   }
 }

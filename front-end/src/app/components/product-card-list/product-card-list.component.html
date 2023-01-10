@@ -14,7 +14,7 @@
         <!-- todo: isMypost 함수 추가 -->
         <div class="btn-active" [hidden]="!isMypost">
           <button class="btn" routerLink="/edit/{{product._id}}" id="edit-btn">edit</button>
-          <button class="btn" id="delete-btn">delete</button>
+          <button class="btn" (click)="deleteProduct(product._id)" id="delete-btn">delete</button>
         </div>
       </div>
     </div>
