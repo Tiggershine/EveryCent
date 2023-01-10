@@ -34,3 +34,13 @@
 - Delete
 
 ![Semantic description of image](Crud.gif)
+
+
+<br>
+
+### Responsive Design
+- Web version
+- Mobile version
+
+![Semantic description of image](Responsive.gif)
+
