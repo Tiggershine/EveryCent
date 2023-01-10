@@ -47,12 +47,6 @@ export class ProductInformationComponent implements OnInit {
 
   products: Product = {
     user: 'hanbit',
-    title: 'hanbit',
-    description: 'hello',
-    price: 123,
-    category: 'Book',
-    district: 'Markt',
-    dealType: 'sell',
   };
 
   screenMode: string;
