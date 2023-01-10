@@ -11,7 +11,7 @@ const _signupUrl = "http://localhost:3000";
   providedIn: 'root'
 })
 export class AuthService {
-  private isLoggedIn$: boolean = false;
+  private isLoggedIn$: boolean;
 
   private setLoggedIn(data: boolean): void {
     this.isLoggedIn$ = data;
@@ -34,7 +34,13 @@ export class AuthService {
   //   return this.userInfo.id;
   // }
   public getUsername() {
-  return this.userInfo.username;
+    return this.userInfo.username;
+  }
+  public getUserEmail() {
+    return this.userInfo.email;
+  }
+  public getUserId() {
+    return this.userInfo.id;
   }
 
   constructor(private http: HttpClient) {}
