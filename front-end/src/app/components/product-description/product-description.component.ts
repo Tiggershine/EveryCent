@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PRODUCTS } from 'src/app/models/mock-product';
 import { Product } from 'src/app/models/product';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-product-description',
@@ -22,6 +23,7 @@ export class ProductDescriptionComponent implements OnInit {
   product: Product;
   slides: string[]; 
   currentIndex: number = 0;
+  userEmail: string = this._authservice.getUserEmail();
 
   getCurrentSlideUrl(): string{
     return this.slides[this.currentIndex];
@@ -41,7 +43,7 @@ export class ProductDescriptionComponent implements OnInit {
     this.currentIndex = newIndex;
   }
 
-  constructor() { }
+  constructor(private _authservice: AuthService,) { }
 
   ngOnInit(): void {
     this.slides = this.productImage;
