@@ -17,3 +17,10 @@
 ### [Link for Mockup Design ](https://www.figma.com/file/pVUlarB3jvQJ339Hzii7xP/everycent?node-id=79%3A2&t=uLUPgowncZaLY1o9-1)
 
 
+## Funktionen
+### User Verwaltung
+- Register
+- Login
+- Meine Beiträge verwalten
+
+![Semantic description of image](App1.mov)
