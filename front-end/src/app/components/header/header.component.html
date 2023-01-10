@@ -1,40 +1,44 @@
 <div class="container-fluid" (scroll)="onscroll()" [ngClass]="headerFixed?'fixed':'nofixed'">
   <!-- Web -->
-  <div *ngIf="screenMode === 'W'" class="row header-container">
-    <div class="col-3 left-icon-container">
-      <a routerLink="/">
-        <img src="../../../assets/icons/everycent.svg" alt="go-Home">
-      </a>
-    </div>
-    <div class="col-6 header-search-bar">
-      <div>
-        <input class="search-bar" name="searchInput" [(ngModel)]="searchInput" type="search" placeholder="🔍 Search..." (keydown.enter)="searchText()">
-      </div>
-    </div>
-    <div class="col-3 right-icon-container">
-      <div *ngIf="!isLoggedIn" class="right-icon1-web">
-        <a routerLink="/login">
-          <img src="../../../assets/icons/loginBtn.svg" alt="header-right-icon1">
+  <div class="header-wrapper">
+    <div *ngIf="screenMode === 'W'" class="row header-container">
+      <div class="col-3 left-icon-container">
+        <a routerLink="/">
+          <img src="../../../assets/icons/everycent.svg" alt="go-Home">
         </a>
       </div>
-      <div *ngIf="!isLoggedIn" class="right-icon2-web">
-        <a routerLink="/signup">
-          <img src="../../../assets/icons/signupBtn.svg" alt="header-right-icon2">
-        </a>
+      <div class="col-6 header-search-bar">
+        <div>
+          <input class="search-bar" name="searchInput" [(ngModel)]="searchInput" type="search" placeholder="🔍 Search..." (keydown.enter)="searchText()">
+        </div>
       </div>
-      <div *ngIf="isLoggedIn" class="right-icon2-web">
-        <a (click)="memberIconOnClick()" alt="header-right-icon2">
-          <img src="../../../assets/icons/member.svg" alt="header-right-icon2">
-        </a>
+      <div class="col-3 right-icon-container">
+        <div *ngIf="!isLoggedIn" class="right-icon1-web">
+          <a routerLink="/login">
+            <img src="../../../assets/icons/loginBtn.svg" alt="header-right-icon1">
+          </a>
+        </div>
+        <div *ngIf="!isLoggedIn" class="right-icon2-web">
+          <a routerLink="/signup">
+            <img src="../../../assets/icons/signupBtn.svg" alt="header-right-icon2">
+          </a>
+        </div>
+        <div *ngIf="isLoggedIn" class="right-icon2-web">
+          <a (click)="memberIconOnClick()" alt="header-right-icon2">
+            <img src="../../../assets/icons/member.svg" alt="header-right-icon2">
+          </a>
+        </div>
       </div>
     </div>
-    <div class="dropdown-container">
-      <div *ngIf="screenMode === 'W' && isLoggedIn && dropdownVisible" class="dropdown-content-web">
+    <div *ngIf="screenMode === 'W' && isLoggedIn && dropdownVisible" class="dropdown-container">
+      <div class="dropdown-content-web">
         <a routerLink="/mypage">My Page</a>
         <a (click)="logOutUser()">Log Out</a>
       </div>
     </div>
   </div>
+  
+  
   <!-- Mobile -->
   <div *ngIf="screenMode === 'M'" class="row header-container">
     <div *ngIf="inMainpage" class="col-3 left-icon-container">

@@ -64,11 +64,14 @@
 
 // Web-mode 
 @media (min-width: 768px){
-  .header-container {
+  .header-wrapper{
+    margin: 0 auto; 
     max-width: 1180px;
-    margin: 0 auto;  
+  }
+  .header-container {
     height: 80px;
     justify-content: center;
+    align-items: center;
   }
   .left-icon-container img {
     height: 40px;
@@ -97,9 +100,8 @@
     opacity: .5;
   }
   .dropdown-container{
-    position: relative;
     max-width: 1180px;
-    display: flex; 
+    display: flex;
     justify-content: flex-end;
   }
   .dropdown-content-web {
