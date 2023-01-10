@@ -32,7 +32,7 @@ export class ProductCardListComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
   // todo: username -> userid
-  private writer: string = this._authservice.getUsername();
+  private writer: string = this._authservice.getUserId();
   searchText: string;
 
   ngOnInit() {
