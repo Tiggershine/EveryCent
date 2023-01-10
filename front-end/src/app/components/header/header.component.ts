@@ -60,7 +60,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logOutUser(){
-    if (confirm('Are you sure you to log out?')) {
+    if (confirm('Are you sure you want to log out?')) {
       this._authservice.logoutUser().subscribe(data => {
         if(data.loggedOut){
           this._authservice.loginUpdate(false, {_id: "", email: "", username: ""});

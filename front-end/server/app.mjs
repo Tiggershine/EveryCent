@@ -53,17 +53,13 @@ app.post('/login', passport.authenticate('local', {failureRedirect: '/loginFail'
     res.json({ loggedIn: true, user: req.user });
   });
 
-
-
 // Logout - If logout success, the value of 'req.isAuthenticated' = 'false'
 app.post('/logout', (req, res, next) => {
   req.logout((err) => {
     if (err)  { res.send(err); return next(err); }
-    res.json({ loggedOut: true });
+    res.json({ loggedOut: !err });
   });
 });
-
-
 
 // Routes which should handle requests
 app.use('/user', userRoutes);
