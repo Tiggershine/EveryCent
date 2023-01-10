@@ -32,25 +32,14 @@ export class ProductCardListComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
   // todo: username -> userid
-  private writer: string = this._authservice.getUsername();
-  private searchText: string;
+  private writer: string = this._authservice.getUserId();
+  searchText: string;
 
   ngOnInit() {
     if(this.currentRoute.url === "/search") {
-      this._shareservice.sharedSearchText.subscribe((data) => {
-        this.searchText = data;
-      });
-      this._cardservice.searchByTitle(this.searchText).subscribe(res => {
-        this.products = res;
-      });  
+      this.searchedProducts();  
     } else if (this.currentRoute.url === "/mypage" && this.writer !== null) {
-      this._cardservice.findByUser(this.writer).subscribe({
-        next: (data) => {
-          this.products = data;
-          this.isMypost = true;
-        },
-        error: (e) => console.log(e)
-      });
+      this.myProducts();
     } else {
       this.retrieveProducts();
     }
@@ -64,4 +53,22 @@ export class ProductCardListComponent implements OnInit {
       error: (e) => console.log(e)
     });
   }
+  searchedProducts() {
+    this._shareservice.sharedSearchText.subscribe((data) => {
+      this.searchText = data;
+    });
+    this._cardservice.searchByTitle(this.searchText).subscribe(res => {
+      this.products = res;
+    });
+  }
+  myProducts() {
+    this._cardservice.findByUser(this.writer).subscribe({
+      next: (data) => {
+        this.products = data;
+        this.isMypost = true;
+      },
+      error: (e) => console.log(e)
+    });
+  }
 }
+

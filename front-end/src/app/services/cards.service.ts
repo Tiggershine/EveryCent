@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpEvent,
-  HttpParams,
-  HttpRequest,
-} from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Product } from '../models/product';
 
@@ -14,13 +9,16 @@ const cardUrl = 'http://localhost:3000/card';
   providedIn: 'root',
 })
 export class CardsService {
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient) { }
 
   getAll(): Observable<Product[]> {
     return this._http.get<Product[]>('http://localhost:3000/card/cards');
   }
   getProduct(_id: string): Observable<object> {
     return this._http.get(`http://localhost:3000/card/card/${_id}`);
+  }
+  getProductByUser(_userId: string): Observable<Product[]> {
+    return this._http.get<Product[]>(`http://localhost:3000/card/user/${_userId}`);
   }
   create(data: any): Observable<Product> {
     return this._http.post<Product>(
@@ -45,12 +43,12 @@ export class CardsService {
   searchByTitle(searchText: string): Observable<Product[]> {
     return this.getAll().pipe(
       map((data) => {
-        if(!data) return [];
-        if(!searchText) return data;
+        if (!data) return [];
+        if (!searchText) return data;
         return data.filter((product) => {
           const query = searchText.toLowerCase();
           return (
-            product.title.toLowerCase().includes(query) 
+            product.title.toLowerCase().includes(query)
             // || product.description.toLowerCase().includes(query)
           );
         });
@@ -58,12 +56,12 @@ export class CardsService {
     );
   }
   findByUser(userId: string): Observable<Product[]> {
-    return this.getAll().pipe(
+    return this.getProductByUser(userId).pipe(
       map((data) => {
         return data.filter((product) => {
           return product.user === userId;
         });
       })
-    );
+    )
   }
 }
