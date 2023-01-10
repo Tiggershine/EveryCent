@@ -27,7 +27,7 @@ const productCardSchema = new Schema(
       dafault: ['no image']
     },
     user: { 
-      type: String,  // User.username 
+      type: String,  // User.userId
       required: true 
     },
     district: { 
@@ -59,6 +59,10 @@ export async function getAll() {
 
 export async function getProductCard(id) {
   return ProductCard.findById(id);
+}
+
+export async function getProductCardByUser(userId) {
+  return ProductCard.find({ user: userId });
 }
 
 

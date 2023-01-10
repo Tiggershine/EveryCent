@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { CardsService } from 'src/app/services/cards.service';
 import { Product } from 'src/app/models/product';
 import { getNumberOfCurrencyDigits } from '@angular/common';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-product-information',
@@ -51,14 +52,16 @@ export class ProductInformationComponent implements OnInit {
   imagename: string[] = [];
 
   products: Product = {
-    user: 'hanbit',
+    user: this._authService.getUserId(),
   };
 
   submitted = false;
   selectedFiles?: FileList;
   previews: string[] = [];
 
-  constructor(private cardsService: CardsService) {}
+  constructor(
+    private cardsService: CardsService,
+    private _authService: AuthService          ) {}
 
   ngOnInit(): void {
     let screenWidth = window.innerWidth;
