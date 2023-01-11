@@ -100,9 +100,10 @@ Backend
 
 ## TODO
 
-- Logout Component + function + bind backend + alert window(success)
-- Postcard edit / delete function (edit => register page) + data bind + alert window
-- Search result (if without search result)
-- Login/Signup success popup window
-- Search nach Category
-
+- [ ] Logout Component + function + bind backend + alert window(success)
+- [ ] Postcard edit / delete function (edit => register page) + data bind + alert window
+- [ ] Search result (if without search result)
+- [ ] Login/Signup success popup window
+- [ ] Search nach Category
+- [ ] Deploy
+- [ ] Testing - error / bug
