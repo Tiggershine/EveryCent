@@ -59,7 +59,7 @@ export class CardsService {
     return this.getProductByUser(userId).pipe(
       map((data) => {
         return data.filter((product) => {
-          return product.user === userId;
+          return product.user.userId === userId;
         });
       })
     )

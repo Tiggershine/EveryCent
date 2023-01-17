@@ -27,8 +27,8 @@ const productCardSchema = new Schema(
       dafault: ['no image']
     },
     user: { 
-      type: String,  // User.userId
-      required: true 
+      userId: { type: String, required: true },
+      email: { type: String, required: true },
     },
     district: { 
       type: String, 

@@ -14,8 +14,9 @@ export class ProductDetailPageComponent implements OnInit {
   
   constructor(
     private route: ActivatedRoute,
-    private _cardservice: CardsService,  
+    private _cardservice: CardsService
   ) { }
+
 
   ngOnInit(): void {
     this.getProduct(this.route.snapshot.params['productId']);
@@ -26,7 +27,6 @@ export class ProductDetailPageComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.product = data;
-          console.log(data);
         },
         error: (e) => console.error(e)
       });

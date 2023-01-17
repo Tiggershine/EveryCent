@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 import bcrypt from 'bcryptjs';
 import passport from 'passport';
-import User from '../models/user.model.mjs'
+import * as UserRepository from '../models/user.model.mjs';
 
 // Register new user
 router.post('/register', (req, res) => {
@@ -36,6 +36,14 @@ router.post('/register', (req, res) => {
       return res.json({ success: false });
     }
   })
+})
+
+// get all User
+router.get('/users', async (req, res) => {
+  const allUser = await UserRepository.getAll();
+  if (allUser) {
+    res.status(200).json(allUser);
+  }
 })
 
 export default router;

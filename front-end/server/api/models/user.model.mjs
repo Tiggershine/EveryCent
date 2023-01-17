@@ -12,4 +12,10 @@ export const userSchema = new Schema(
 );
 
 const User = mongoose.model('User', userSchema); 
+
+// get all users in DB
+export async function getAll() {
+  return User.find({});
+}
+
 export default User;
