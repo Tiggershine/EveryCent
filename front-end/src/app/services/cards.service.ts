@@ -56,12 +56,6 @@ export class CardsService {
     );
   }
   findByUser(userId: string): Observable<Product[]> {
-    return this.getProductByUser(userId).pipe(
-      map((data) => {
-        return data.filter((product) => {
-          return product.user.userId === userId;
-        });
-      })
-    )
+    return this.getProductByUser(userId);
   }
 }

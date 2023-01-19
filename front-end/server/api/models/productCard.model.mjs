@@ -62,7 +62,7 @@ export async function getProductCard(id) {
 }
 
 export async function getProductCardByUser(userId) {
-  return ProductCard.find({ user: userId });
+  return ProductCard.find({ "user.userId": userId });
 }
 
 

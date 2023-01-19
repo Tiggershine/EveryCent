@@ -58,7 +58,6 @@ export class HeaderComponent implements OnInit {
 
   memberIconOnClick() {
     this.dropdownVisible = !this.dropdownVisible;
-    console.log(this.dropdownVisible);
   }
 
   logOutUser(){

@@ -62,7 +62,7 @@ export class ProductCardListComponent implements OnInit {
     });
   }
   myProducts() {
-    this._cardservice.findByUser(this.writer).subscribe({
+    this._cardservice.getProductByUser(this.writer).subscribe({
       next: (data) => {
         this.products = data;
         this.isMypost = true;
