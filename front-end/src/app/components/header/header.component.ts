@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   searchInput: string;
   isLoggedIn: boolean;
   inMainpage: boolean = true;
+  dropdownVisible: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -45,6 +46,7 @@ export class HeaderComponent implements OnInit {
   @HostListener('window:scroll', ['$event']) onscroll() {
     if(window.scrollY > 200) {
       this.headerFixed = true;
+      this.dropdownVisible = false;
     } else {
       this.headerFixed = false;
     }
@@ -52,5 +54,24 @@ export class HeaderComponent implements OnInit {
   searchText() {
     this._shareservice.setSearchText(this.searchInput);
     this.router.navigate(['search']);
-  }  
+  } 
+
+  memberIconOnClick() {
+    this.dropdownVisible = !this.dropdownVisible;
+    console.log(this.dropdownVisible);
+  }
+
+  logOutUser(){
+    if (confirm('Are you sure you want to log out?')) {
+      this._authservice.logoutUser().subscribe(data => {
+        if(data.loggedOut){
+          this._authservice.loginUpdate(false, {_id: "", email: "", username: ""});
+          this.router.navigate(['']);
+        }
+      })
+    } else {
+      // Do nothing!
+    }
+  };
 }
+
