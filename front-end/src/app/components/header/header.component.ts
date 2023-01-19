@@ -44,7 +44,7 @@ export class HeaderComponent implements OnInit {
     (screenWidth > 767) ? this.screenMode = "W" : this.screenMode = "M";
   }
   @HostListener('window:scroll', ['$event']) onscroll() {
-    if(window.scrollY > 200) {
+    if(window.scrollY > 300) {
       this.headerFixed = true;
       this.dropdownVisible = false;
     } else {
@@ -58,7 +58,6 @@ export class HeaderComponent implements OnInit {
 
   memberIconOnClick() {
     this.dropdownVisible = !this.dropdownVisible;
-    console.log(this.dropdownVisible);
   }
 
   logOutUser(){
