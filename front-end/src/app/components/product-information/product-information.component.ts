@@ -62,9 +62,9 @@ export class ProductInformationComponent implements OnInit {
 
   constructor(
     private cardsService: CardsService,
-    private _authService: AuthService,   
-    private router: Router      
-  ) {}
+    private _authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     let screenWidth = window.innerWidth;
@@ -104,46 +104,54 @@ export class ProductInformationComponent implements OnInit {
       }
       reader.readAsDataURL(this.selectedFiles[0]);
       this.products.imageUrl = this.imagename;
+      console.log(this.imagename);
     }
   }
 
   saveProduct(): void {
-    const data = {
-      title: this.products.title,
-      description: this.products.description,
-      price: this.products.price,
-      category: this.products.category,
-      imageUrl: this.products.imageUrl,
-      district: this.products.district,
-      dealType: this.products.dealType,
-      user: this.products.user,
-      contact: this.products.user.email,
-    };
 
-    this.cardsService.create(data).subscribe({
-      next: (response) => {
-        console.log(response);
-        this.router.navigate([''])
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
 
-    const formData = new FormData();
+    if (confirm("Are you sure you want to save your post?")) {
+      const data = {
+        title: this.products.title,
+        description: this.products.description,
+        price: this.products.price,
+        category: this.products.category,
+        imageUrl: this.products.imageUrl,
+        district: this.products.district,
+        dealType: this.products.dealType,
+        user: this.products.user,
+        contact: this.products.user.email,
+      };
 
-    for (let imgs of this.multipleImages) {
-      formData.append('files', imgs);
-      this.cardsService.createFile(formData);
-      console.log(formData);
+      this.cardsService.create(data).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.router.navigate([''])
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
+
+      const formData = new FormData();
+
+      for (let imgs of this.multipleImages) {
+        formData.append('files', imgs);
+        this.cardsService.createFile(formData);
+        console.log(formData);
+      }
+
+    } else {
+      this.router.navigate(['post'])
     }
   }
 
-  cancelAlert(){
-    if(confirm("Your changes could not be saved. Are you sure you want to cancel?")){
+  cancelAlert() {
+    if (confirm("Your changes could not be saved. Are you sure you want to cancel?")) {
       this.router.navigate([''])
     } else {
-
+      this.router.navigate(['post'])
     }
   }
 }
