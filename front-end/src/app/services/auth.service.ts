@@ -24,6 +24,12 @@ export class AuthService {
     email: "",
     username: ""
   }
+
+  private userCard = {
+    userId: this.userInfo.id,
+    email: this.userInfo.email,
+  }
+
   private setUserInfo(userInfo: { _id: string; email: string; username: string }) {
     this.userInfo["id"] = userInfo._id;
     this.userInfo["email"] = userInfo.email;
@@ -43,7 +49,11 @@ export class AuthService {
     return this.userInfo.id;
   }
 
-  constructor(private http: HttpClient) {}
+  public getUser() {
+    return this.userCard;
+  }
+
+  constructor(private http: HttpClient) { }
 
   signupUser(email: string, username: string, password: string) {
     return this.http.post<any>(`${_signupUrl}/user/register`, {
@@ -52,13 +62,13 @@ export class AuthService {
       password
     });
   }
-  
+
   // http post login
   // return Observerble
   loginUser(email: string, password: string) {
     return this.http.post<any>(`${_signupUrl}/login`, { email, password });
   }
-    
+
   // If login success, update login status information: LoggedIn, UserInfo
   loginUpdate(loggedin: boolean, user: { _id: string; email: string; username: string }) {
     this.setLoggedIn(loggedin);

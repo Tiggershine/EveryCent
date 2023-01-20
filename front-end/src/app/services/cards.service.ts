@@ -34,9 +34,10 @@ export class CardsService {
       });
   }
 
-  update(id: any, data: any): Observable<any> {
-    return this._http.put(`http://localhost:3000/card/update/${id}`, data);
+  update(id: any, data: any): Observable<Product> {
+    return this._http.put<Product>(`http://localhost:3000/card/update/${id}`, data);
   }
+
   delete(id: any): Observable<any> {
     return this._http.delete(`http://localhost:3000/card/delete/${id}`);
   }

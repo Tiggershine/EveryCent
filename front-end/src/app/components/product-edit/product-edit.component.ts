@@ -1,16 +1,15 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { CardsService } from 'src/app/services/cards.service';
 import { Product } from 'src/app/models/product';
-import { getNumberOfCurrencyDigits } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-product-information',
-  templateUrl: './product-information.component.html',
-  styleUrls: ['./product-information.component.scss'],
+  selector: 'app-product-edit',
+  templateUrl: './product-edit.component.html',
+  styleUrls: ['./product-edit.component.scss']
 })
-export class ProductInformationComponent implements OnInit {
+export class ProductEditComponent implements OnInit {
   tradeOptionRadioButton = ['sell', 'buy', 'freecycle'];
 
   categoryType = [
@@ -49,7 +48,7 @@ export class ProductInformationComponent implements OnInit {
   ];
 
   products: Product = {
-    user: { userId: this._authService.getUserId(), email: this._authService.getUserEmail() }
+    user: this._auth.getUser(),
   };
 
   screenMode: string;
@@ -62,9 +61,17 @@ export class ProductInformationComponent implements OnInit {
 
   constructor(
     private cardsService: CardsService,
-    private _authService: AuthService,   
-    private router: Router      
-  ) {}
+    private activatedRoute: ActivatedRoute,
+    private _auth: AuthService,
+    private router: Router
+  ) {
+    activatedRoute.params.subscribe((params) => {
+      if (params['productId'])
+        cardsService.getProduct(params['productId']).subscribe((editCard) => {
+          this.products = editCard
+        })
+    })
+  }
 
   ngOnInit(): void {
     let screenWidth = window.innerWidth;
@@ -107,7 +114,7 @@ export class ProductInformationComponent implements OnInit {
     }
   }
 
-  saveProduct(): void {
+  updateCard(): void {
     const data = {
       title: this.products.title,
       description: this.products.description,
@@ -117,30 +124,34 @@ export class ProductInformationComponent implements OnInit {
       district: this.products.district,
       dealType: this.products.dealType,
       user: this.products.user,
-      contact: this.products.user.email,
+      //contact: this.products.contact,
     };
+    this.cardsService.update(this.products._id, data).subscribe(data => {
+      this.router.navigate(['mypage']);
+    })
 
-    this.cardsService.create(data).subscribe({
-      next: (response) => {
-        console.log(response);
-        this.router.navigate([''])
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+    // const formData = new FormData();
 
-    const formData = new FormData();
-
-    for (let imgs of this.multipleImages) {
-      formData.append('files', imgs);
-      this.cardsService.createFile(formData);
-      console.log(formData);
-    }
+    // for (let imgs of this.multipleImages) {
+    //   formData.append('files', imgs);
+    //   this.cardsService.createFile(formData);
+    //   console.log(formData);
+    // }
   }
 
-  cancelAlert(){
-    if(confirm("Your changes could not be saved. Are you sure you want to cancel?")){
+  // deleteCard(){
+  //   this.cardsService.delete(this.products._id).subscribe({
+  //     next: (response) => {
+  //       console.log(response);
+  //     },
+  //     error: (error) => {
+  //       console.log(error);
+  //     },
+  //   })
+  // }
+
+  cancelAlert() {
+    if (confirm("Your changes could not be saved. Are you sure you want to cancel?")) {
       this.router.navigate([''])
     } else {
 
