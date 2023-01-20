@@ -48,7 +48,7 @@ export class ProductEditComponent implements OnInit {
   ];
 
   products: Product = {
-    user: this._auth.getUsername(),
+    user: this._auth.getUser(),
   };
 
   screenMode: string;
@@ -124,7 +124,7 @@ export class ProductEditComponent implements OnInit {
       district: this.products.district,
       dealType: this.products.dealType,
       user: this.products.user,
-      contact: this.products.contact,
+      //contact: this.products.contact,
     };
     this.cardsService.update(this.products._id, data).subscribe(data => {
       this.router.navigate(['mypage']);
