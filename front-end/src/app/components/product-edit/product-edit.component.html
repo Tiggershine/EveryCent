@@ -71,6 +71,9 @@
     <div class="row-button" [align]="'end'">
       <button class="button button-register" (click)="updateCard()">UPDATE</button>
       <button mat-dialog-close class="button button-cancel" (click)="cancelAlert()">CANCEL</button>
+      <div id="btn-container">
+        <button id="register-btn" (click)="updateCard()" routerLink="/">UPDATE</button>
+        <button id="cancel-btn" (click)="cancelAlert()">CANCEL</button>
+      </div>
     </div>
   </div>
-</div>
