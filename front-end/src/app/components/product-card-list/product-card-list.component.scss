@@ -52,6 +52,30 @@ span {
   text-align: right !important;
   font-size: 0.75rem !important;
 }
+.btn-active {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 8px;
+  z-index: 3;
+  color: white;
+}
+.btn-active button {
+  width: 45%;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.6rem;
+  background-color: #FEF6ED;;
+}
+.btn-active #edit-btn {
+  color: #F9BC60;
+  border: 1px solid #F9BC60;
+}
+.btn-active #delete-btn {
+  color: #E16162;
+  border: 1px solid #E16162;
+}
+
 
 @media (min-width: 768px) {
   .product-item {
