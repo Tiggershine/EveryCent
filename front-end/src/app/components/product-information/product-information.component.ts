@@ -49,7 +49,7 @@ export class ProductInformationComponent implements OnInit {
   ];
 
   products: Product = {
-    user: this._authService.getUserId(),
+    user: { userId: this._authService.getUserId(), email: this._authService.getUserEmail() }
   };
 
   screenMode: string;
@@ -117,7 +117,7 @@ export class ProductInformationComponent implements OnInit {
       district: this.products.district,
       dealType: this.products.dealType,
       user: this.products.user,
-      contact: this.products.contact,
+      contact: this.products.user.email,
     };
 
     this.cardsService.create(data).subscribe({

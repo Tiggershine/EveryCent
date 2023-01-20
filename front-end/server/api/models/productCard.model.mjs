@@ -26,9 +26,9 @@ const productCardSchema = new Schema(
       type: [String],
       dafault: ['no image']
     },
-    user: {
-      type: String,  // User.userId
-      required: true
+    user: { 
+      userId: { type: String, required: true },
+      email: { type: String, required: true },
     },
     district: {
       type: String,
@@ -62,7 +62,7 @@ export async function getProductCard(id) {
 }
 
 export async function getProductCardByUser(userId) {
-  return ProductCard.find({ user: userId });
+  return ProductCard.find({ "user.userId": userId });
 }
 
 
