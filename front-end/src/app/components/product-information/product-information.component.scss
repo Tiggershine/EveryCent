@@ -166,6 +166,31 @@ title,
   height: 40px;
   border-radius: 50%;
 }
+#btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 32px;
+}
+#register-btn, #cancel-btn {
+  width: 150px;
+  height: 50px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 25px;
+}
+#register-btn {
+  background-color: $secondary-color;
+  color: $primary-color;
+  border: none;
+  margin-right: 8px;
+}
+#cancel-btn {
+  background-color: $background-color;
+  border: 1px solid $primary-color;
+  margin-left: 8px;
+}
+
 
 @media (min-width: 768px) {
   .layout-iwant {
