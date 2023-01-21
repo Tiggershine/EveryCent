@@ -86,11 +86,11 @@ export class ProductInformationComponent implements OnInit {
 
   inputValid(): boolean {
     const text = (this.products.dealType != undefined &&
-      this.products.title != undefined &&
-      this.products.category != undefined &&
+      this.products.title != '' &&
+      this.products.category != '' &&
       this.products.price != undefined &&
-      this.products.district != undefined &&
-      this.products.description != undefined &&
+      this.products.district != '' &&
+      this.products.description != '' &&
       this.products.imageUrl != undefined)
     return text;
   }

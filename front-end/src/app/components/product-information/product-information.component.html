@@ -66,13 +66,13 @@
         </div>
       </div>
       <input class="file-image" id="image" multiple (change)="onFileSelect($event)" type="file" />
-      <div class="warning-container">
-        <div *ngIf="isDataIncorrect" class="warning-message">{{ warningMsg }}</div>
-      </div>
-      <div id="btn-container">
-        <button id="register-btn" (click)="saveProduct()">REGISTER</button>
-        <button id="cancel-btn" routerLink="/" (click)="cancelAlert()">CANCEL</button>
-      </div>
+    </div>
+    <div class="warning-container">
+      <div *ngIf="isDataIncorrect" class="warning-message">{{ warningMsg }}</div>
+    </div>
+    <div id="btn-container">
+      <button id="register-btn" (click)="saveProduct()">REGISTER</button>
+      <button id="cancel-btn" routerLink="/" (click)="cancelAlert()">CANCEL</button>
     </div>
     <div class="row-button" [align]="'end'">
       <button class="button button-register" (click)="saveProduct()">REGISTER</button>

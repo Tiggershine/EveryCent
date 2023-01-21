@@ -223,7 +223,7 @@ input[name="sellbuy"] {
   align-items: center;
  }
  .warning-message {
-  padding-top: 20px;
+  padding-top: 30px;
   color: $secondary-color;
   font-size: 1.2rem;
  }
@@ -391,4 +391,27 @@ input[name="sellbuy"] {
     -ms-transform: translate(-50%, -50%);
     font-size: 1.5rem;
   }
+
+  #register-btn, #cancel-btn {
+    display: none;
+  }
+  #register-btn {
+    display: none;
+  }
+  #cancel-btn {
+    display: none;
+  }
+
+  .warning-container {
+    width: 500;
+    height: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+   .warning-message {
+    padding-top: 30px;
+    color: $secondary-color;
+    font-size: 1.5rem;
+   }
 }

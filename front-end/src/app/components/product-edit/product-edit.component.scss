@@ -224,7 +224,7 @@ input[name="sellbuy"] {
   align-items: center;
  }
  .warning-message {
-  padding-top: 20px;
+  padding-top: 25px;
   color: $secondary-color;
   font-size: 1.2rem;
  }
@@ -405,4 +405,17 @@ input[name="sellbuy"] {
     -ms-transform: translate(-50%, -50%);
     font-size: 1.5rem;
   }
+
+  .warning-container {
+    width: 500;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+   .warning-message {
+    padding-top: 10px;
+    color: $secondary-color;
+    font-size: 1.5rem;
+   }
 }
