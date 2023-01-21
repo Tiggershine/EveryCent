@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 import bcrypt from 'bcryptjs';
 import passport from 'passport';
-import * as UserRepository from '../models/user.model.mjs';
+import User from '../models/user.model.mjs';
 
 // Register new user
 router.post('/register', (req, res) => {
@@ -14,7 +14,7 @@ router.post('/register', (req, res) => {
         return res.status(409).send("This email has already registered!");
       } 
       else {
-        const user = new User({
+        const user = new User ({
           email: email,
           username: username,
           password: password,
@@ -39,12 +39,12 @@ router.post('/register', (req, res) => {
 })
 
 // get all User
-router.get('/users', async (req, res) => {
-  const allUser = await UserRepository.getAll();
-  if (allUser) {
-    res.status(200).json(allUser);
-  }
-})
+// router.get('/users', async (req, res) => {
+//   const allUser = await UserRepository.getAll();
+//   if (allUser) {
+//     res.status(200).json(allUser);
+//   }
+// })
 
 export default router;
 
