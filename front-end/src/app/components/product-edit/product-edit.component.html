@@ -67,8 +67,11 @@
         </div>
       </div>
       <input class="file-image" id="image" multiple (change)="onFileSelect($event)" type="file" />
+      <div class="warning-container">
+        <div *ngIf="isDataIncorrect" class="warning-message">{{ warningMsg }}</div>
+      </div>
       <div id="btn-container">
-        <button id="register-btn" (click)="updateCard()" routerLink="/">UPDATE</button>
+        <button id="register-btn" (click)="updateCard()">UPDATE</button>
         <button id="cancel-btn" (click)="cancelAlert()">CANCEL</button>
       </div>
     </div>

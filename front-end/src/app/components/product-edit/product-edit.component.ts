@@ -58,8 +58,8 @@ export class ProductEditComponent implements OnInit {
   multipleImages: string[] = [];
   counts: boolean;
   numberOfFiles: number;
-  //numberOfFiles = this.products.imageUrl.length;
-
+  isDataIncorrect: boolean = false;
+  warningMsg: string;
 
   constructor(
     private cardsService: CardsService,
@@ -130,8 +130,28 @@ export class ProductEditComponent implements OnInit {
     }
   }
 
+  inputValid(): boolean {
+    const text = (this.products.dealType != undefined &&
+      this.products.title != '' &&
+      this.products.category != undefined &&
+      this.products.price != undefined &&
+      this.products.district != undefined &&
+      this.products.description != '' &&
+      this.products.imageUrl != undefined)
+    return text;
+  }
+
   updateCard(): void {
-    if (confirm("Are you sure you want to change your post?")) {
+    if (!this.inputValid()) {
+      this.isDataIncorrect = true;
+      this.warningMsg = "You must fill out!";
+      console.log(this.inputValid());
+      console.log(this.products.imageUrl);
+    }
+    else if (this.inputValid() && confirm("Are you sure you want to change your post?")) {
+      console.log(this.inputValid());
+      console.log("this is products title" + this.products.title);
+      this.isDataIncorrect = false;
       const data = {
         title: this.products.title,
         description: this.products.description,
@@ -159,9 +179,6 @@ export class ProductEditComponent implements OnInit {
         this.cardsService.createFile(formData);
         console.log(formData);
       }
-      this.router.navigate(['mypage'])
-    } else {
-      this.router.navigate([`/edit/${this.products._id}`])
     }
   }
 

@@ -59,6 +59,8 @@ export class ProductInformationComponent implements OnInit {
   multipleImages: string[] = [];
   counts: boolean;
   numberOfFiles: number = null;
+  isDataIncorrect: boolean = false;
+  warningMsg: string;
 
   constructor(
     private cardsService: CardsService,
@@ -80,6 +82,17 @@ export class ProductInformationComponent implements OnInit {
       ? (this.screenMode = 'web')
       : (this.screenMode = 'mobile');
     console.log(this.screenMode);
+  }
+
+  inputValid(): boolean {
+    const text = (this.products.dealType != undefined &&
+      this.products.title != undefined &&
+      this.products.category != undefined &&
+      this.products.price != undefined &&
+      this.products.district != undefined &&
+      this.products.description != undefined &&
+      this.products.imageUrl != undefined)
+    return text;
   }
 
   onFileSelect(event: any): void {
@@ -104,14 +117,18 @@ export class ProductInformationComponent implements OnInit {
       }
       reader.readAsDataURL(this.selectedFiles[0]);
       this.products.imageUrl = this.imagename;
-      console.log(this.imagename);
     }
   }
 
   saveProduct(): void {
-
-
-    if (confirm("Are you sure you want to save your post?")) {
+    if (!this.inputValid()) {
+      this.isDataIncorrect = true;
+      this.warningMsg = "You must fill out!";
+      console.log(this.inputValid());
+      console.log(this.products.imageUrl);
+    }
+    else if (this.inputValid() && confirm("Are you sure you want to save your post?")) {
+      this.isDataIncorrect = false;
       const data = {
         title: this.products.title,
         description: this.products.description,
@@ -141,7 +158,6 @@ export class ProductInformationComponent implements OnInit {
         this.cardsService.createFile(formData);
         console.log(formData);
       }
-
     } else {
       this.router.navigate(['post'])
     }
