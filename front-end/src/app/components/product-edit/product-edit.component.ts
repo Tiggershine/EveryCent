@@ -58,8 +58,8 @@ export class ProductEditComponent implements OnInit {
   multipleImages: string[] = [];
   counts: boolean;
   numberOfFiles: number;
-  //numberOfFiles = this.products.imageUrl.length;
-
+  isDataIncorrect: boolean = false;
+  warningMsg: string;
 
   constructor(
     private cardsService: CardsService,
@@ -89,7 +89,6 @@ export class ProductEditComponent implements OnInit {
     screenWidth > 767
       ? (this.screenMode = 'web')
       : (this.screenMode = 'mobile');
-    console.log(this.screenMode);
   }
 
   onFileSelect(event: any): void {
@@ -115,10 +114,7 @@ export class ProductEditComponent implements OnInit {
       //this.products.imageUrl = this.imagename;
       for (let i = 0; i < this.imagename.length; i++) {
         this.products.imageUrl[this.products.imageUrl.length] = this.imagename[i];
-        console.log(this.products.imageUrl.length);
       }
-      console.log(this.products.imageUrl);
-      console.log(this.imagename);
     }
   }
 
@@ -130,8 +126,39 @@ export class ProductEditComponent implements OnInit {
     }
   }
 
+  inputValid(): boolean {
+    const text =
+      (this.products != undefined &&
+        this.products.title != undefined &&
+        this.products.category != '' &&
+        this.products.district != '' &&
+        this.products.price != undefined &&
+        this.products.description != '' &&
+        this.products.imageUrl != undefined) ||
+      (this.products.dealType == 'buy' &&
+        this.products.title != undefined &&
+        this.products.category != '' &&
+        this.products.district != '' &&
+        this.products.price == undefined &&
+        this.products.description != '' &&
+        this.products.imageUrl != undefined) ||
+      (this.products.dealType == 'freecycle' &&
+        this.products.title != undefined &&
+        this.products.category != '' &&
+        this.products.district != '' &&
+        this.products.price == undefined &&
+        this.products.description != '' &&
+        this.products.imageUrl != undefined)
+    return text;
+  }
+
   updateCard(): void {
-    if (confirm("Are you sure you want to change your post?")) {
+    if (!this.inputValid()) {
+      this.isDataIncorrect = true;
+      this.warningMsg = "You must fill out!";
+    }
+    else if (this.inputValid() && confirm("Are you sure you want to change your post?")) {
+      this.isDataIncorrect = false;
       const data = {
         title: this.products.title,
         description: this.products.description,
@@ -143,6 +170,10 @@ export class ProductEditComponent implements OnInit {
         user: this.products.user,
         //contact: this.products.contact,
       };
+      if (this.products.price == undefined) {
+        this.products.price = 0;
+        data.price = this.products.price;
+      }
       this.cardsService.update(this.products._id, data).subscribe({
         next: (response) => {
           console.log(response);
@@ -157,11 +188,7 @@ export class ProductEditComponent implements OnInit {
       for (let imgs of this.multipleImages) {
         formData.append('files', imgs);
         this.cardsService.createFile(formData);
-        console.log(formData);
       }
-      this.router.navigate(['mypage'])
-    } else {
-      this.router.navigate([`/edit/${this.products._id}`])
     }
   }
 

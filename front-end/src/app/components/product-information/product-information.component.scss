@@ -215,6 +215,15 @@ input[name="sellbuy"] {
   margin-left: 8px;
 }
 
+.warning-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+ .warning-message {
+  color: $secondary-color;
+  font-size: 1.2rem;
+ }
 
 @media (min-width: 768px) {
   .layout-iwant {
@@ -379,4 +388,15 @@ input[name="sellbuy"] {
     -ms-transform: translate(-50%, -50%);
     font-size: 1.5rem;
   }
+
+  .warning-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+   .warning-message {
+    padding-top: 10px;
+    color: $secondary-color;
+    font-size: 1.5rem;
+   }
 }

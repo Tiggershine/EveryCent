@@ -4,6 +4,7 @@ import { Product } from 'src/app/models/product';
 import { getNumberOfCurrencyDigits } from '@angular/common';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-product-information',
@@ -59,6 +60,8 @@ export class ProductInformationComponent implements OnInit {
   multipleImages: string[] = [];
   counts: boolean;
   numberOfFiles: number = null;
+  isDataIncorrect: boolean = false;
+  warningMsg: string;
 
   constructor(
     private cardsService: CardsService,
@@ -79,7 +82,32 @@ export class ProductInformationComponent implements OnInit {
     screenWidth > 767
       ? (this.screenMode = 'web')
       : (this.screenMode = 'mobile');
-    console.log(this.screenMode);
+  }
+
+  inputValid(): boolean {
+    const text =
+      (this.products != undefined &&
+        this.products.title != undefined &&
+        this.products.category != '' &&
+        this.products.district != '' &&
+        this.products.price != undefined &&
+        this.products.description != '' &&
+        this.products.imageUrl != undefined) ||
+      (this.products.dealType == 'buy' &&
+        this.products.title != undefined &&
+        this.products.category != '' &&
+        this.products.district != '' &&
+        this.products.price == undefined &&
+        this.products.description != '' &&
+        this.products.imageUrl != undefined) ||
+      (this.products.dealType == 'freecycle' &&
+        this.products.title != undefined &&
+        this.products.category != '' &&
+        this.products.district != '' &&
+        this.products.price == undefined &&
+        this.products.description != '' &&
+        this.products.imageUrl != undefined)
+    return text;
   }
 
   onFileSelect(event: any): void {
@@ -104,14 +132,18 @@ export class ProductInformationComponent implements OnInit {
       }
       reader.readAsDataURL(this.selectedFiles[0]);
       this.products.imageUrl = this.imagename;
-      console.log(this.imagename);
     }
   }
 
   saveProduct(): void {
+    console.log(this.inputValid);
+    if (!this.inputValid()) {
+      this.isDataIncorrect = true;
+      this.warningMsg = "You must fill out!";
+    }
+    else if (this.inputValid() && confirm("Are you sure you want to save your post?")) {
+      this.isDataIncorrect = false;
 
-
-    if (confirm("Are you sure you want to save your post?")) {
       const data = {
         title: this.products.title,
         description: this.products.description,
@@ -124,6 +156,10 @@ export class ProductInformationComponent implements OnInit {
         contact: this.products.user.email,
       };
 
+      if (this.products.price == undefined) {
+        this.products.price = 0;
+        data.price = this.products.price;
+      }
       this.cardsService.create(data).subscribe({
         next: (response) => {
           console.log(response);
@@ -139,9 +175,7 @@ export class ProductInformationComponent implements OnInit {
       for (let imgs of this.multipleImages) {
         formData.append('files', imgs);
         this.cardsService.createFile(formData);
-        console.log(formData);
       }
-
     } else {
       this.router.navigate(['post'])
     }
