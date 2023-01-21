@@ -217,14 +217,11 @@ input[name="sellbuy"] {
 }
 
 .warning-container {
-  width: 500;
-  height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
  }
  .warning-message {
-  padding-top: 25px;
   color: $secondary-color;
   font-size: 1.2rem;
  }
@@ -407,8 +404,6 @@ input[name="sellbuy"] {
   }
 
   .warning-container {
-    width: 500;
-    height: 20px;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -216,14 +216,11 @@ input[name="sellbuy"] {
 }
 
 .warning-container {
-  width: 500;
-  height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
  }
  .warning-message {
-  padding-top: 30px;
   color: $secondary-color;
   font-size: 1.2rem;
  }
@@ -392,25 +389,13 @@ input[name="sellbuy"] {
     font-size: 1.5rem;
   }
 
-  #register-btn, #cancel-btn {
-    display: none;
-  }
-  #register-btn {
-    display: none;
-  }
-  #cancel-btn {
-    display: none;
-  }
-
   .warning-container {
-    width: 500;
-    height: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
    }
    .warning-message {
-    padding-top: 30px;
+    padding-top: 10px;
     color: $secondary-color;
     font-size: 1.5rem;
    }
