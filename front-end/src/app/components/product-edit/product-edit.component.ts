@@ -89,7 +89,6 @@ export class ProductEditComponent implements OnInit {
     screenWidth > 767
       ? (this.screenMode = 'web')
       : (this.screenMode = 'mobile');
-    console.log(this.screenMode);
   }
 
   onFileSelect(event: any): void {
@@ -115,10 +114,7 @@ export class ProductEditComponent implements OnInit {
       //this.products.imageUrl = this.imagename;
       for (let i = 0; i < this.imagename.length; i++) {
         this.products.imageUrl[this.products.imageUrl.length] = this.imagename[i];
-        console.log(this.products.imageUrl.length);
       }
-      console.log(this.products.imageUrl);
-      console.log(this.imagename);
     }
   }
 
@@ -131,13 +127,28 @@ export class ProductEditComponent implements OnInit {
   }
 
   inputValid(): boolean {
-    const text = (this.products.dealType != undefined &&
-      this.products.title != '' &&
-      this.products.category != undefined &&
-      this.products.price != undefined &&
-      this.products.district != undefined &&
-      this.products.description != '' &&
-      this.products.imageUrl != undefined)
+    const text =
+      (this.products != undefined &&
+        this.products.title != undefined &&
+        this.products.category != '' &&
+        this.products.district != '' &&
+        this.products.price != undefined &&
+        this.products.description != '' &&
+        this.products.imageUrl != undefined) ||
+      (this.products.dealType == 'buy' &&
+        this.products.title != undefined &&
+        this.products.category != '' &&
+        this.products.district != '' &&
+        this.products.price == undefined &&
+        this.products.description != '' &&
+        this.products.imageUrl != undefined) ||
+      (this.products.dealType == 'freecycle' &&
+        this.products.title != undefined &&
+        this.products.category != '' &&
+        this.products.district != '' &&
+        this.products.price == undefined &&
+        this.products.description != '' &&
+        this.products.imageUrl != undefined)
     return text;
   }
 
@@ -145,12 +156,8 @@ export class ProductEditComponent implements OnInit {
     if (!this.inputValid()) {
       this.isDataIncorrect = true;
       this.warningMsg = "You must fill out!";
-      console.log(this.inputValid());
-      console.log(this.products.imageUrl);
     }
     else if (this.inputValid() && confirm("Are you sure you want to change your post?")) {
-      console.log(this.inputValid());
-      console.log("this is products title" + this.products.title);
       this.isDataIncorrect = false;
       const data = {
         title: this.products.title,
@@ -163,6 +170,10 @@ export class ProductEditComponent implements OnInit {
         user: this.products.user,
         //contact: this.products.contact,
       };
+      if (this.products.price == undefined) {
+        this.products.price = 0;
+        data.price = this.products.price;
+      }
       this.cardsService.update(this.products._id, data).subscribe({
         next: (response) => {
           console.log(response);
@@ -177,7 +188,6 @@ export class ProductEditComponent implements OnInit {
       for (let imgs of this.multipleImages) {
         formData.append('files', imgs);
         this.cardsService.createFile(formData);
-        console.log(formData);
       }
     }
   }
