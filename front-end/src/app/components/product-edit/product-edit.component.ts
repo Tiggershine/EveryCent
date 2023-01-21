@@ -57,7 +57,9 @@ export class ProductEditComponent implements OnInit {
   imagename: string[] = [];
   multipleImages: string[] = [];
   counts: boolean;
-  numberOfFiles: number = null;
+  numberOfFiles: number;
+  //numberOfFiles = this.products.imageUrl.length;
+
 
   constructor(
     private cardsService: CardsService,
@@ -69,6 +71,7 @@ export class ProductEditComponent implements OnInit {
       if (params['productId'])
         cardsService.getProduct(params['productId']).subscribe((editCard) => {
           this.products = editCard
+          this.imagePreview()
         })
     })
   }
@@ -91,11 +94,10 @@ export class ProductEditComponent implements OnInit {
 
   onFileSelect(event: any): void {
     this.selectedFiles = event.target.files;
-    this.numberOfFiles = this.selectedFiles.length;
-    this.previews = [];
+    this.numberOfFiles += this.selectedFiles.length;
     if (this.selectedFiles && this.selectedFiles[0]) {
       let reader: FileReader;
-      for (let i = 0; i < this.numberOfFiles; i++) {
+      for (let i = 0; i < this.selectedFiles.length; i++) {
         reader = new FileReader();
         this.multipleImages = event.target.files;
         this.imagename[i] =
@@ -109,52 +111,65 @@ export class ProductEditComponent implements OnInit {
       } else {
         this.counts = true;
       }
-      reader.readAsDataURL(this.selectedFiles[0]);
-      this.products.imageUrl = this.imagename;
+      //reader.readAsDataURL(this.selectedFiles[0]);
+      //this.products.imageUrl = this.imagename;
+      for (let i = 0; i < this.imagename.length; i++) {
+        this.products.imageUrl[this.products.imageUrl.length] = this.imagename[i];
+        console.log(this.products.imageUrl.length);
+      }
+      console.log(this.products.imageUrl);
+      console.log(this.imagename);
+    }
+  }
+
+  imagePreview() {
+    this.previews = [this.products.imageUrl[0]];
+    this.numberOfFiles = this.products.imageUrl.length;
+    if (this.previews.length > 0) {
+      this.counts = true;
     }
   }
 
   updateCard(): void {
-    const data = {
-      title: this.products.title,
-      description: this.products.description,
-      price: this.products.price,
-      category: this.products.category,
-      imageUrl: this.products.imageUrl,
-      district: this.products.district,
-      dealType: this.products.dealType,
-      user: this.products.user,
-      //contact: this.products.contact,
-    };
-    this.cardsService.update(this.products._id, data).subscribe(data => {
-      this.router.navigate(['mypage']);
-    })
+    if (confirm("Are you sure you want to change your post?")) {
+      const data = {
+        title: this.products.title,
+        description: this.products.description,
+        price: this.products.price,
+        category: this.products.category,
+        imageUrl: this.products.imageUrl,
+        district: this.products.district,
+        dealType: this.products.dealType,
+        user: this.products.user,
+        //contact: this.products.contact,
+      };
+      this.cardsService.update(this.products._id, data).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.router.navigate(['mypage'])
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
+      const formData = new FormData();
 
-    // const formData = new FormData();
-
-    // for (let imgs of this.multipleImages) {
-    //   formData.append('files', imgs);
-    //   this.cardsService.createFile(formData);
-    //   console.log(formData);
-    // }
+      for (let imgs of this.multipleImages) {
+        formData.append('files', imgs);
+        this.cardsService.createFile(formData);
+        console.log(formData);
+      }
+      this.router.navigate(['mypage'])
+    } else {
+      this.router.navigate([`/edit/${this.products._id}`])
+    }
   }
-
-  // deleteCard(){
-  //   this.cardsService.delete(this.products._id).subscribe({
-  //     next: (response) => {
-  //       console.log(response);
-  //     },
-  //     error: (error) => {
-  //       console.log(error);
-  //     },
-  //   })
-  // }
 
   cancelAlert() {
     if (confirm("Your changes could not be saved. Are you sure you want to cancel?")) {
-      this.router.navigate([''])
+      this.router.navigate(['mypage'])
     } else {
-
+      this.router.navigate([`/edit/${this.products._id}`])
     }
   }
 }
