@@ -37,6 +37,7 @@ export class LoginPageComponent implements OnInit {
         this._auth.loginUpdate(data.loggedIn, data.user), 
         this.isDataInvalid = false
       ) : (
+        alert("Please enter a correct ID and Password."),
         this.router.navigateByUrl('/login'),
         this.isDataInvalid = true
       );
