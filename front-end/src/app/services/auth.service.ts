@@ -17,7 +17,7 @@ export class AuthService {
     this.isLoggedIn$ = data;
   }
   public getLoggedIn(): boolean {
-    return this.isLoggedIn$;
+    return this.isLoggedIn$ || sessionStorage.getItem('loginStatus') == 'loggedIn';
   }
   private userInfo = {
     id: "",
@@ -46,7 +46,12 @@ export class AuthService {
     return this.userInfo.email;
   }
   public getUserId() {
-    return this.userInfo.id;
+    // return this.userInfo.id;
+    if (this.userInfo['id']) {
+      return this.userInfo['id'];
+    } else {
+      return sessionStorage.getItem('userId');
+    }
   }
 
   public getUser() {
@@ -73,9 +78,15 @@ export class AuthService {
   loginUpdate(loggedin: boolean, user: { _id: string; email: string; username: string }) {
     this.setLoggedIn(loggedin);
     this.setUserInfo(user);
+    if (loggedin) {
+      sessionStorage.setItem('loginStatus', 'loggedIn');
+      sessionStorage.setItem('userId', this.getUserId());
+    }
   }
 
   logoutUser() {
+    sessionStorage.removeItem('loginStatus');
+    sessionStorage.removeItem('userId');
     return this.http.post<any>(`${_signupUrl}/logout`, null);
   }
 }
