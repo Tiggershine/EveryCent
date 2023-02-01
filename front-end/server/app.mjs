@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 import passportconfig from './config/passport.mjs';
 passportconfig(passport);
 
-// Express Session
+// Set Express Session
 app.use(session({
   secret: 'everycent secret',
   resave: true,
@@ -40,7 +40,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// print the request log on console
+// Set Logging (print the request log on console)
 app.use(morgan('tiny'));
 
 // set CORS
@@ -70,11 +70,12 @@ app.get('/', (req, res) => {
   res.send('Home');
 });
 
+// If login fail, redirected to this url (loggedIn: false)
 app.get('/loginFail', (req, res) => {
   res.json({ loggedIn: false });
 })
 
-
+// Error handling
 app.use((req, res, next) => {
   const error = new Error('Not found');
   error.status = 404;

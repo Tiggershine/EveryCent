@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
-// import * as User from '../models/user.model.mjs'
 
-
+// Schema for productCard - post on webapp
+// Category & District & Dealtype can be stored only in the restricted form
+// imageUrl: directory path of local storage - images store to local
 const productCardSchema = new Schema(
   {
     title: {
@@ -51,21 +52,22 @@ const productCardSchema = new Schema(
 const ProductCard = mongoose.model('ProductCard', productCardSchema);
 export default ProductCard;
 
-
+// Get all post-datas which in DB stored
 export async function getAll() {
   return ProductCard.find({});
 }
 
-
+// Get only the data of corresponding id
 export async function getProductCard(id) {
   return ProductCard.findById(id);
 }
 
+// Get only the data of corresponding userId
 export async function getProductCardByUser(userId) {
   return ProductCard.find({ "user.userId": userId });
 }
 
-
+// Create new post with the Schema 
 export async function createCard(title, description, price, category, imageUrl, user, district, dealType) {
   return new ProductCard({
     title,
@@ -80,12 +82,12 @@ export async function createCard(title, description, price, category, imageUrl, 
   }).save();
 }
 
-
+// Update the existing post with the information
 export async function updateCard(id, title, description, price, category, imageUrl, user, district, dealType) {
   return ProductCard.findByIdAndUpdate(id, { title, description, price, category, imageUrl, user, district, dealType }, { returnOriginal: false});
 }
 
-
+// Delete the post from DB
 export async function removeCard(id) {
   return ProductCard.findByIdAndDelete(id);
 }

@@ -13,7 +13,7 @@ export const userSchema = new Schema(
 
 const User = mongoose.model('User', userSchema); 
 
-// get all users in DB
+// get all users in DB - only for Dev
 export async function getAll() {
   return User.find({});
 }

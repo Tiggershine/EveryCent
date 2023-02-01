@@ -61,6 +61,7 @@ export class SignupPageComponent implements OnInit {
     if (!this.isDataIncorrect) {
       this._auth.signupUser(this.signupUserData.email, this.signupUserData.username, this.signupUserData.password).subscribe(data => {
         if (data.success = true) {
+          alert("Congratulations, your account has been successfully created!"),
           this.router.navigate(['/login']);
         } else {
         }

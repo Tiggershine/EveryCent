@@ -32,7 +32,7 @@ const verifyCallback = async (email, password, done) => {
   });
 }
 
-
+// LocalStrategy(PassportJS)
 const strategy = new LocalStrategy(customFields, verifyCallback);
 
 
