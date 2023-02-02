@@ -47,20 +47,22 @@
 
 <br>
 
-## Was jeder hat bisher gemacht (10.01.22)
+## Was jeder hat bisher gemacht 
 ### Hyun Kim
 
 Frontend
 
 - Erstellen UI : Login Page / Signup Page / Header Component
+- Verbindungseinstellungen für den Anschluss des Client- und Server-Seite 
 
 Backend
 
-- Setze Server mit Node JS & MongoDB
-    - User verwalten: Register / Login
-    - Post verwalten: CRUD Funktion
-    - Hashing password: Verbesserte Sicherheit
-    - Verwaltung der Authentication - Passport JS Module
+- Aufbau von Server mit NodeJS 
+- Verbindung mit MongoDB als Dabtabase
+- User verwalten: Register / Login
+- Post verwalten: CRUD Funktion
+- Hashing password: Verbesserte Sicherheit
+- Verwaltung der Authentication - PassportJS Module
 
 ### Hyejin Kang
 
@@ -102,8 +104,8 @@ Backend
 
 ## TODO
 
-- [ ] Logout Component + function + bind backend + alert window(success)
-- [ ] Postcard edit / delete function (edit => register page) + data bind + alert window
-- [ ] Search result (if without search result)
-- [ ] Login/Signup success popup window
-- [ ] Testing - error / bug
+- [ ] ~~Logout Component + function + bind backend + alert window(success)~~
+- [ ] ~~Postcard edit / delete function (edit => register page) + data bind + alert window~~
+- [ ] ~~Search result (if without search result)~~
+- [ ] ~~Login/Signup success popup window~~
+- [ ] ~~Testing - error / bug~~
