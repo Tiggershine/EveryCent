@@ -76,11 +76,11 @@ Backend
 
 ### Minseon Kim
 
-- (Vor der Entwicklung) den Workflow von den gesamten Seiten erstellen
+- Workflow von den gesamten Seiten erstellen
 - Card Model erstellen
-- Die Detailinformationsseite von jedem Produktpost erstellen
-- Prüfungsfunktionen, ob die Gültigkeiten von den daten, die Benutzer eingegeben
-- (In Progress) Logout Btn und Funktionen implementieren
+- Detailinformationsseite von einem Produktpost erstellen
+- Prüfungsfunktionen, ob die eigegebenen Daten gültig sind
+- Logout Btn und Funktionen implementieren
 
 ### Hanbit Jang
 
