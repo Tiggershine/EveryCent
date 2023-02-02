@@ -64,15 +64,17 @@ Backend
 
 ### Hyejin Kang
 
-- Design system
-- Create cardlist product / mypage
+- Erstellen Design system und Prototype (mit Figma)
+- Create Komponent : product-cardlist / main navigation / float button
+- Create Page : main page / after search page / my page
 - Create card model
 - Routing from main page to card list and detail page
 - Set Guard Routing
-- Data binding from main page to card list and detail page
-- Feature Search function
-- Refactor Header service and search service
-- (In progress) Refactor Route Path
+- Data binding from main page to card list and detail page mit card CRUD service
+- Feature Search function mit share data service
+- Refactor Header service
+- Überprüfen und Vereinheitlichung der Mediaquery Spec für Mobilgeräte
+
 
 ### Minseon Kim
 
