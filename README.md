@@ -1,14 +1,20 @@
-# Gruppe11
+# Everycent 
+- **Web application** designed for the **secondhand market**
+- Created as part of the 'Einführung in die Webtechnology' lecture at RWTH University.
 <br>
+
+
+
+https://user-images.githubusercontent.com/48058931/219675781-ad0e0676-701e-4712-a8c6-647d62fc72e6.mp4
+
+
+
 
 ![Semantic description of image](Design_System.jpg)
 
 
-# EveryCent
-- WebApp für Online Flohmarkt
-
 ## Technologies
-- Frontend: **Angular**
+- Frontend: **Angular (TypeScript, SCSS)**
 - Backend:  **Node JS**
 - Database: **MongoDB**
 
@@ -18,20 +24,21 @@
 
 
 ## Funktionen
-### User Verwaltung
+### User management
 - Register
-- Login
-- Meine Beiträge verwalten
+- Login (Authentication)
+- Manage my posts
 
 ![Semantic description of image](Login.gif)
 
 <br>
 
-### Post Verwaltung
+### Post management
 - Create
 - Read
 - Update
 - Delete
+- Browsing and searching for items
 
 ![Semantic description of image](Crud.gif)
 
@@ -47,7 +54,7 @@
 
 <br>
 
-## Was jeder hat bisher gemacht 
+## Contributer
 ### Hyun Kim
 
 Frontend
@@ -101,11 +108,3 @@ Backend
 - Speichern der Bilddatei in lokalen Ordner
 
 <br>
-
-## TODO
-
-- [ ] ~~Logout Component + function + bind backend + alert window(success)~~
-- [ ] ~~Postcard edit / delete function (edit => register page) + data bind + alert window~~
-- [ ] ~~Search result (if without search result)~~
-- [ ] ~~Login/Signup success popup window~~
-- [ ] ~~Testing - error / bug~~
